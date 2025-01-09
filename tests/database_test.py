@@ -36,37 +36,39 @@ class TestProcess(unittest.TestCase):
                 text = self.db.select(
                     f"""select * from {HeuristDB.text} where "H-ID" = {text_id}"""
                 )[0]
-                collections.update({text_id: convert_datetime(text)})
-                collections[text_id].update({"witnesses": []})
+                collections.update({text_id: {"text metadata": convert_datetime(text)}})
+                collections[text_id].update({"text witnesses": []})
 
-            part_id = w["observed_on_pages H-ID"]
+            part_id = w.pop("observed_on_pages H-ID")
             query = f"""select * from {HeuristDB.part} where "H-ID" = {part_id}"""
             parts = self.db.select(query)
 
-            w.update({"observed_on_pages H-ID": []})
+            w.update({"witness parts": {}})
 
             for p in parts:
                 p = convert_datetime(p)
 
-                physdesc_id = p["physical_description H-ID"]
+                physdesc_id = p.pop("physical_description H-ID")
                 if physdesc_id:
                     physdesc = self.db.select(
                         f"""select * from {HeuristDB.physDesc} where "H-ID" = {physdesc_id}"""
                     )[0]
-                    p.update({"physical_description H-ID": convert_datetime(physdesc)})
+                    p.update({"physical_description": convert_datetime(physdesc)})
 
-                doc_id = p["is_inscribed_on H-ID"]
+                doc_id = p.pop("is_inscribed_on H-ID")
                 doc = self.db.select(
                     f"""select * from {HeuristDB.document} where "H-ID" = {doc_id}"""
                 )[0]
-                p.update({"is_inscribed_on H-ID": convert_datetime(doc)})
+                p.update({"document": convert_datetime(doc)})
 
-                w["observed_on_pages H-ID"].append(p)
+                w["witness parts"].update({p["div_order"]: p})
 
-            collections[text_id]["witnesses"].append(w)
+            collections[text_id]["text witnesses"].append(w)
+
+        obj = {"texts": list(collections.values())}
 
         with open("tests/textCollections.json", "w", encoding="utf-8") as f:
-            json.dump(collections, f, indent=4, ensure_ascii=False)
+            json.dump(obj, f, indent=4, ensure_ascii=False)
 
 
 if __name__ == "__main__":
