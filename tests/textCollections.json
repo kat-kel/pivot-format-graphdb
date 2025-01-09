@@ -60,8 +60,8 @@
                 "nature_of_derivations": null,
                 "length_freetext": null
             },
-            "text witnesses": [
-                {
+            "text witnesses": {
+                "witness 0": {
                     "H-ID": 47500,
                     "type_id": 105,
                     "date_freetext": "'XIV/XV'.",
@@ -174,7 +174,7 @@
                         }
                     }
                 },
-                {
+                "witness 7": {
                     "H-ID": 47478,
                     "type_id": 105,
                     "date_freetext": "'XIIId.'",
@@ -287,7 +287,7 @@
                         }
                     }
                 },
-                {
+                "witness 8": {
                     "H-ID": 47505,
                     "type_id": 105,
                     "date_freetext": "'c.1300'.",
@@ -400,7 +400,7 @@
                         }
                     }
                 },
-                {
+                "witness 9": {
                     "H-ID": 47510,
                     "type_id": 105,
                     "date_freetext": "'c.1325'.",
@@ -513,7 +513,7 @@
                         }
                     }
                 },
-                {
+                "witness 10": {
                     "H-ID": 47514,
                     "type_id": 105,
                     "date_freetext": "'XVc'.",
@@ -626,7 +626,7 @@
                         }
                     }
                 }
-            ]
+            }
         },
         {
             "text metadata": {
@@ -688,8 +688,8 @@
                 "nature_of_derivations": null,
                 "length_freetext": null
             },
-            "text witnesses": [
-                {
+            "text witnesses": {
+                "witness 1": {
                     "H-ID": 47552,
                     "type_id": 105,
                     "date_freetext": "'XIVb'",
@@ -802,7 +802,7 @@
                         }
                     }
                 },
-                {
+                "witness 16": {
                     "H-ID": 47556,
                     "type_id": 105,
                     "date_freetext": "' XIIId'",
@@ -915,7 +915,7 @@
                         }
                     }
                 }
-            ]
+            }
         },
         {
             "text metadata": {
@@ -977,8 +977,8 @@
                 "nature_of_derivations": null,
                 "length_freetext": null
             },
-            "text witnesses": [
-                {
+            "text witnesses": {
+                "witness 2": {
                     "H-ID": 45040,
                     "type_id": 105,
                     "date_freetext": "Fin du XIIe-début du XIIIe siècle",
@@ -1068,7 +1068,7 @@
                         }
                     }
                 }
-            ]
+            }
         },
         {
             "text metadata": {
@@ -1130,8 +1130,8 @@
                 "nature_of_derivations": null,
                 "length_freetext": "Length is the average of the two complete manuscripts."
             },
-            "text witnesses": [
-                {
+            "text witnesses": {
+                "witness 3": {
                     "H-ID": 47375,
                     "type_id": 105,
                     "date_freetext": "'<=1350'.",
@@ -1244,7 +1244,7 @@
                         }
                     }
                 },
-                {
+                "witness 36": {
                     "H-ID": 47406,
                     "type_id": 105,
                     "date_freetext": "'c.1320-1325'.",
@@ -1357,7 +1357,7 @@
                         }
                     }
                 },
-                {
+                "witness 37": {
                     "H-ID": 47416,
                     "type_id": 105,
                     "date_freetext": "'c.1325'.",
@@ -1470,7 +1470,7 @@
                         }
                     }
                 },
-                {
+                "witness 38": {
                     "H-ID": 47388,
                     "type_id": 105,
                     "date_freetext": "'XIVb'.",
@@ -1583,7 +1583,7 @@
                         }
                     }
                 },
-                {
+                "witness 39": {
                     "H-ID": 47403,
                     "type_id": 105,
                     "date_freetext": "'≤ 1350'.",
@@ -1696,7 +1696,7 @@
                         }
                     }
                 },
-                {
+                "witness 40": {
                     "H-ID": 47399,
                     "type_id": 105,
                     "date_freetext": "'≤ 1350'.",
@@ -1809,7 +1809,7 @@
                         }
                     }
                 },
-                {
+                "witness 41": {
                     "H-ID": 47392,
                     "type_id": 105,
                     "date_freetext": "'≤ 1350'.",
@@ -1922,7 +1922,7 @@
                         }
                     }
                 },
-                {
+                "witness 42": {
                     "H-ID": 47425,
                     "type_id": 105,
                     "date_freetext": "'c. 1350'.",
@@ -2035,7 +2035,7 @@
                         }
                     }
                 },
-                {
+                "witness 43": {
                     "H-ID": 47383,
                     "type_id": 105,
                     "date_freetext": "'XIVd'",
@@ -2148,7 +2148,7 @@
                         }
                     }
                 },
-                {
+                "witness 44": {
                     "H-ID": 47411,
                     "type_id": 105,
                     "date_freetext": "'c.1400'.",
@@ -2261,7 +2261,7 @@
                         }
                     }
                 },
-                {
+                "witness 51": {
                     "H-ID": 47420,
                     "type_id": 105,
                     "date_freetext": null,
@@ -2374,7 +2374,7 @@
                         }
                     }
                 }
-            ]
+            }
         },
         {
             "text metadata": {
@@ -2436,8 +2436,8 @@
                 "nature_of_derivations": null,
                 "length_freetext": null
             },
-            "text witnesses": [
-                {
+            "text witnesses": {
+                "witness 4": {
                     "H-ID": 46395,
                     "type_id": 105,
                     "date_freetext": "Kålund, Cat: 15th cent.",
@@ -2527,7 +2527,7 @@
                         }
                     }
                 },
-                {
+                "witness 5": {
                     "H-ID": 46410,
                     "type_id": 105,
                     "date_freetext": "15 årh. slutning (Kålund, I:739.)",
@@ -2617,7 +2617,7 @@
                         }
                     }
                 }
-            ]
+            }
         },
         {
             "text metadata": {
@@ -2679,8 +2679,8 @@
                 "nature_of_derivations": null,
                 "length_freetext": null
             },
-            "text witnesses": [
-                {
+            "text witnesses": {
+                "witness 6": {
                     "H-ID": 46349,
                     "type_id": 105,
                     "date_freetext": "ca. 1400",
@@ -2770,7 +2770,7 @@
                         }
                     }
                 }
-            ]
+            }
         },
         {
             "text metadata": {
@@ -2832,8 +2832,8 @@
                 "nature_of_derivations": null,
                 "length_freetext": null
             },
-            "text witnesses": [
-                {
+            "text witnesses": {
+                "witness 11": {
                     "H-ID": 47532,
                     "type_id": 105,
                     "date_freetext": "'c.1325'",
@@ -2946,7 +2946,7 @@
                         }
                     }
                 },
-                {
+                "witness 12": {
                     "H-ID": 47536,
                     "type_id": 105,
                     "date_freetext": "'XIVd'",
@@ -3059,7 +3059,7 @@
                         }
                     }
                 }
-            ]
+            }
         },
         {
             "text metadata": {
@@ -3121,8 +3121,8 @@
                 "nature_of_derivations": null,
                 "length_freetext": null
             },
-            "text witnesses": [
-                {
+            "text witnesses": {
+                "witness 13": {
                     "H-ID": 47545,
                     "type_id": 105,
                     "date_freetext": "'≥ 1350'",
@@ -3235,7 +3235,7 @@
                         }
                     }
                 },
-                {
+                "witness 14": {
                     "H-ID": 47541,
                     "type_id": 105,
                     "date_freetext": "'XIVd'",
@@ -3348,7 +3348,7 @@
                         }
                     }
                 }
-            ]
+            }
         },
         {
             "text metadata": {
@@ -3410,8 +3410,8 @@
                 "nature_of_derivations": null,
                 "length_freetext": null
             },
-            "text witnesses": [
-                {
+            "text witnesses": {
+                "witness 15": {
                     "H-ID": 46311,
                     "type_id": 105,
                     "date_freetext": null,
@@ -3501,7 +3501,7 @@
                         }
                     }
                 }
-            ]
+            }
         },
         {
             "text metadata": {
@@ -3563,8 +3563,8 @@
                 "nature_of_derivations": null,
                 "length_freetext": null
             },
-            "text witnesses": [
-                {
+            "text witnesses": {
+                "witness 17": {
                     "H-ID": 47343,
                     "type_id": 105,
                     "date_freetext": "'c. 1325'.",
@@ -3677,7 +3677,7 @@
                         }
                     }
                 }
-            ]
+            }
         },
         {
             "text metadata": {
@@ -3739,8 +3739,8 @@
                 "nature_of_derivations": null,
                 "length_freetext": null
             },
-            "text witnesses": [
-                {
+            "text witnesses": {
+                "witness 18": {
                     "H-ID": 47353,
                     "type_id": 105,
                     "date_freetext": "'XIVm'",
@@ -3853,7 +3853,7 @@
                         }
                     }
                 }
-            ]
+            }
         },
         {
             "text metadata": {
@@ -3915,8 +3915,8 @@
                 "nature_of_derivations": "the dependence on Basin is contested",
                 "length_freetext": null
             },
-            "text witnesses": [
-                {
+            "text witnesses": {
+                "witness 19": {
                     "H-ID": 46364,
                     "type_id": 105,
                     "date_freetext": "XIV2",
@@ -4029,7 +4029,7 @@
                         }
                     }
                 },
-                {
+                "witness 20": {
                     "H-ID": 47280,
                     "type_id": 105,
                     "date_freetext": "'XIV2'",
@@ -4142,7 +4142,7 @@
                         }
                     }
                 },
-                {
+                "witness 21": {
                     "H-ID": 47268,
                     "type_id": 105,
                     "date_freetext": "'XIVd'",
@@ -4255,7 +4255,7 @@
                         }
                     }
                 },
-                {
+                "witness 22": {
                     "H-ID": 47238,
                     "type_id": 105,
                     "date_freetext": "' XIVd'",
@@ -4368,7 +4368,7 @@
                         }
                     }
                 },
-                {
+                "witness 23": {
                     "H-ID": 47272,
                     "type_id": 105,
                     "date_freetext": "'XIV/XV'",
@@ -4481,7 +4481,7 @@
                         }
                     }
                 },
-                {
+                "witness 24": {
                     "H-ID": 47276,
                     "type_id": 105,
                     "date_freetext": "'XIV/XV'",
@@ -4594,7 +4594,7 @@
                         }
                     }
                 }
-            ]
+            }
         },
         {
             "text metadata": {
@@ -4656,8 +4656,8 @@
                 "nature_of_derivations": null,
                 "length_freetext": null
             },
-            "text witnesses": [
-                {
+            "text witnesses": {
+                "witness 25": {
                     "H-ID": 46368,
                     "type_id": 105,
                     "date_freetext": "\"< 1200\"",
@@ -4747,7 +4747,7 @@
                         }
                     }
                 }
-            ]
+            }
         },
         {
             "text metadata": {
@@ -4809,8 +4809,8 @@
                 "nature_of_derivations": null,
                 "length_freetext": "'Ik heb lang getwijfeld om in mijn berekening de opsplitsing tussen Ogier I en Ogier II ook te maken\nmaar ik heb uiteindelijk, net als Van der Have, beslist om dit niet te doen. In mijn berekening schat ik\nOgier van Denemarken op ten minste 23.700 verzen.' Verbraeken 2023, p. 44."
             },
-            "text witnesses": [
-                {
+            "text witnesses": {
+                "witness 26": {
                     "H-ID": 47289,
                     "type_id": 105,
                     "date_freetext": "'XIVm'",
@@ -4923,7 +4923,7 @@
                         }
                     }
                 },
-                {
+                "witness 27": {
                     "H-ID": 47285,
                     "type_id": 105,
                     "date_freetext": "'c.1350'",
@@ -5036,7 +5036,7 @@
                         }
                     }
                 }
-            ]
+            }
         },
         {
             "text metadata": {
@@ -5098,8 +5098,8 @@
                 "nature_of_derivations": null,
                 "length_freetext": null
             },
-            "text witnesses": [
-                {
+            "text witnesses": {
+                "witness 28": {
                     "H-ID": 47467,
                     "type_id": 105,
                     "date_freetext": "'XIVa'.",
@@ -5212,7 +5212,7 @@
                         }
                     }
                 },
-                {
+                "witness 29": {
                     "H-ID": 47445,
                     "type_id": 105,
                     "date_freetext": "'≤ 1350'.",
@@ -5325,7 +5325,7 @@
                         }
                     }
                 },
-                {
+                "witness 30": {
                     "H-ID": 47449,
                     "type_id": 105,
                     "date_freetext": "'≤ 1350'.",
@@ -5438,7 +5438,7 @@
                         }
                     }
                 },
-                {
+                "witness 31": {
                     "H-ID": 47463,
                     "type_id": 105,
                     "date_freetext": "'XV/XVI'.",
@@ -5551,7 +5551,7 @@
                         }
                     }
                 },
-                {
+                "witness 48": {
                     "H-ID": 47458,
                     "type_id": 105,
                     "date_freetext": "'XIII/XIV'.",
@@ -5664,7 +5664,7 @@
                         }
                     }
                 },
-                {
+                "witness 49": {
                     "H-ID": 47454,
                     "type_id": 105,
                     "date_freetext": "'XIV'.",
@@ -5777,7 +5777,7 @@
                         }
                     }
                 }
-            ]
+            }
         },
         {
             "text metadata": {
@@ -5839,8 +5839,8 @@
                 "nature_of_derivations": null,
                 "length_freetext": null
             },
-            "text witnesses": [
-                {
+            "text witnesses": {
+                "witness 32": {
                     "H-ID": 47441,
                     "type_id": 105,
                     "date_freetext": "'XIV/XV'.",
@@ -5953,7 +5953,7 @@
                         }
                     }
                 },
-                {
+                "witness 33": {
                     "H-ID": 47429,
                     "type_id": 105,
                     "date_freetext": "'XIV2'.",
@@ -6066,7 +6066,7 @@
                         }
                     }
                 },
-                {
+                "witness 34": {
                     "H-ID": 46361,
                     "type_id": 105,
                     "date_freetext": null,
@@ -6156,7 +6156,7 @@
                         }
                     }
                 },
-                {
+                "witness 35": {
                     "H-ID": 47437,
                     "type_id": 105,
                     "date_freetext": "'XVd'.",
@@ -6269,7 +6269,7 @@
                         }
                     }
                 },
-                {
+                "witness 50": {
                     "H-ID": 47433,
                     "type_id": 105,
                     "date_freetext": "'XIV?'.",
@@ -6382,7 +6382,7 @@
                         }
                     }
                 }
-            ]
+            }
         },
         {
             "text metadata": {
@@ -6444,8 +6444,8 @@
                 "nature_of_derivations": null,
                 "length_freetext": "'Met 158\nMiddelnederlandse verzen corresponderen 298 Franse, een verhouding van 0,53. Ik schat dus de\ntotale lengte van de Middelnederlandse Tristan in op ongeveer 10.000 verzen.' Verbraeken (2023), p. 50."
             },
-            "text witnesses": [
-                {
+            "text witnesses": {
+                "witness 45": {
                     "H-ID": 47520,
                     "type_id": 105,
                     "date_freetext": "'XIII2'.",
@@ -6558,7 +6558,7 @@
                         }
                     }
                 }
-            ]
+            }
         },
         {
             "text metadata": {
@@ -6620,8 +6620,8 @@
                 "nature_of_derivations": null,
                 "length_freetext": null
             },
-            "text witnesses": [
-                {
+            "text witnesses": {
+                "witness 46": {
                     "H-ID": 47337,
                     "type_id": 105,
                     "date_freetext": "'XIVm'.",
@@ -6734,7 +6734,7 @@
                         }
                     }
                 }
-            ]
+            }
         },
         {
             "text metadata": {
@@ -6796,8 +6796,8 @@
                 "nature_of_derivations": null,
                 "length_freetext": "Estimate bij Van der Have (2005), p. 80: '\"ruim 5000 verzen'"
             },
-            "text witnesses": [
-                {
+            "text witnesses": {
+                "witness 47": {
                     "H-ID": 46402,
                     "type_id": 105,
                     "date_freetext": "\"XIVm\"",
@@ -6887,7 +6887,7 @@
                         }
                     }
                 }
-            ]
+            }
         }
     ]
 }

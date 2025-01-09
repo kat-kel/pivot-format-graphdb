@@ -27,7 +27,7 @@ class TestProcess(unittest.TestCase):
 
         collections = {}
 
-        for w in witnesses:
+        for n, w in enumerate(witnesses):
             w = convert_datetime(w)
 
             text_id = w["is_manifestation_of H-ID"]
@@ -37,7 +37,7 @@ class TestProcess(unittest.TestCase):
                     f"""select * from {HeuristDB.text} where "H-ID" = {text_id}"""
                 )[0]
                 collections.update({text_id: {"text metadata": convert_datetime(text)}})
-                collections[text_id].update({"text witnesses": []})
+                collections[text_id].update({"text witnesses": {}})
 
             part_id = w.pop("observed_on_pages H-ID")
             query = f"""select * from {HeuristDB.part} where "H-ID" = {part_id}"""
@@ -63,7 +63,7 @@ class TestProcess(unittest.TestCase):
 
                 w["witness parts"].update({p["div_order"]: p})
 
-            collections[text_id]["text witnesses"].append(w)
+            collections[text_id]["text witnesses"].update({f"witness {n}": w})
 
         obj = {"texts": list(collections.values())}
 
