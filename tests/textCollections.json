@@ -1,6 +1,6 @@
 {
-    "texts": [
-        {
+    "texts": {
+        "text 47473": {
             "text metadata": {
                 "H-ID": 47473,
                 "type_id": 101,
@@ -61,7 +61,7 @@
                 "length_freetext": null
             },
             "text witnesses": {
-                "witness 0": {
+                "witness 47500": {
                     "H-ID": 47500,
                     "type_id": 105,
                     "date_freetext": "'XIV/XV'.",
@@ -106,8 +106,8 @@
                     "alternative_sigla": null,
                     "number_of_hands": null,
                     "scribe_note": null,
-                    "witness parts": {
-                        "1.0": {
+                    "text parts": {
+                        "part 1": {
                             "H-ID": 47501,
                             "type_id": 125,
                             "review_status": "Action required",
@@ -174,7 +174,7 @@
                         }
                     }
                 },
-                "witness 7": {
+                "witness 47478": {
                     "H-ID": 47478,
                     "type_id": 105,
                     "date_freetext": "'XIIId.'",
@@ -219,8 +219,8 @@
                     "alternative_sigla": null,
                     "number_of_hands": null,
                     "scribe_note": null,
-                    "witness parts": {
-                        "1.0": {
+                    "text parts": {
+                        "part 1": {
                             "H-ID": 47479,
                             "type_id": 125,
                             "review_status": "Action required",
@@ -287,7 +287,7 @@
                         }
                     }
                 },
-                "witness 8": {
+                "witness 47505": {
                     "H-ID": 47505,
                     "type_id": 105,
                     "date_freetext": "'c.1300'.",
@@ -332,8 +332,8 @@
                     "alternative_sigla": null,
                     "number_of_hands": null,
                     "scribe_note": null,
-                    "witness parts": {
-                        "1.0": {
+                    "text parts": {
+                        "part 1": {
                             "H-ID": 47506,
                             "type_id": 125,
                             "review_status": "Action required",
@@ -400,7 +400,7 @@
                         }
                     }
                 },
-                "witness 9": {
+                "witness 47510": {
                     "H-ID": 47510,
                     "type_id": 105,
                     "date_freetext": "'c.1325'.",
@@ -445,8 +445,8 @@
                     "alternative_sigla": null,
                     "number_of_hands": null,
                     "scribe_note": null,
-                    "witness parts": {
-                        "1.0": {
+                    "text parts": {
+                        "part 1": {
                             "H-ID": 47511,
                             "type_id": 125,
                             "review_status": "Action required",
@@ -513,7 +513,7 @@
                         }
                     }
                 },
-                "witness 10": {
+                "witness 47514": {
                     "H-ID": 47514,
                     "type_id": 105,
                     "date_freetext": "'XVc'.",
@@ -558,8 +558,8 @@
                     "alternative_sigla": null,
                     "number_of_hands": null,
                     "scribe_note": null,
-                    "witness parts": {
-                        "1.0": {
+                    "text parts": {
+                        "part 1": {
                             "H-ID": 47515,
                             "type_id": 125,
                             "review_status": "Action required",
@@ -628,7 +628,7 @@
                 }
             }
         },
-        {
+        "text 47548": {
             "text metadata": {
                 "H-ID": 47548,
                 "type_id": 101,
@@ -689,7 +689,7 @@
                 "length_freetext": null
             },
             "text witnesses": {
-                "witness 1": {
+                "witness 47552": {
                     "H-ID": 47552,
                     "type_id": 105,
                     "date_freetext": "'XIVb'",
@@ -734,8 +734,8 @@
                     "alternative_sigla": null,
                     "number_of_hands": 2.0,
                     "scribe_note": null,
-                    "witness parts": {
-                        "1.0": {
+                    "text parts": {
+                        "part 1": {
                             "H-ID": 47553,
                             "type_id": 125,
                             "review_status": "Action required",
@@ -802,7 +802,7 @@
                         }
                     }
                 },
-                "witness 16": {
+                "witness 47556": {
                     "H-ID": 47556,
                     "type_id": 105,
                     "date_freetext": "' XIIId'",
@@ -847,8 +847,8 @@
                     "alternative_sigla": null,
                     "number_of_hands": null,
                     "scribe_note": null,
-                    "witness parts": {
-                        "1.0": {
+                    "text parts": {
+                        "part 1": {
                             "H-ID": 47557,
                             "type_id": 125,
                             "review_status": "Action required",
@@ -917,7 +917,7 @@
                 }
             }
         },
-        {
+        "text 45038": {
             "text metadata": {
                 "H-ID": 45038,
                 "type_id": 101,
@@ -978,7 +978,7 @@
                 "length_freetext": null
             },
             "text witnesses": {
-                "witness 2": {
+                "witness 45040": {
                     "H-ID": 45040,
                     "type_id": 105,
                     "date_freetext": "Fin du XIIe-début du XIIIe siècle",
@@ -1023,8 +1023,8 @@
                     "alternative_sigla": null,
                     "number_of_hands": null,
                     "scribe_note": null,
-                    "witness parts": {
-                        "1.0": {
+                    "text parts": {
+                        "part 1": {
                             "H-ID": 45053,
                             "type_id": 125,
                             "review_status": "Open",
@@ -1070,7 +1070,7 @@
                 }
             }
         },
-        {
+        "text 47369": {
             "text metadata": {
                 "H-ID": 47369,
                 "type_id": 101,
@@ -1131,7 +1131,7 @@
                 "length_freetext": "Length is the average of the two complete manuscripts."
             },
             "text witnesses": {
-                "witness 3": {
+                "witness 47375": {
                     "H-ID": 47375,
                     "type_id": 105,
                     "date_freetext": "'<=1350'.",
@@ -1176,8 +1176,8 @@
                     "alternative_sigla": null,
                     "number_of_hands": null,
                     "scribe_note": null,
-                    "witness parts": {
-                        "1.0": {
+                    "text parts": {
+                        "part 1": {
                             "H-ID": 47376,
                             "type_id": 125,
                             "review_status": "Action required",
@@ -1244,7 +1244,7 @@
                         }
                     }
                 },
-                "witness 36": {
+                "witness 47406": {
                     "H-ID": 47406,
                     "type_id": 105,
                     "date_freetext": "'c.1320-1325'.",
@@ -1289,8 +1289,8 @@
                     "alternative_sigla": null,
                     "number_of_hands": null,
                     "scribe_note": null,
-                    "witness parts": {
-                        "1.0": {
+                    "text parts": {
+                        "part 1": {
                             "H-ID": 47407,
                             "type_id": 125,
                             "review_status": "Action required",
@@ -1357,7 +1357,7 @@
                         }
                     }
                 },
-                "witness 37": {
+                "witness 47416": {
                     "H-ID": 47416,
                     "type_id": 105,
                     "date_freetext": "'c.1325'.",
@@ -1402,8 +1402,8 @@
                     "alternative_sigla": null,
                     "number_of_hands": null,
                     "scribe_note": "This is the same scribe that wrote the Ferguut. See: Kienhorst (1988), p. 110.",
-                    "witness parts": {
-                        "1.0": {
+                    "text parts": {
+                        "part 1": {
                             "H-ID": 47417,
                             "type_id": 125,
                             "review_status": "Action required",
@@ -1470,7 +1470,7 @@
                         }
                     }
                 },
-                "witness 38": {
+                "witness 47388": {
                     "H-ID": 47388,
                     "type_id": 105,
                     "date_freetext": "'XIVb'.",
@@ -1515,8 +1515,8 @@
                     "alternative_sigla": null,
                     "number_of_hands": null,
                     "scribe_note": null,
-                    "witness parts": {
-                        "1.0": {
+                    "text parts": {
+                        "part 1": {
                             "H-ID": 47389,
                             "type_id": 125,
                             "review_status": "Action required",
@@ -1583,7 +1583,7 @@
                         }
                     }
                 },
-                "witness 39": {
+                "witness 47403": {
                     "H-ID": 47403,
                     "type_id": 105,
                     "date_freetext": "'≤ 1350'.",
@@ -1628,8 +1628,8 @@
                     "alternative_sigla": null,
                     "number_of_hands": null,
                     "scribe_note": null,
-                    "witness parts": {
-                        "1.0": {
+                    "text parts": {
+                        "part 1": {
                             "H-ID": 47404,
                             "type_id": 125,
                             "review_status": "Action required",
@@ -1696,7 +1696,7 @@
                         }
                     }
                 },
-                "witness 40": {
+                "witness 47399": {
                     "H-ID": 47399,
                     "type_id": 105,
                     "date_freetext": "'≤ 1350'.",
@@ -1741,8 +1741,8 @@
                     "alternative_sigla": null,
                     "number_of_hands": null,
                     "scribe_note": null,
-                    "witness parts": {
-                        "1.0": {
+                    "text parts": {
+                        "part 1": {
                             "H-ID": 47400,
                             "type_id": 125,
                             "review_status": "Action required",
@@ -1809,7 +1809,7 @@
                         }
                     }
                 },
-                "witness 41": {
+                "witness 47392": {
                     "H-ID": 47392,
                     "type_id": 105,
                     "date_freetext": "'≤ 1350'.",
@@ -1854,8 +1854,8 @@
                     "alternative_sigla": null,
                     "number_of_hands": null,
                     "scribe_note": null,
-                    "witness parts": {
-                        "1.0": {
+                    "text parts": {
+                        "part 1": {
                             "H-ID": 47393,
                             "type_id": 125,
                             "review_status": "Action required",
@@ -1922,7 +1922,7 @@
                         }
                     }
                 },
-                "witness 42": {
+                "witness 47425": {
                     "H-ID": 47425,
                     "type_id": 105,
                     "date_freetext": "'c. 1350'.",
@@ -1967,8 +1967,8 @@
                     "alternative_sigla": null,
                     "number_of_hands": null,
                     "scribe_note": null,
-                    "witness parts": {
-                        "1.0": {
+                    "text parts": {
+                        "part 1": {
                             "H-ID": 47426,
                             "type_id": 125,
                             "review_status": "Action required",
@@ -2035,7 +2035,7 @@
                         }
                     }
                 },
-                "witness 43": {
+                "witness 47383": {
                     "H-ID": 47383,
                     "type_id": 105,
                     "date_freetext": "'XIVd'",
@@ -2080,8 +2080,8 @@
                     "alternative_sigla": null,
                     "number_of_hands": null,
                     "scribe_note": null,
-                    "witness parts": {
-                        "1.0": {
+                    "text parts": {
+                        "part 1": {
                             "H-ID": 47384,
                             "type_id": 125,
                             "review_status": "Action required",
@@ -2148,7 +2148,7 @@
                         }
                     }
                 },
-                "witness 44": {
+                "witness 47411": {
                     "H-ID": 47411,
                     "type_id": 105,
                     "date_freetext": "'c.1400'.",
@@ -2193,8 +2193,8 @@
                     "alternative_sigla": null,
                     "number_of_hands": null,
                     "scribe_note": null,
-                    "witness parts": {
-                        "1.0": {
+                    "text parts": {
+                        "part 1": {
                             "H-ID": 47412,
                             "type_id": 125,
                             "review_status": "Action required",
@@ -2261,7 +2261,7 @@
                         }
                     }
                 },
-                "witness 51": {
+                "witness 47420": {
                     "H-ID": 47420,
                     "type_id": 105,
                     "date_freetext": null,
@@ -2306,8 +2306,8 @@
                     "alternative_sigla": null,
                     "number_of_hands": null,
                     "scribe_note": null,
-                    "witness parts": {
-                        "1.0": {
+                    "text parts": {
+                        "part 1": {
                             "H-ID": 47421,
                             "type_id": 125,
                             "review_status": "Action required",
@@ -2376,7 +2376,7 @@
                 }
             }
         },
-        {
+        "text 46394": {
             "text metadata": {
                 "H-ID": 46394,
                 "type_id": 101,
@@ -2437,7 +2437,7 @@
                 "length_freetext": null
             },
             "text witnesses": {
-                "witness 4": {
+                "witness 46395": {
                     "H-ID": 46395,
                     "type_id": 105,
                     "date_freetext": "Kålund, Cat: 15th cent.",
@@ -2482,8 +2482,8 @@
                     "alternative_sigla": null,
                     "number_of_hands": null,
                     "scribe_note": null,
-                    "witness parts": {
-                        "1.0": {
+                    "text parts": {
+                        "part 1": {
                             "H-ID": 46404,
                             "type_id": 125,
                             "review_status": "Open",
@@ -2527,7 +2527,7 @@
                         }
                     }
                 },
-                "witness 5": {
+                "witness 46410": {
                     "H-ID": 46410,
                     "type_id": 105,
                     "date_freetext": "15 årh. slutning (Kålund, I:739.)",
@@ -2572,8 +2572,8 @@
                     "alternative_sigla": null,
                     "number_of_hands": null,
                     "scribe_note": null,
-                    "witness parts": {
-                        "1.0": {
+                    "text parts": {
+                        "part 1": {
                             "H-ID": 46411,
                             "type_id": 125,
                             "review_status": "Open",
@@ -2619,7 +2619,7 @@
                 }
             }
         },
-        {
+        "text 46337": {
             "text metadata": {
                 "H-ID": 46337,
                 "type_id": 101,
@@ -2680,7 +2680,7 @@
                 "length_freetext": null
             },
             "text witnesses": {
-                "witness 6": {
+                "witness 46349": {
                     "H-ID": 46349,
                     "type_id": 105,
                     "date_freetext": "ca. 1400",
@@ -2725,8 +2725,8 @@
                     "alternative_sigla": null,
                     "number_of_hands": null,
                     "scribe_note": null,
-                    "witness parts": {
-                        "1.0": {
+                    "text parts": {
+                        "part 1": {
                             "H-ID": 46356,
                             "type_id": 125,
                             "review_status": "Open",
@@ -2772,7 +2772,7 @@
                 }
             }
         },
-        {
+        "text 47529": {
             "text metadata": {
                 "H-ID": 47529,
                 "type_id": 101,
@@ -2833,7 +2833,7 @@
                 "length_freetext": null
             },
             "text witnesses": {
-                "witness 11": {
+                "witness 47532": {
                     "H-ID": 47532,
                     "type_id": 105,
                     "date_freetext": "'c.1325'",
@@ -2878,8 +2878,8 @@
                     "alternative_sigla": null,
                     "number_of_hands": null,
                     "scribe_note": null,
-                    "witness parts": {
-                        "1.0": {
+                    "text parts": {
+                        "part 1": {
                             "H-ID": 47533,
                             "type_id": 125,
                             "review_status": "Action required",
@@ -2946,7 +2946,7 @@
                         }
                     }
                 },
-                "witness 12": {
+                "witness 47536": {
                     "H-ID": 47536,
                     "type_id": 105,
                     "date_freetext": "'XIVd'",
@@ -2991,8 +2991,8 @@
                     "alternative_sigla": null,
                     "number_of_hands": null,
                     "scribe_note": null,
-                    "witness parts": {
-                        "1.0": {
+                    "text parts": {
+                        "part 1": {
                             "H-ID": 47537,
                             "type_id": 125,
                             "review_status": "Action required",
@@ -3061,7 +3061,7 @@
                 }
             }
         },
-        {
+        "text 47539": {
             "text metadata": {
                 "H-ID": 47539,
                 "type_id": 101,
@@ -3122,7 +3122,7 @@
                 "length_freetext": null
             },
             "text witnesses": {
-                "witness 13": {
+                "witness 47545": {
                     "H-ID": 47545,
                     "type_id": 105,
                     "date_freetext": "'≥ 1350'",
@@ -3167,8 +3167,8 @@
                     "alternative_sigla": null,
                     "number_of_hands": null,
                     "scribe_note": null,
-                    "witness parts": {
-                        "1.0": {
+                    "text parts": {
+                        "part 1": {
                             "H-ID": 47546,
                             "type_id": 125,
                             "review_status": "Action required",
@@ -3235,7 +3235,7 @@
                         }
                     }
                 },
-                "witness 14": {
+                "witness 47541": {
                     "H-ID": 47541,
                     "type_id": 105,
                     "date_freetext": "'XIVd'",
@@ -3280,8 +3280,8 @@
                     "alternative_sigla": null,
                     "number_of_hands": null,
                     "scribe_note": null,
-                    "witness parts": {
-                        "1.0": {
+                    "text parts": {
+                        "part 1": {
                             "H-ID": 47542,
                             "type_id": 125,
                             "review_status": "Action required",
@@ -3350,7 +3350,7 @@
                 }
             }
         },
-        {
+        "text 46303": {
             "text metadata": {
                 "H-ID": 46303,
                 "type_id": 101,
@@ -3411,7 +3411,7 @@
                 "length_freetext": null
             },
             "text witnesses": {
-                "witness 15": {
+                "witness 46311": {
                     "H-ID": 46311,
                     "type_id": 105,
                     "date_freetext": null,
@@ -3456,8 +3456,8 @@
                     "alternative_sigla": null,
                     "number_of_hands": null,
                     "scribe_note": null,
-                    "witness parts": {
-                        "1.0": {
+                    "text parts": {
+                        "part 1": {
                             "H-ID": 46313,
                             "type_id": 125,
                             "review_status": "Action required",
@@ -3503,7 +3503,7 @@
                 }
             }
         },
-        {
+        "text 47341": {
             "text metadata": {
                 "H-ID": 47341,
                 "type_id": 101,
@@ -3564,7 +3564,7 @@
                 "length_freetext": null
             },
             "text witnesses": {
-                "witness 17": {
+                "witness 47343": {
                     "H-ID": 47343,
                     "type_id": 105,
                     "date_freetext": "'c. 1325'.",
@@ -3609,8 +3609,8 @@
                     "alternative_sigla": null,
                     "number_of_hands": null,
                     "scribe_note": null,
-                    "witness parts": {
-                        "1.0": {
+                    "text parts": {
+                        "part 1": {
                             "H-ID": 47344,
                             "type_id": 125,
                             "review_status": "Action required",
@@ -3679,7 +3679,7 @@
                 }
             }
         },
-        {
+        "text 47349": {
             "text metadata": {
                 "H-ID": 47349,
                 "type_id": 101,
@@ -3740,7 +3740,7 @@
                 "length_freetext": null
             },
             "text witnesses": {
-                "witness 18": {
+                "witness 47353": {
                     "H-ID": 47353,
                     "type_id": 105,
                     "date_freetext": "'XIVm'",
@@ -3785,8 +3785,8 @@
                     "alternative_sigla": null,
                     "number_of_hands": null,
                     "scribe_note": null,
-                    "witness parts": {
-                        "1.0": {
+                    "text parts": {
+                        "part 1": {
                             "H-ID": 47354,
                             "type_id": 125,
                             "review_status": "Action required",
@@ -3855,7 +3855,7 @@
                 }
             }
         },
-        {
+        "text 46323": {
             "text metadata": {
                 "H-ID": 46323,
                 "type_id": 101,
@@ -3916,7 +3916,7 @@
                 "length_freetext": null
             },
             "text witnesses": {
-                "witness 19": {
+                "witness 46364": {
                     "H-ID": 46364,
                     "type_id": 105,
                     "date_freetext": "XIV2",
@@ -3961,8 +3961,8 @@
                     "alternative_sigla": null,
                     "number_of_hands": null,
                     "scribe_note": null,
-                    "witness parts": {
-                        "1.0": {
+                    "text parts": {
+                        "part 1": {
                             "H-ID": 47247,
                             "type_id": 125,
                             "review_status": "Action required",
@@ -4029,7 +4029,7 @@
                         }
                     }
                 },
-                "witness 20": {
+                "witness 47280": {
                     "H-ID": 47280,
                     "type_id": 105,
                     "date_freetext": "'XIV2'",
@@ -4074,8 +4074,8 @@
                     "alternative_sigla": null,
                     "number_of_hands": null,
                     "scribe_note": null,
-                    "witness parts": {
-                        "1.0": {
+                    "text parts": {
+                        "part 1": {
                             "H-ID": 47281,
                             "type_id": 125,
                             "review_status": "Action required",
@@ -4142,7 +4142,7 @@
                         }
                     }
                 },
-                "witness 21": {
+                "witness 47268": {
                     "H-ID": 47268,
                     "type_id": 105,
                     "date_freetext": "'XIVd'",
@@ -4187,8 +4187,8 @@
                     "alternative_sigla": null,
                     "number_of_hands": null,
                     "scribe_note": null,
-                    "witness parts": {
-                        "1.0": {
+                    "text parts": {
+                        "part 1": {
                             "H-ID": 47269,
                             "type_id": 125,
                             "review_status": "Action required",
@@ -4255,7 +4255,7 @@
                         }
                     }
                 },
-                "witness 22": {
+                "witness 47238": {
                     "H-ID": 47238,
                     "type_id": 105,
                     "date_freetext": "' XIVd'",
@@ -4300,8 +4300,8 @@
                     "alternative_sigla": null,
                     "number_of_hands": null,
                     "scribe_note": null,
-                    "witness parts": {
-                        "1.0": {
+                    "text parts": {
+                        "part 1": {
                             "H-ID": 47242,
                             "type_id": 125,
                             "review_status": "Action required",
@@ -4368,7 +4368,7 @@
                         }
                     }
                 },
-                "witness 23": {
+                "witness 47272": {
                     "H-ID": 47272,
                     "type_id": 105,
                     "date_freetext": "'XIV/XV'",
@@ -4413,8 +4413,8 @@
                     "alternative_sigla": null,
                     "number_of_hands": null,
                     "scribe_note": null,
-                    "witness parts": {
-                        "1.0": {
+                    "text parts": {
+                        "part 1": {
                             "H-ID": 47273,
                             "type_id": 125,
                             "review_status": "Action required",
@@ -4481,7 +4481,7 @@
                         }
                     }
                 },
-                "witness 24": {
+                "witness 47276": {
                     "H-ID": 47276,
                     "type_id": 105,
                     "date_freetext": "'XIV/XV'",
@@ -4526,8 +4526,8 @@
                     "alternative_sigla": null,
                     "number_of_hands": null,
                     "scribe_note": null,
-                    "witness parts": {
-                        "1.0": {
+                    "text parts": {
+                        "part 1": {
                             "H-ID": 47277,
                             "type_id": 125,
                             "review_status": "Action required",
@@ -4596,7 +4596,7 @@
                 }
             }
         },
-        {
+        "text 46333": {
             "text metadata": {
                 "H-ID": 46333,
                 "type_id": 101,
@@ -4657,7 +4657,7 @@
                 "length_freetext": null
             },
             "text witnesses": {
-                "witness 25": {
+                "witness 46368": {
                     "H-ID": 46368,
                     "type_id": 105,
                     "date_freetext": "\"< 1200\"",
@@ -4702,8 +4702,8 @@
                     "alternative_sigla": null,
                     "number_of_hands": null,
                     "scribe_note": null,
-                    "witness parts": {
-                        "1.0": {
+                    "text parts": {
+                        "part 1": {
                             "H-ID": 46373,
                             "type_id": 125,
                             "review_status": "Action required",
@@ -4749,7 +4749,7 @@
                 }
             }
         },
-        {
+        "text 47283": {
             "text metadata": {
                 "H-ID": 47283,
                 "type_id": 101,
@@ -4810,7 +4810,7 @@
                 "length_freetext": "'Ik heb lang getwijfeld om in mijn berekening de opsplitsing tussen Ogier I en Ogier II ook te maken\nmaar ik heb uiteindelijk, net als Van der Have, beslist om dit niet te doen. In mijn berekening schat ik\nOgier van Denemarken op ten minste 23.700 verzen.' Verbraeken 2023, p. 44."
             },
             "text witnesses": {
-                "witness 26": {
+                "witness 47289": {
                     "H-ID": 47289,
                     "type_id": 105,
                     "date_freetext": "'XIVm'",
@@ -4855,8 +4855,8 @@
                     "alternative_sigla": null,
                     "number_of_hands": null,
                     "scribe_note": null,
-                    "witness parts": {
-                        "1.0": {
+                    "text parts": {
+                        "part 1": {
                             "H-ID": 47290,
                             "type_id": 125,
                             "review_status": "Action required",
@@ -4923,7 +4923,7 @@
                         }
                     }
                 },
-                "witness 27": {
+                "witness 47285": {
                     "H-ID": 47285,
                     "type_id": 105,
                     "date_freetext": "'c.1350'",
@@ -4968,8 +4968,8 @@
                     "alternative_sigla": null,
                     "number_of_hands": null,
                     "scribe_note": null,
-                    "witness parts": {
-                        "1.0": {
+                    "text parts": {
+                        "part 1": {
                             "H-ID": 47286,
                             "type_id": 125,
                             "review_status": "Action required",
@@ -5038,7 +5038,7 @@
                 }
             }
         },
-        {
+        "text 47293": {
             "text metadata": {
                 "H-ID": 47293,
                 "type_id": 101,
@@ -5099,7 +5099,7 @@
                 "length_freetext": null
             },
             "text witnesses": {
-                "witness 28": {
+                "witness 47467": {
                     "H-ID": 47467,
                     "type_id": 105,
                     "date_freetext": "'XIVa'.",
@@ -5144,8 +5144,8 @@
                     "alternative_sigla": null,
                     "number_of_hands": null,
                     "scribe_note": null,
-                    "witness parts": {
-                        "1.0": {
+                    "text parts": {
+                        "part 1": {
                             "H-ID": 47468,
                             "type_id": 125,
                             "review_status": "Action required",
@@ -5212,7 +5212,7 @@
                         }
                     }
                 },
-                "witness 29": {
+                "witness 47445": {
                     "H-ID": 47445,
                     "type_id": 105,
                     "date_freetext": "'≤ 1350'.",
@@ -5257,8 +5257,8 @@
                     "alternative_sigla": null,
                     "number_of_hands": null,
                     "scribe_note": null,
-                    "witness parts": {
-                        "1.0": {
+                    "text parts": {
+                        "part 1": {
                             "H-ID": 47446,
                             "type_id": 125,
                             "review_status": "Action required",
@@ -5325,7 +5325,7 @@
                         }
                     }
                 },
-                "witness 30": {
+                "witness 47449": {
                     "H-ID": 47449,
                     "type_id": 105,
                     "date_freetext": "'≤ 1350'.",
@@ -5370,8 +5370,8 @@
                     "alternative_sigla": null,
                     "number_of_hands": null,
                     "scribe_note": null,
-                    "witness parts": {
-                        "1.0": {
+                    "text parts": {
+                        "part 1": {
                             "H-ID": 47450,
                             "type_id": 125,
                             "review_status": "Action required",
@@ -5438,7 +5438,7 @@
                         }
                     }
                 },
-                "witness 31": {
+                "witness 47463": {
                     "H-ID": 47463,
                     "type_id": 105,
                     "date_freetext": "'XV/XVI'.",
@@ -5483,8 +5483,8 @@
                     "alternative_sigla": null,
                     "number_of_hands": null,
                     "scribe_note": null,
-                    "witness parts": {
-                        "1.0": {
+                    "text parts": {
+                        "part 1": {
                             "H-ID": 47464,
                             "type_id": 125,
                             "review_status": "Action required",
@@ -5551,7 +5551,7 @@
                         }
                     }
                 },
-                "witness 48": {
+                "witness 47458": {
                     "H-ID": 47458,
                     "type_id": 105,
                     "date_freetext": "'XIII/XIV'.",
@@ -5596,8 +5596,8 @@
                     "alternative_sigla": null,
                     "number_of_hands": null,
                     "scribe_note": null,
-                    "witness parts": {
-                        "1.0": {
+                    "text parts": {
+                        "part 1": {
                             "H-ID": 47459,
                             "type_id": 125,
                             "review_status": "Action required",
@@ -5664,7 +5664,7 @@
                         }
                     }
                 },
-                "witness 49": {
+                "witness 47454": {
                     "H-ID": 47454,
                     "type_id": 105,
                     "date_freetext": "'XIV'.",
@@ -5709,8 +5709,8 @@
                     "alternative_sigla": null,
                     "number_of_hands": null,
                     "scribe_note": null,
-                    "witness parts": {
-                        "1.0": {
+                    "text parts": {
+                        "part 1": {
                             "H-ID": 47455,
                             "type_id": 125,
                             "review_status": "Action required",
@@ -5779,7 +5779,7 @@
                 }
             }
         },
-        {
+        "text 46322": {
             "text metadata": {
                 "H-ID": 46322,
                 "type_id": 101,
@@ -5840,7 +5840,7 @@
                 "length_freetext": null
             },
             "text witnesses": {
-                "witness 32": {
+                "witness 47441": {
                     "H-ID": 47441,
                     "type_id": 105,
                     "date_freetext": "'XIV/XV'.",
@@ -5885,8 +5885,8 @@
                     "alternative_sigla": null,
                     "number_of_hands": null,
                     "scribe_note": null,
-                    "witness parts": {
-                        "1.0": {
+                    "text parts": {
+                        "part 1": {
                             "H-ID": 47442,
                             "type_id": 125,
                             "review_status": "Action required",
@@ -5953,7 +5953,7 @@
                         }
                     }
                 },
-                "witness 33": {
+                "witness 47429": {
                     "H-ID": 47429,
                     "type_id": 105,
                     "date_freetext": "'XIV2'.",
@@ -5998,8 +5998,8 @@
                     "alternative_sigla": null,
                     "number_of_hands": null,
                     "scribe_note": null,
-                    "witness parts": {
-                        "1.0": {
+                    "text parts": {
+                        "part 1": {
                             "H-ID": 47430,
                             "type_id": 125,
                             "review_status": "Action required",
@@ -6066,7 +6066,7 @@
                         }
                     }
                 },
-                "witness 34": {
+                "witness 46361": {
                     "H-ID": 46361,
                     "type_id": 105,
                     "date_freetext": null,
@@ -6111,8 +6111,8 @@
                     "alternative_sigla": null,
                     "number_of_hands": null,
                     "scribe_note": null,
-                    "witness parts": {
-                        "1.0": {
+                    "text parts": {
+                        "part 1": {
                             "H-ID": 46407,
                             "type_id": 125,
                             "review_status": "Action required",
@@ -6156,7 +6156,7 @@
                         }
                     }
                 },
-                "witness 35": {
+                "witness 47437": {
                     "H-ID": 47437,
                     "type_id": 105,
                     "date_freetext": "'XVd'.",
@@ -6201,8 +6201,8 @@
                     "alternative_sigla": null,
                     "number_of_hands": null,
                     "scribe_note": null,
-                    "witness parts": {
-                        "1.0": {
+                    "text parts": {
+                        "part 1": {
                             "H-ID": 47438,
                             "type_id": 125,
                             "review_status": "Action required",
@@ -6269,7 +6269,7 @@
                         }
                     }
                 },
-                "witness 50": {
+                "witness 47433": {
                     "H-ID": 47433,
                     "type_id": 105,
                     "date_freetext": "'XIV?'.",
@@ -6314,8 +6314,8 @@
                     "alternative_sigla": null,
                     "number_of_hands": null,
                     "scribe_note": null,
-                    "witness parts": {
-                        "1.0": {
+                    "text parts": {
+                        "part 1": {
                             "H-ID": 47434,
                             "type_id": 125,
                             "review_status": "Action required",
@@ -6384,7 +6384,7 @@
                 }
             }
         },
-        {
+        "text 47517": {
             "text metadata": {
                 "H-ID": 47517,
                 "type_id": 101,
@@ -6445,7 +6445,7 @@
                 "length_freetext": "'Met 158\nMiddelnederlandse verzen corresponderen 298 Franse, een verhouding van 0,53. Ik schat dus de\ntotale lengte van de Middelnederlandse Tristan in op ongeveer 10.000 verzen.' Verbraeken (2023), p. 50."
             },
             "text witnesses": {
-                "witness 45": {
+                "witness 47520": {
                     "H-ID": 47520,
                     "type_id": 105,
                     "date_freetext": "'XIII2'.",
@@ -6490,8 +6490,8 @@
                     "alternative_sigla": null,
                     "number_of_hands": null,
                     "scribe_note": null,
-                    "witness parts": {
-                        "1.0": {
+                    "text parts": {
+                        "part 1": {
                             "H-ID": 47521,
                             "type_id": 125,
                             "review_status": "Action required",
@@ -6560,7 +6560,7 @@
                 }
             }
         },
-        {
+        "text 47334": {
             "text metadata": {
                 "H-ID": 47334,
                 "type_id": 101,
@@ -6621,7 +6621,7 @@
                 "length_freetext": null
             },
             "text witnesses": {
-                "witness 46": {
+                "witness 47337": {
                     "H-ID": 47337,
                     "type_id": 105,
                     "date_freetext": "'XIVm'.",
@@ -6666,8 +6666,8 @@
                     "alternative_sigla": null,
                     "number_of_hands": null,
                     "scribe_note": null,
-                    "witness parts": {
-                        "1.0": {
+                    "text parts": {
+                        "part 1": {
                             "H-ID": 47338,
                             "type_id": 125,
                             "review_status": "Action required",
@@ -6736,7 +6736,7 @@
                 }
             }
         },
-        {
+        "text 46392": {
             "text metadata": {
                 "H-ID": 46392,
                 "type_id": 101,
@@ -6797,7 +6797,7 @@
                 "length_freetext": "Estimate bij Van der Have (2005), p. 80: '\"ruim 5000 verzen'"
             },
             "text witnesses": {
-                "witness 47": {
+                "witness 46402": {
                     "H-ID": 46402,
                     "type_id": 105,
                     "date_freetext": "\"XIVm\"",
@@ -6842,8 +6842,8 @@
                     "alternative_sigla": null,
                     "number_of_hands": null,
                     "scribe_note": null,
-                    "witness parts": {
-                        "1.0": {
+                    "text parts": {
+                        "part 1": {
                             "H-ID": 46406,
                             "type_id": 125,
                             "review_status": "Action required",
@@ -6889,5 +6889,5 @@
                 }
             }
         }
-    ]
+    }
 }

@@ -27,7 +27,7 @@ class TestProcess(unittest.TestCase):
 
         collections = {}
 
-        for n, w in enumerate(witnesses):
+        for w in witnesses:
             w = convert_datetime(w)
 
             text_id = w["is_manifestation_of H-ID"]
@@ -43,7 +43,7 @@ class TestProcess(unittest.TestCase):
             query = f"""select * from {HeuristDB.part} where "H-ID" = {part_id}"""
             parts = self.db.select(query)
 
-            w.update({"witness parts": {}})
+            w.update({"text parts": {}})
 
             for p in parts:
                 p = convert_datetime(p)
@@ -61,11 +61,11 @@ class TestProcess(unittest.TestCase):
                 )[0]
                 p.update({"document": convert_datetime(doc)})
 
-                w["witness parts"].update({p["div_order"]: p})
+                w["text parts"].update({f"part {int(p["div_order"])}": p})
 
-            collections[text_id]["text witnesses"].update({f"witness {n}": w})
+            collections[text_id]["text witnesses"].update({f"witness {w["H-ID"]}": w})
 
-        obj = {"texts": list(collections.values())}
+        obj = {"texts": {f"text {k}": v for k, v in collections.items()}}
 
         with open("tests/textCollections.json", "w", encoding="utf-8") as f:
             json.dump(obj, f, indent=4, ensure_ascii=False)
