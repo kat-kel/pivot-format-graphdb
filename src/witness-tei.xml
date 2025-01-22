@@ -120,9 +120,11 @@
         </origin>
       </creation>
       <langUsage>
-        <language ident="[LANGUAGE.CODE]"/>
+        <!-- The language of the witness's text -->
+        <language ident="[MANIFESTATION_OF.LANGUAGE.CODE]"/>
       </langUsage>
       <correspContext>
+        <!-- If the witness is based on an older witness -->
         <ref type="prev" target="[WITNESS.ID]"/>
       </correspContext>
     </profileDesc>
