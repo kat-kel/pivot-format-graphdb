@@ -3,14 +3,15 @@
     <fileDesc>
       <titleStmt>
         <title>
-          Witness of [MANIFESTATION_OF.PREFERRED_NAME]
+          Witness of [MANIFESTATION_OF.PREFERRED_NAME] <!-- Name of the text that the witness manifests -->
         </title>
         <funder>
           European Research Council
         </funder>
         <respStmt>
-          <name>[SPECIALIST]</name>
           <resp>data entry and proof correction</resp>
+          <!-- Name of the specialists that are responsible for the corpus data -->
+          <name>[SPECIALIST]</name> <!-- repeatable -->
         </respStmt>
       </titleStmt>
       <editionStmt>
@@ -20,6 +21,7 @@
       </editionStmt>
       <extent>
         <measure unit="pages" quantity="[SUM OF PARTS' PAGE COUNTS]">
+          <!-- calculated sum of pages of each part  -->
           [SUM OF PARTS' PAGE COUNTS]
         </measure>
       </extent>
@@ -66,16 +68,20 @@
                 [PART.IS_INSCRIBED_ON.CURRENT_SHELFMARK]
               </idno>
               <altIdentifier type="former">
-                <idno type="shelfmark">
+                <idno type="shelfmark"> <!-- repeatable -->
+                  <!-- former shelfmark(s) of the document -->
                   [PART.IS_INSCRIBED_ON.FORMER_SHELFMARK]
                 </idno>
               </altIdentifier>
             </msIdentifier>
             <msItem>
+              <!-- Split by the spearator '-', use the 2 folio indicators -->
               <locus from="[PART.PAGE_RANGES.split()[0]]" to="[PART.PAGE_RANGES.split()[1]]"/>
             </msItem>
             <phyDesc>
+              <!-- Form of the part: codex, roll, sheet, unknown -->
               <objectDesc form="[PART.PHYSDESC.FORM]">
+                <!-- Material of the part: chart, mixed, perg, unknown -->
                 <supportDesc material="[PART.PHYSDESC.MATERIAL]">
                   <!-- 2 extents: one current, one estimated / original -->
                   <extent type="current">
@@ -110,6 +116,8 @@
     </fileDesc>
     <profileDesc>
       <creation>
+        <!-- From the Heurist temporal object, parse the minimum and maximum of the date's probability -->
+        <!-- Note: other aspects of the probability's distribution are not yet encoded in this TEI proposition -->
         <origin notBefore="[DATE_OF_CREATION.EARLIEST]" notAfter="[DATE_OF_CREATION.LATEST]"/>
           <origPlace ref="[PLACE_OF_CREATION.ID]" certainty="[PLACE_OF_CREATION_CERTAINTY]" key="PLACE_OF_CREATION.COUNTRY.CODE">
             [PLACE_OF_CREATION.LABEL]
