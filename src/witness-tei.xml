@@ -3,7 +3,7 @@
     <fileDesc>
       <titleStmt>
         <title>
-          Witness of [MANIFESTATION_OF.PREFERRED_NAME] <!-- Name of the text that the witness manifests -->
+          Witness of [IS_MANIFESTATION_OF.PREFERRED_NAME] <!-- Name of the text that the witness manifests -->
         </title>
         <funder>
           European Research Council
@@ -53,7 +53,7 @@
       </seriesStmt>
       <sourceDesc>
         <msDesc>
-          <msPart xml:id="[PART.ID]"> <!-- Heurist ID of the part -->
+          <msPart xml:id="part_[PART.ID]"> <!-- Heurist ID of the part -->
             <msIdentifier>
               <settlement>
                 <!-- city name of the document's repository -->
@@ -129,11 +129,11 @@
       </creation>
       <langUsage>
         <!-- The language of the witness's text -->
-        <language ident="[MANIFESTATION_OF.LANGUAGE.CODE]"/>
+        <language ident="[IS_MANIFESTATION_OF.LANGUAGE.CODE]"/>
       </langUsage>
       <correspContext>
         <!-- If the witness is based on an older witness -->
-        <ref type="prev" target="[WITNESS.ID]"/>
+        <ref type="derived" target="[WITNESS.ID]"/>
       </correspContext>
     </profileDesc>
   </teiHeader>
