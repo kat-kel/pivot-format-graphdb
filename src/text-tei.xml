@@ -1,0 +1,283 @@
+<teiCorpus xmlns="http://www.tei-c.org/ns/1.0">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title>
+          [PREFERRED_NAME] <!-- Name of the text -->
+        </title>
+        <funder>
+          European Research Council
+        </funder>
+        <respStmt>
+          <resp>data entry and proof correction</resp>
+          <!-- Name of the specialists that are responsible for the corpus data -->
+          <name>[SPECIALIST]</name> <!-- repeatable -->
+        </respStmt>
+      </titleStmt>
+      <editionStmt>
+        <edition n="P1">
+          First draft
+        </edition>
+      </editionStmt>
+      <publicationStmt>
+        <publisher>
+          LostMa ERC project
+        </publisher>
+        <pubPlace>
+          Paris
+        </pubPlace>
+        <date>
+          2025
+        </date>
+        <availability status="restricted">
+          <licence target="https://creativecommons.org/licenses/by/4.0/"> Distributed under a Creative Commons Attribution 4.0 International License
+          </licence>
+        </availability>
+      </publicationStmt>
+      <seriesStmt>
+        <title>
+          LostMa Corpus
+        </title>
+        <respStmt>
+          <resp>
+            <resp>converted to TEI by</resp>
+            <name>Kelly Christensen</resp>
+          </resp>
+        </respStmt>
+      </seriesStmt>
+    </fileDesc>
+    <encodingDesc>
+      <classDesc>
+        <taxonomy>
+        </taxonomy>
+        <taxonomy>
+          <category xml:id="witnessStatus">
+            <catDesc>Witness Status</catDesc>
+            <category xml:id="witComplete">complete</category>
+            <category xml:id="witDefective">defective</category>
+            <category xml:id="witFragmentary">fragmentary</category>
+            <category xml:id="witLost">lost</category>
+          </category>
+          <category xml:id="textStatus">
+            <catDesc>Tradition Status</catDesc>
+            <category xml:id="tradFragmentary">fragmentary</category>
+            <category xml:id="tradLost">lost</category>
+            <category xml:id="tradSurviving">surviving</category>
+            <category xml:id="tradUnknown">unknown</category>
+          </category>
+          <category xml:id="language">
+            <catDesc>Language</catDesc>
+            <category xml:id="language.cat" url="https://iso639-3.sil.org/code/cat">
+              Catalan
+            </category>
+            <category xml:id="language.dum" url="https://iso639-3.sil.org/code/dum">
+              Middle Dutch
+            </category>
+            <category xml:id="language.enm" url="https://iso639-3.sil.org/code/enm">
+              Middle English
+            </category>
+            <category xml:id="language.frm" url="https://iso639-3.sil.org/code/frm">
+              Middle French
+            </category>
+            <category xml:id="language.fro" url="https://iso639-3.sil.org/code/fro">
+              Old French
+            </category>
+            <category xml:id="language.fro_ENG">
+              Anglo-Norman
+            </category>
+            <category xml:id="language.fro_ITA">
+              Franco-Italian
+            </category>
+            <category xml:id="language.fro_PRO">
+              Franco-Occitan
+            </category>
+            <category xml:id="language.ghg" url="https://iso639-3.sil.org/code/ghg">
+              Early Modern Irish
+            </category>
+            <category xml:id="language.glg" url="https://iso639-3.sil.org/code/glg">
+              Galician
+            </category>
+            <category xml:id="language.glg_POR">
+              Galician-Portugese
+            </category>
+            <category xml:id="language.gmh" url="https://iso639-3.sil.org/code/gmh">
+              Middle High German
+            </category>
+            <category xml:id="language.gml" url="https://iso639-3.sil.org/code/gml">
+              Middle Low German
+            </category>
+            <category xml:id="language.isl" url="https://iso639-3.sil.org/code/isl">
+              Islandic
+            </category>
+            <category xml:id="language.ita" url="https://iso639-3.sil.org/code/ita">
+              Italian
+            </category>
+            <category xml:id="language.mga" url="https://iso639-3.sil.org/code/mga">
+              Middle Irish
+            </category>
+            <category xml:id="language.non" url="https://iso639-3.sil.org/code/non">
+              Old Norse
+            </category>
+            <category xml:id="language.non_DAN">
+              Old Danish
+            </category>
+            <category xml:id="language.non_SWE">
+              Old Swedish
+            </category>
+            <category xml:id="language.oco" url="https://iso639-3.sil.org/code/oco">
+              Old Cornish
+            </category>
+            <category xml:id="language.por" url="https://iso639-3.sil.org/code/por">
+              Portugese
+            </category>
+            <category xml:id="language.pro" url="https://iso639-3.sil.org/code/pro">
+              Occitan
+            </category>
+            <category xml:id="language.spa" url="https://iso639-3.sil.org/code/spa">
+              Spanish
+            </category>
+            <category xml:id="language.wlm" url="https://iso639-3.sil.org/code/wlm">
+              Middle Welsh
+            </category>
+          </category>
+          <category xml:id="witnessScripta">
+            <catDesc>Scripta</catDesc>
+            <!-- repeat for every scripta -->
+            <category xml:id="witnessScripta.[SCRIPTA.ID]">[SCRIPTA.PREFERRED_NAME]</category>
+          </category>
+          <category xml:id="textGenre">
+            <catDesc>Genre</catDesc>
+            <!-- repeat for every genre -->
+            <category xml:id="textGenre.[GENRE.ID]">[GENRE.PREFERRED_NAME]</category>
+          </category>
+        </taxonomy>
+      </classDesc>
+    </encodingDesc>
+    <profileDesc>
+      <creation>
+        <!-- From the Heurist temporal object, parse the minimum and maximum of the date's probability -->
+        <!-- Note: other aspects of the probability's distribution are not yet encoded in this TEI proposition -->
+        <origin notBefore="[DATE_OF_CREATION.EARLIEST]" notAfter="[DATE_OF_CREATION.LATEST]"/>
+          <origPlace ref="[PLACE_OF_CREATION.ID]" certainty="[PLACE_OF_CREATION_CERTAINTY]" key="PLACE_OF_CREATION.COUNTRY.CODE">
+            [PLACE_OF_CREATION.LABEL]
+          </origPlace>
+          <origDate certainty="[DATE_OF_CREATION_CERTAINTY]">
+            [DATE_FREETEXT]
+          </origDate>
+        </origin>
+      </creation>
+      <langUsage>
+        <!-- The language of the witness's text -->
+        <language ident="[LANGUAGE.CODE]"/>
+      </langUsage>
+      <correspContext>
+        <!-- If the text is based on an older text -->
+        <ref type="derived" target="[TEXT.ID]"/>
+      </correspContext>
+    </profileDesc>
+  </teiHeader>
+  <TEI>
+    <teiHeader>
+        <fileDesc>
+          <titleStmt>
+            <title>
+              Witness of [IS_MANIFESTATION_OF.PREFERRED_NAME] <!-- Name of the text that the witness manifests -->
+            </title>
+          </titleStmt>
+          <extent>
+            <measure unit="pages" quantity="[SUM OF PARTS' PAGE COUNTS]">
+              <!-- calculated sum of pages of each part  -->
+              [SUM OF PARTS' PAGE COUNTS]
+            </measure>
+          </extent>
+          <sourceDesc>
+            <msDesc>
+              <msPart xml:id="part_[PART.ID]"> <!-- Heurist ID of the part -->
+                <msIdentifier>
+                  <settlement>
+                    <!-- city name of the document's repository -->
+                    [PART.IS_INSCRIBED_ON.LOCATION.CITY.PLACE_NAME]
+                  </settlement>
+                  <repository>
+                    <!-- name of the document's repository -->
+                    [PART.IS_INSCRIBED_ON.LOCATION.PREFERRED_NAME]
+                  </repository>
+                  <idno type="shelfmark">
+                    <!-- shelfmark of the document -->
+                    [PART.IS_INSCRIBED_ON.CURRENT_SHELFMARK]
+                  </idno>
+                  <altIdentifier type="former">
+                    <idno type="shelfmark"> <!-- repeatable -->
+                      <!-- former shelfmark(s) of the document -->
+                      [PART.IS_INSCRIBED_ON.FORMER_SHELFMARK]
+                    </idno>
+                  </altIdentifier>
+                </msIdentifier>
+                <msItem>
+                  <!-- Split by the spearator '-', use the 2 folio indicators -->
+                  <locus from="[PART.PAGE_RANGES.split()[0]]" to="[PART.PAGE_RANGES.split()[1]]"/>
+                </msItem>
+                <phyDesc>
+                  <!-- Form of the part: codex, roll, sheet, unknown -->
+                  <objectDesc form="[PART.PHYSDESC.FORM]">
+                    <!-- Material of the part: chart, mixed, perg, unknown -->
+                    <supportDesc material="[PART.PHYSDESC.MATERIAL]">
+                      <!-- 2 extents: one current, one estimated / original -->
+                      <extent type="current">
+                        <dimensions unit="millimeters" type="folio">
+                          <height quantity="[PART.PHYSDESC.FOLIO_SIZE_HEIGHT]"/>
+                          <width quantity="[PART.PHYSDESC.FOLIO_SIZE_WIDTH]"/>
+                        </dimensions>
+                      </extent>
+                      <extent type="original">
+                        <dimensions unit="millimeters" type="folio">
+                          <height quantity="[PART.PHYSDESC.ESTIMATED_FOLIO_SIZE_HEIGHT]"/>
+                          <width quantity="[PART.PHYSDESC.ESTIMATED_FOLIO_SIZE_HEIGHT]"/>
+                        </dimensions>
+                      </extent>
+                    </supportDesc>
+                    <layoutDesc>
+                      <layout columns="[PART.PHYSDESC.NUMBER_OF_COLUMNS]" writtenLines="[PART.PHYSDESC.NUMBER_OF_LINES_IN_WRITING_AREA]">
+                        <height unit="millimeters" quantity="[PART.PHYSDESC.WRITING_SURFACE_HEIGHT]"/>
+                        <width unit="millimeters" quantity="[PART.PHYSDESC.WRITING_SURFACE_AREA_WIDTH]"/>
+                      </layout>
+                    </layoutDesc>
+                  </objectDesc>
+                  <decoDesc>
+                    <decoNote>[PART.PHYSDESC.AMOUNT_OF_ILLUSTRATIONS] decorations</decoNote>
+                    <!-- repeat decoNote for every value checked: incomplete dec., initial, rubrication, unrelated pictures-->
+                    <decoNote type="[PART.PHYSDESC.HAS_DECORATIONS]"/>
+                  </decoDesc>
+                </phyDesc>
+              </msPart>
+            </msDesc>
+          </sourceDesc>
+        </fileDesc>
+        <profileDesc>
+          <creation>
+            <!-- From the Heurist temporal object, parse the minimum and maximum of the date's probability -->
+            <!-- Note: other aspects of the probability's distribution are not yet encoded in this TEI proposition -->
+            <origin notBefore="[DATE_OF_CREATION.EARLIEST]" notAfter="[DATE_OF_CREATION.LATEST]"/>
+              <origPlace ref="[PLACE_OF_CREATION.ID]" certainty="[PLACE_OF_CREATION_CERTAINTY]" key="PLACE_OF_CREATION.COUNTRY.CODE">
+                [PLACE_OF_CREATION.LABEL]
+              </origPlace>
+              <origDate certainty="[DATE_OF_CREATION_CERTAINTY]">
+                [DATE_FREETEXT]
+              </origDate>
+            </origin>
+          </creation>
+          <langUsage>
+            <!-- The language of the witness's text -->
+            <language ident="[IS_MANIFESTATION_OF.LANGUAGE.CODE]"/>
+          </langUsage>
+          <correspContext>
+            <!-- If the witness is based on an older witness -->
+            <ref type="derived" target="[WITNESS.ID]"/>
+          </correspContext>
+        </profileDesc>
+      </teiHeader>
+      <text>
+    <!-- ... -->
+      </text>
+  </TEI>
+</teiCorpus>
