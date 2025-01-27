@@ -1,74 +1,53 @@
-import json
+# Tests for the DBConn class in etl/database.py
+
 import unittest
-from datetime import datetime
 
-from src.backend.constants import HeuristDB
-from src.backend.database import DB
+import duckdb
 
-
-def convert_datetime(d: dict) -> dict:
-    clean_dict = {}
-    for k, v in d.items():
-        if isinstance(v, list) and isinstance(v[0], datetime):
-            clean_dict.update({k: [str(i) for i in v]})
-        elif isinstance(v, datetime):
-            clean_dict.update({k: str(v)})
-        else:
-            clean_dict.update({k: v})
-    return clean_dict
+from src.etl.database import DBConn
 
 
-class TestProcess(unittest.TestCase):
+class TestDBConnMethods(unittest.TestCase):
     def setUp(self):
-        self.db = DB()
+        self.db = DBConn(fp=":memory:")
+        self.db._execute("CREATE TABLE TestTable (id INT, color TEXT, fruit TEXT)")
+        self.db._execute(
+            "INSERT INTO TestTable VALUES (1, 'red', 'apple'), (2, 'blue', 'berry'), (3, 'yellow', 'banana'), (4, 'green', 'pepper')"
+        )
 
-    def test(self):
-        witnesses = self.db.select(f"select * from {HeuristDB.witness}")
+    def test_select_all(self):
+        expected = [
+            {"id": 1, "color": "red", "fruit": "apple"},
+            {"id": 2, "color": "blue", "fruit": "berry"},
+            {"id": 3, "color": "yellow", "fruit": "banana"},
+            {"id": 4, "color": "green", "fruit": "pepper"},
+        ]
+        actual = self.db.select_all("SELECT * FROM TestTable")
+        self.assertListEqual(expected, actual)
 
-        collections = {}
+    def test_select_one_a(self):
+        expected = {"id": 1, "color": "red", "fruit": "apple"}
+        actual = self.db.select_one("SELECT * FROM TestTable WHERE id=1")
+        self.assertDictEqual(expected, actual)
 
-        for w in witnesses:
-            w = convert_datetime(w)
+    def test_select_one_b(self):
+        expected = {"id": 1, "color": "red", "fruit": "apple"}
+        actual = self.db.select_one("SELECT * FROM TestTable WHERE id=1 LIMIT 1;")
+        self.assertDictEqual(expected, actual)
 
-            text_id = w["is_manifestation_of H-ID"]
+    def test_get_row(self):
+        exepcted = {"id": 1, "color": "red", "fruit": "apple"}
+        actual = self.db.get_by_id(table="TestTable", col="id", id=1)
+        self.assertDictEqual(exepcted, actual)
 
-            if not collections.get(text_id):
-                text = self.db.select(
-                    f"""select * from {HeuristDB.text} where "H-ID" = {text_id}"""
-                )[0]
-                collections.update({text_id: {"text metadata": convert_datetime(text)}})
-                collections[text_id].update({"text witnesses": {}})
+        exepcted = None
+        actual = self.db.get_by_id(table="TestTable", col="id", id=5)
+        self.assertEqual(exepcted, actual)
 
-            part_id = w.pop("observed_on_pages H-ID")
-            query = f"""select * from {HeuristDB.part} where "H-ID" = {part_id}"""
-            parts = self.db.select(query)
-
-            w.update({"text parts": {}})
-
-            for p in parts:
-                p = convert_datetime(p)
-
-                physdesc_id = p.pop("physical_description H-ID")
-                if physdesc_id:
-                    physdesc = self.db.select(
-                        f"""select * from {HeuristDB.physDesc} where "H-ID" = {physdesc_id}"""
-                    )[0]
-                    p.update({"physical_description": convert_datetime(physdesc)})
-
-                doc_id = p.pop("is_inscribed_on H-ID")
-                doc = self.db.select(
-                    f"""select * from {HeuristDB.document} where "H-ID" = {doc_id}"""
-                )[0]
-                p.update({"document": convert_datetime(doc)})
-
-                w["text parts"].update({f"part {int(p["div_order"])}": p})
-
-            collections[text_id]["text witnesses"].update({f"witness {w["H-ID"]}": w})
-
-        obj = {"texts": {f"text {k}": v for k, v in collections.items()}}
-
-        with open("tests/textCollections.json", "w", encoding="utf-8") as f:
-            json.dump(obj, f, indent=4, ensure_ascii=False)
+        try:
+            self.db.get_by_id(table="MissingTable", col="id", id=1)
+        except duckdb.CatalogException:
+            pass
 
 
 if __name__ == "__main__":
