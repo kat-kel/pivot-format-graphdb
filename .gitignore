@@ -171,4 +171,5 @@ cython_debug/
 .pypirc
 
 *.db
-*/**.tei.xml
+*/**.xml
+*/**.log*

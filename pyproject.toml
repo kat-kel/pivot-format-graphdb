@@ -3,7 +3,7 @@ requires = ["setuptools>=62", "setuptools_scm>8"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "lostma"
+name = "pivot"
 dependencies = [
     "annotated-types==0.7.0",
     "click==8.1.8",
@@ -21,6 +21,7 @@ dependencies = [
     "pathspec==0.12.1",
     "platformdirs==4.3.6",
     "pluggy==1.5.0",
+    "pyaml==25.1.0",
     "pydantic==2.10.4",
     "pydantic_core==2.27.2",
     "pytest==8.3.4",
@@ -35,19 +36,19 @@ dependencies = [
 dynamic = ["version"]
 
 [tool.setuptools]
-packages = ["src"]
+packages = ["app", "tests"]
 
 [tool.setuptools.dynamic]
-version = {attr = "src.VERSION"}
+version = {attr = "app.VERSION"}
 
 [tool.setuptools_scm]
 # Leave empty for the dynamic version metadata
 
 [project.scripts]
-lostma = "src.__main__:cli"
+pivot = "app.__main__:cli"
 
 [tool.pytest.ini_options]
-testpaths = ["tests", "src"]
+testpaths = ["tests", "app"]
 addopts = "-v -ra -q --doctest-modules"
 log_cli = true
 log_cli_level = "INFO"
