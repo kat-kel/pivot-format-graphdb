@@ -19,8 +19,8 @@ class PhysDescModel(BaseDataModel):
     folio_size_height: Optional[str] = Field(default=None)
     estimated_folio_size_height: Optional[str] = Field(default=None)
     estimated_folio_size_width: Optional[str] = Field(default=None)
-    has_decorations: Optional[List[TermModel]] = Field(
-        default=None,
+    has_decorations: List[Optional[TermModel]] = Field(
+        default=[],
         validation_alias="has_decorations TRM-ID",
     )
     amount_of_illustrations: Optional[TermModel] = Field(

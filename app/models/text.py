@@ -25,8 +25,8 @@ class TextModel(BaseDataModel):
         default=None,
         validation_alias="is_hypothetical TRM-ID",
     )
-    alternative_names: Optional[List[str]] = Field(
-        default=None,
+    alternative_names: List[Optional[str]] = Field(
+        default=[],
     )
     is_expression_of: Optional[StoryModel] = Field(
         default=None,
@@ -48,22 +48,26 @@ class TextModel(BaseDataModel):
             "table": "Genre",
         },
     )
-    length: Optional[str] = Field(default=None)
+    length: Optional[int] = Field(default=None)
     length_note: Optional[str] = Field(
         default=None,
         validation_alias="length_freetext",
     )
-    verse_type: Optional[TermModel] = Field(
-        default=None,
+    verse_type: List[Optional[TermModel]] = Field(
+        default=[],
         validation_alias="verse_type TRM-ID",
     )
-    rhyme_type: Optional[TermModel] = Field(
-        default=None,
+    rhyme_type: List[Optional[TermModel]] = Field(
+        default=[],
         validation_alias="rhyme_type TRM-ID",
     )
-    is_derived_from: Optional[List[int]] = Field(
-        default=None,
+    is_derived_from: List[Optional[int]] = Field(
+        default=[],
         validation_alias="is_derived_from H-ID",
+        json_schema_extra={
+            "model": None,  # Do not make recursive nest
+            "table": None,  # Do not make recursive nest
+        },
     )
     derivation_note: Optional[str] = Field(
         default=None,
@@ -96,16 +100,16 @@ class TextModel(BaseDataModel):
         validation_alias="date_of_creation_certainty TRM-ID",
     )
     date_freetext: Optional[str] = Field(default=None)
-    is_written_by: Optional[List[PersonModel]] = Field(
-        default=None,
+    is_written_by: List[Optional[PersonModel]] = Field(
+        default=[],
         validation_alias="is_written_by H-ID",
         json_schema_extra={
             "model": PersonModel,
             "table": "Person",
         },
     )
-    is_adapted_by: Optional[List[PersonModel]] = Field(
-        default=None,
+    is_adapted_by: List[Optional[PersonModel]] = Field(
+        default=[],
         validation_alias="is_adapted_by H-ID",
         json_schema_extra={
             "model": PersonModel,
@@ -113,4 +117,4 @@ class TextModel(BaseDataModel):
         },
     )
     # place_of_creation <-- add later
-    described_at_URL: Optional[List[str]] = Field(default=None)
+    described_at_URL: List[Optional[str]] = Field(default=[])

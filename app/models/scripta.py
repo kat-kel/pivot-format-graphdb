@@ -1,6 +1,6 @@
 from pydantic import Field
 
-from typing import Optional
+from typing import Optional, List
 from .term import TermModel
 from .place import PlaceModel
 from .base import BaseDataModel
@@ -23,4 +23,4 @@ class ScriptaModel(BaseDataModel):
         },
     )
     region_note: Optional[str] = Field(default=None)
-    described_at_URL: Optional[list[str]] = Field(default=None)
+    described_at_URL: List[Optional[str]] = Field(default=[])

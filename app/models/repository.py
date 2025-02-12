@@ -17,7 +17,7 @@ class RepositoryModel(BaseDataModel):
             "table": "Place",
         },
     )
-    alternative_names: Optional[List[str]] = Field(default=None)
+    alternative_names: List[Optional[str]] = Field(default=[])
     viaf: Optional[float] = Field(default=None, validation_alias="VIAF")
     isni: Optional[str] = Field(default=None, validation_alias="ISNI")
     biblissima_identifier: Optional[str] = Field(default=None)

@@ -14,15 +14,19 @@ class DocumentModel(BaseDataModel):
     location: Optional[RepositoryModel] = Field(
         default=None,
         validation_alias="location H-ID",
+        json_schema_extra={
+            "model": RepositoryModel,
+            "table": "Repository",
+        },
     )
     collection: Optional[str] = Field(default=None)
     invented_label: Optional[str] = Field(default=None)
     is_hypothetical: Optional[str] = Field(default=None)
     claim_freetext: Optional[str] = Field(default=None)
     collection_of_fragments: Optional[str] = Field(default=None)
-    old_shelfmark: Optional[List[str]] = Field(default=None)
+    old_shelfmark: List[Optional[str]] = Field(default=[])
     digitization: List[Optional[DigitizationModel]] = Field(
-        default=None,
+        default=[],
         validation_alias="digitization H-ID",
         json_schema_extra={
             "model": DigitizationModel,

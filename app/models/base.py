@@ -90,6 +90,8 @@ class BaseDataModel(BaseModel):
         # Fetch and validate fk IDs in singular data fields
         for fk in cls.fk_aliases_single():
             table = fk.extra["table"]
+            if not table:
+                continue
             Model = fk.extra["model"]
             fk_id = row_dict.get(fk.alias)
             if fk_id:
@@ -100,9 +102,13 @@ class BaseDataModel(BaseModel):
         # Fetch and validate fk IDs in repeated data fields
         for fk in cls.fk_aliases_repeated():
             table = fk.extra["table"]
+            if not table:
+                continue
             Model = fk.extra["model"]
             ids = row_dict.get(fk.alias)
-            if len(ids) > 0:
+            if ids == [None]:
+                continue
+            elif len(ids) > 0:
                 nested_dicts = []
                 for fk_id in ids:
                     row = db.get_by_id(table=table, hid=fk_id)
