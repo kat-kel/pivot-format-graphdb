@@ -26,10 +26,10 @@ class DBConn:
             print(parameters)
             raise e
 
-    def select_all(self, query: str) -> list[dict]:
+    def select_all(self, query: str) -> list[dict] | list:
         rel = self._query(query)
         if not rel:
-            return
+            return []
         keys = rel.columns
         values = rel.fetchall()
         return [{k: v for k, v in zip(keys, val)} for val in values]

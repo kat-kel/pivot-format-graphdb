@@ -13,6 +13,8 @@ class WitnessTree:
         self.root = ET.Element("TEI", attrib={"xmlns": "http://www.tei-c.org/ns/1.0"})
         self.root.append(self.teiHeader)
 
+        self.root.append(self.text)
+
         # Write the tree to file
         self.write()
 
@@ -20,6 +22,13 @@ class WitnessTree:
         tree = ET.ElementTree(self.root)
         ET.indent(tree, space="\t", level=0)
         tree.write("witness-tei-new.xml", encoding="utf-8")
+
+    @property
+    def text(self) -> ET.Element:
+        root = ET.Element("text")
+        body = ET.SubElement(root, "body")
+        _ = ET.SubElement(body, "div")
+        return root
 
     @property
     def teiHeader(self) -> ET.Element:

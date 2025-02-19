@@ -13,7 +13,8 @@ class Images(BaseModel):
 
 @dataclass
 class PageRange:
-    start: str
+    text: str
+    start: Optional[str] = None
     end: Optional[str] = None
     images: Optional[Images] = None
 
@@ -21,10 +22,11 @@ class PageRange:
     def validate(self, page_str: str, part_id: int, db: DBConn) -> "PageRange":
         # Get beginning and end of page range
         extremes = page_str.split("-")
-        end = None
-        if len(extremes) == 2:
+        end, start = None, None
+        if len(extremes) == 2 and " " not in extremes[-1]:
             end = extremes[-1]
-        start = extremes[0]
+        if " " not in extremes[0]:
+            start = extremes[0]
 
         # Get image entities that link to this part
         query = f"""
@@ -39,6 +41,6 @@ SELECT i.* FROM Images i WHERE i."represents_pages H-ID" = {part_id}
                 start.strip() == page_parts[0].strip()
                 or end.strip() == page_parts[-1].strip()
             ):
-                return PageRange(start=start, end=end, images=model)
+                return PageRange(text=page_str, start=start, end=end, images=model)
 
-        return PageRange(start=start, end=end)
+        return PageRange(text=page_str, start=start, end=end)

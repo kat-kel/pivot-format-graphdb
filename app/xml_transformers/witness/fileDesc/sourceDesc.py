@@ -54,12 +54,7 @@ class SourceDesc:
         return root
 
     def make_additional(self, doc: DocumentModel) -> ET.Element:
-        # Add bibliographic info
         root = ET.Element("additional")
-        listBibl = ET.SubElement(root, "listBibl")
-        for url in doc.described_at_URL:
-            bibl = ET.SubElement(listBibl, "bibl")
-            _ = ET.SubElement(bibl, "ptr", attrib={"target": url})
 
         # Add digitization
         surrogates = ET.SubElement(root, "surrogates")
@@ -68,6 +63,13 @@ class SourceDesc:
             _ = ET.SubElement(bibl, "ptr", attrib={"target": dig.uri})
             idno = ET.SubElement(bibl, "idno", attrib={"type": "ark"})
             idno.text = dig.ark
+
+        # Add bibliographic info
+        if len(doc.described_at_URL):
+            listBibl = ET.SubElement(root, "listBibl")
+            for url in doc.described_at_URL:
+                bibl = ET.SubElement(listBibl, "bibl")
+                _ = ET.SubElement(bibl, "ptr", attrib={"target": url})
 
         return root
 
@@ -79,14 +81,33 @@ class SourceDesc:
                 "n": str(part.div_order),
             },
         )
-        # Add locus for this manuscript item (part)
-        locusGrp = ET.SubElement(root, "locusGrp")
-        for pages in part.page_ranges:
-            if pages.end:
-                attrib = {"from": pages.start, "to": pages.end}
-            else:
-                attrib = {}
-            _ = ET.SubElement(locusGrp, "locus", attrib=attrib)
+        # Add locus for manuscript item (part)
+        has_facs = False
+        locusGrp = ET.SubElement(root, "locusGrp", attrib={"scheme": "#source"})
+        for pr in part.page_ranges:
+            if pr.images:
+                has_facs = True
+            locus = ET.SubElement(locusGrp, "locus")
+            if pr.start and pr.end:
+                locus.set("from", pr.start)
+                locus.set("to", pr.end)
+            locus.text = pr.text
+
+        # Add locus for corresponding images
+        if has_facs:
+            locusGrp = ET.SubElement(root, "locusGrp", attrib={"scheme": "#facsimile"})
+            for pr in part.page_ranges:
+                im = pr.images
+                if im:
+                    _ = ET.SubElement(
+                        locusGrp,
+                        "locus",
+                        attrib={
+                            "from": str(im.first_image),
+                            "to": str(im.last_image),
+                            "corresp": f"#dig-{im.dig_id}",
+                        },
+                    )
 
         # Add note describing what part of the text this item contains
         note = ET.SubElement(root, "note")
