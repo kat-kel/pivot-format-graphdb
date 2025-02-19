@@ -5,6 +5,7 @@ from .physdesc import PhysDescModel
 from .document import DocumentModel
 from .term import TermModel
 from .base import BaseDataModel
+from .pages import PageRange
 
 
 class PartModel(BaseDataModel):
@@ -38,4 +39,17 @@ class PartModel(BaseDataModel):
         default=None,
         validation_alias="lines_are_incomplete TRM-ID",
     )
-    page_ranges: Optional[List[str]] = Field(default=None)
+    page_ranges: Optional[List[PageRange]] = Field(default=None)
+
+    @classmethod
+    def build_nested_dict(cls, row_dict, db):
+        modeled_pages = []
+        for pr in row_dict["page_ranges"]:
+            pages = PageRange.validate(
+                page_str=pr,
+                part_id=row_dict["H-ID"],
+                db=db,
+            )
+            modeled_pages.append(pages)
+        row_dict["page_ranges"] = modeled_pages
+        return super().build_nested_dict(row_dict=row_dict, db=db)

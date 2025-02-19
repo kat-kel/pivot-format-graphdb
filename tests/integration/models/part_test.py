@@ -15,6 +15,13 @@ class PartTest(unittest.TestCase):
             model = PartModel(**nested_dict)
             self.assertEqual(id, model.id)
 
+    def test_pages(self):
+        row = self.db.get_by_id(table="Part", hid=45053)
+        nested_dict = PartModel.build_nested_dict(row_dict=row, db=self.db)
+        model = PartModel(**nested_dict)
+        actual = model.page_ranges[0].images
+        self.assertIsNotNone(actual)
+
 
 if __name__ == "__main__":
     unittest.main()

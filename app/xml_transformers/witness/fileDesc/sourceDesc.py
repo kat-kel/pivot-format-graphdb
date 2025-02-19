@@ -82,13 +82,11 @@ class SourceDesc:
         # Add locus for this manuscript item (part)
         locusGrp = ET.SubElement(root, "locusGrp")
         for pages in part.page_ranges:
-            page_parts = pages.split("-")
-            if len(page_parts) == 2:
-                attrib = {"from": page_parts[0], "to": page_parts[1]}
+            if pages.end:
+                attrib = {"from": pages.start, "to": pages.end}
             else:
                 attrib = {}
-            locus = ET.SubElement(locusGrp, "locus", attrib=attrib)
-            locus.text = pages
+            _ = ET.SubElement(locusGrp, "locus", attrib=attrib)
 
         # Add note describing what part of the text this item contains
         note = ET.SubElement(root, "note")
