@@ -29,6 +29,7 @@ class GenreModel(BaseDataModel):
     @classmethod
     def build_nested_dict(cls, row_dict: dict, db: DBConn):
         if row_dict[PARENT_GENRE]:
-            parent_genre = db.get_by_id(table=TABLE_NAME, hid=row_dict[PARENT_GENRE])
-            row_dict.update({PARENT_GENRE: parent_genre})
+            row = db.get_by_id(table=TABLE_NAME, hid=row_dict[PARENT_GENRE])
+            nested_dict = cls.build_nested_dict(row_dict=row, db=db)
+            row_dict.update({PARENT_GENRE: nested_dict})
         return super().build_nested_dict(row_dict=row_dict, db=db)
