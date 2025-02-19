@@ -9,6 +9,14 @@ from app.models.document import DocumentModel
 from app.models.term import TermModel
 from app.models.scripta import ScriptaModel
 from app.models.person import PersonModel
+from app.database import DBConn
+
+# Recursive fields
+USED_TO_FOLLOW_FRAGMENT = "used_to_follow_fragment H-ID"
+USED_TO_FOLLOW_WITNESS = "used_to_follow_witness H-ID"
+
+# Table name
+TABLE_NAME = "Witness"
 
 
 class WitnessModel(BaseDataModel):
@@ -45,16 +53,16 @@ class WitnessModel(BaseDataModel):
         default=None,
         validation_alias="used_to_follow_fragment H-ID",
         json_schema_extra={
-            "model": None,  # Do not make recursive nest
-            "table": None,  # Do not make recursive nest
+            "model": None,
+            "table": TABLE_NAME,
         },
     )
     used_to_follow_witness: Optional[int] = Field(
         default=None,
         validation_alias="used_to_follow_witness H-ID",
         json_schema_extra={
-            "model": None,  # Do not make recursive nest
-            "table": None,  # Do not make recursive nest
+            "model": None,
+            "table": TABLE_NAME,
         },
     )
     preferred_siglum: Optional[str] = Field(default=None)
@@ -93,3 +101,15 @@ class WitnessModel(BaseDataModel):
     scribe_note: Optional[str] = Field(default=None)
     # place_of_creation <-- add later
     described_at_URL: List[Optional[str]] = Field(default=[])
+
+    @classmethod
+    def build_nested_dict(cls, row_dict: dict, db: DBConn):
+        if row_dict[USED_TO_FOLLOW_FRAGMENT]:
+            row = db.get_by_id(table=TABLE_NAME, hid=row_dict[USED_TO_FOLLOW_FRAGMENT])
+            nested_dict = cls.build_nested_dict(row_dict=row, db=db)
+            row_dict.update({USED_TO_FOLLOW_FRAGMENT: nested_dict})
+        if row_dict[USED_TO_FOLLOW_WITNESS]:
+            row = db.get_by_id(table=TABLE_NAME, hid=row_dict[USED_TO_FOLLOW_WITNESS])
+            nested_dict = cls.build_nested_dict(row_dict=row, db=db)
+            row_dict.update({USED_TO_FOLLOW_WITNESS: nested_dict})
+        return super().build_nested_dict(row_dict=row_dict, db=db)
