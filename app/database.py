@@ -38,7 +38,7 @@ class DBConn:
         if not query.lower().endswith("limit 1") and not query.lower().endswith(
             "limit 1;"
         ):
-            query += "LIMIT 1"
+            query += " LIMIT 1"
         rel = self._query(query)
         if not rel:
             return

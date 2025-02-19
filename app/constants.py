@@ -3,6 +3,7 @@ from pathlib import Path
 DB_PATH = Path(__file__).parent.parent.joinpath("heurist.db")
 
 XML_ID = "{http://www.w3.org/XML/1998/namespace}id"
+XML_NS = "{http://www.w3.org/XML/1998/namespace}ns"
 
 NSMAP = {
     "xml": "http://w3.org/XML/1998/namespace",

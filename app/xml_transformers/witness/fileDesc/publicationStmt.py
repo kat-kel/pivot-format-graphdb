@@ -31,7 +31,7 @@ class PublicationStmt:
 
     @property
     def availability(self) -> ET.Element:
-        elem = ET.Element("availablility", attrib={"status": "restricted"})
+        elem = ET.Element("availability", attrib={"status": "restricted"})
         url = "https://creativecommons.org/licenses/by/4.0/"
         licence = ET.SubElement(elem, "licence", attrib={"target": url})
         licence.text = (
