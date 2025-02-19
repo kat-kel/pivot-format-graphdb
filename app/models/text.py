@@ -8,6 +8,13 @@ from .story import StoryModel
 from .genre import GenreModel
 from .scripta import ScriptaModel
 from .person import PersonModel
+from app.database import DBConn
+
+# Recusrive fields
+IS_DERIVED_FROM = "is_derived_from H-ID"
+
+# Table name
+TABLE_NAME = "TextTable"
 
 
 class TextModel(BaseDataModel):
@@ -61,12 +68,12 @@ class TextModel(BaseDataModel):
         default=[],
         validation_alias="rhyme_type TRM-ID",
     )
-    is_derived_from: List[Optional[int]] = Field(
+    is_derived_from: List[Optional["TextModel"]] = Field(
         default=[],
         validation_alias="is_derived_from H-ID",
         json_schema_extra={
-            "model": None,  # Do not make recursive nest
-            "table": None,  # Do not make recursive nest
+            "model": None,
+            "table": TABLE_NAME,
         },
     )
     derivation_note: Optional[str] = Field(
@@ -118,3 +125,15 @@ class TextModel(BaseDataModel):
     )
     # place_of_creation <-- add later
     described_at_URL: List[Optional[str]] = Field(default=[])
+
+    @classmethod
+    def build_nested_dict(cls, row_dict: dict, db: DBConn):
+        array_of_nested_dicts = []
+        for fk in row_dict[IS_DERIVED_FROM]:
+            row = db.get_by_id(table=TABLE_NAME, hid=fk)
+            nested_dict = cls.build_nested_dict(row_dict=row, db=db)
+            array_of_nested_dicts.append(nested_dict)
+
+        row_dict.update({IS_DERIVED_FROM: array_of_nested_dicts})
+
+        return super().build_nested_dict(row_dict=row_dict, db=db)
