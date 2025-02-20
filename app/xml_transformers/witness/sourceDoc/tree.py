@@ -26,6 +26,13 @@ class SourceDoc:
             if range.images:
                 dig_id = range.images.dig_id
                 for n in range.images.sequence:
-                    xml_id = self.make_digitization_ref(dig_id=dig_id, image_n=n)
-                    surface = ET.Element("surface", attrib={XML_ID: xml_id})
+                    xml_id = self.make_digitization_ref(
+                        dig_id=dig_id,
+                        image_n=n,
+                    )
+                    corresp = f"#dig-{dig_id} #part-{part.id}"
+                    surface = ET.Element(
+                        "surface",
+                        attrib={XML_ID: xml_id, "corresp": corresp},
+                    )
                     self.root.append(surface)

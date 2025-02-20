@@ -24,7 +24,7 @@ class SourceDesc:
         document, they need to be under the same <msDesc>.
 
         Returns:
-            dict: _description_
+            dict: index of document IDs with arrays of their parts
         """
         doc_ids = set(p.is_inscribed_on.id for p in data)
         index = {id: {"doc": None, "parts": []} for id in doc_ids}
@@ -62,10 +62,20 @@ class SourceDesc:
         # Add digitization
         surrogates = ET.SubElement(root, "surrogates")
         for dig in doc.digitization:
-            bibl = ET.SubElement(surrogates, "bibl", attrib={XML_ID: f"dig-{dig.id}"})
+            dig_xml_id = f"dig-{dig.id}"
+            bibl = ET.SubElement(surrogates, "bibl", attrib={XML_ID: dig_xml_id})
             _ = ET.SubElement(bibl, "ptr", attrib={"target": dig.uri})
             idno = ET.SubElement(bibl, "idno", attrib={"type": "ark"})
             idno.text = dig.ark
+
+            # If digitization has IIIF manifest, add another bibl
+            iiif_xml_id = f"{dig_xml_id}-iiif"
+            bibl = ET.SubElement(
+                surrogates,
+                "bibl",
+                attrib={XML_ID: iiif_xml_id, "corresp": f"#{dig_xml_id}"},
+            )
+            _ = ET.SubElement(bibl, "ptr", attrib={"target": dig.iiif})
 
         # Add bibliographic info
         if len(doc.described_at_URL):
