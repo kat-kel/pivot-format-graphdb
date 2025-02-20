@@ -45,15 +45,16 @@ class TitleStmt:
     def build_title(self) -> ET.Element:
         root = ET.Element("title", attrib={"type": "full"})
         main = ET.SubElement(
-            root, "title", attrib={"type": "main", "key": self.text_key}
+            root, "title", attrib={"type": "main", "ref": f"#{self.text_key}"}
         )
         main.text = self.text_title
         sub = ET.SubElement(root, "title", attrib={"type": "sub"})
+        subtitle_text = "Electronic transcription of witness"
         if self.data.preferred_siglum:
-            sub.text = f"Electronic transcription of witness \
-{self.data.preferred_siglum}"
-        else:
-            sub.text = "Metadata and electronic transcription of witness"
+            subtitle_text += " "
+            abbr = ET.SubElement(sub, "abbr", attrib={"type": "siglum"})
+            abbr.text = self.data.preferred_siglum
+        sub.text = subtitle_text
 
         return root
 

@@ -1,7 +1,8 @@
-from pydantic import Field
+from pydantic import Field, BeforeValidator
 from app.models.base import BaseDataModel
 
-from typing import Optional, List
+from typing import Optional, List, Annotated
+import ast
 
 from app.models.part import PartModel
 from app.models.text import TextModel
@@ -9,6 +10,7 @@ from app.models.document import DocumentModel
 from app.models.term import TermModel
 from app.models.scripta import ScriptaModel
 from app.models.person import PersonModel
+from app.models.date import DateObject
 from app.database import DBConn
 
 # Recursive fields
@@ -17,6 +19,11 @@ USED_TO_FOLLOW_WITNESS = "used_to_follow_witness H-ID"
 
 # Table name
 TABLE_NAME = "Witness"
+
+
+def str_to_dict(value: str | None) -> dict | None:
+    if value:
+        return ast.literal_eval(value)
 
 
 class WitnessModel(BaseDataModel):
@@ -83,9 +90,11 @@ class WitnessModel(BaseDataModel):
             "table": "Scripta",
         },
     )
-    date_of_creation: Optional[dict | str] = Field(
-        validation_alias="date_of_creation_TEMPORAL",
-        default=None,
+    date_of_creation: Annotated[Optional[DateObject], BeforeValidator(str_to_dict)] = (
+        Field(
+            validation_alias="date_of_creation_TEMPORAL",
+            default=None,
+        )
     )
     date_of_creation_certainty: Optional[TermModel] = Field(
         default=None,

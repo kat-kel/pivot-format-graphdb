@@ -1,6 +1,7 @@
-from pydantic import Field
+from pydantic import Field, BeforeValidator
 
-from typing import Optional, List
+from typing import Optional, List, Annotated
+import ast
 
 from .base import BaseDataModel
 from .term import TermModel
@@ -8,6 +9,7 @@ from .story import StoryModel
 from .genre import GenreModel
 from .scripta import ScriptaModel
 from .person import PersonModel
+from .date import DateObject
 from app.database import DBConn
 
 # Recusrive fields
@@ -15,6 +17,11 @@ IS_DERIVED_FROM = "is_derived_from H-ID"
 
 # Table name
 TABLE_NAME = "TextTable"
+
+
+def str_to_dict(value: str | None) -> dict | None:
+    if value:
+        return ast.literal_eval(value)
 
 
 class TextModel(BaseDataModel):
@@ -98,9 +105,11 @@ class TextModel(BaseDataModel):
             "table": "Scripta",
         },
     )
-    date_of_creation: Optional[dict | str] = Field(
-        default=None,
-        validation_alias="date_of_creation_TEMPORAL",
+    date_of_creation: Annotated[Optional[DateObject], BeforeValidator(str_to_dict)] = (
+        Field(
+            default=None,
+            validation_alias="date_of_creation_TEMPORAL",
+        )
     )
     date_of_creation_certainty: Optional[TermModel] = Field(
         default=None,

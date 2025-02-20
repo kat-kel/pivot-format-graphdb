@@ -1,6 +1,6 @@
 from app.models.witness import WitnessModel
 import xml.etree.ElementTree as ET
-from .sourceDesc import SourceDesc
+from .sourceDesc.tree import SourceDesc
 from .titleStmt import TitleStmt
 from .editionStmt import EditionStmt
 from .publicationStmt import PublicationStmt
