@@ -10,12 +10,15 @@ class SourceDesc:
         self.data = data
         self.root = ET.Element("sourceDesc")
 
-        for doc in self.group_parts_by_document().values():
+        for doc in self.group_parts_by_document(
+            data=self.data.observed_on_pages
+        ).values():
             manuscript, parts = doc["doc"], doc["parts"]
             msDesc = self.make_msDesc(doc=manuscript, parts=parts)
             self.root.append(msDesc)
 
-    def group_parts_by_document(self) -> dict:
+    @staticmethod
+    def group_parts_by_document(data) -> dict:
         """All of the witness's parts need to be grouped by their document and under a
         <msDesc>. For instance, if two or more of the witness's parts are from the same
         document, they need to be under the same <msDesc>.
@@ -23,9 +26,9 @@ class SourceDesc:
         Returns:
             dict: _description_
         """
-        doc_ids = set(p.is_inscribed_on.id for p in self.data.observed_on_pages)
+        doc_ids = set(p.is_inscribed_on.id for p in data)
         index = {id: {"doc": None, "parts": []} for id in doc_ids}
-        for part in self.data.observed_on_pages:
+        for part in data:
             doc_id = part.is_inscribed_on.id
             if not index[doc_id]["doc"]:
                 index[doc_id]["doc"] = part.is_inscribed_on
@@ -82,32 +85,13 @@ class SourceDesc:
             },
         )
         # Add locus for manuscript item (part)
-        has_facs = False
-        locusGrp = ET.SubElement(root, "locusGrp", attrib={"scheme": "#source"})
+        locusGrp = ET.SubElement(root, "locusGrp")
         for pr in part.page_ranges:
-            if pr.images:
-                has_facs = True
             locus = ET.SubElement(locusGrp, "locus")
             if pr.start and pr.end:
                 locus.set("from", pr.start)
                 locus.set("to", pr.end)
             locus.text = pr.text
-
-        # Add locus for corresponding images
-        if has_facs:
-            locusGrp = ET.SubElement(root, "locusGrp", attrib={"scheme": "#facsimile"})
-            for pr in part.page_ranges:
-                im = pr.images
-                if im:
-                    _ = ET.SubElement(
-                        locusGrp,
-                        "locus",
-                        attrib={
-                            "from": str(im.first_image),
-                            "to": str(im.last_image),
-                            "corresp": f"#dig-{im.dig_id}",
-                        },
-                    )
 
         # Add note describing what part of the text this item contains
         note = ET.SubElement(root, "note")

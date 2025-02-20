@@ -1,5 +1,5 @@
 from typing import Optional
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, computed_field
 from app.database import DBConn
 from dataclasses import dataclass
 
@@ -7,8 +7,29 @@ from dataclasses import dataclass
 class Images(BaseModel):
     dig_id: int = Field(validation_alias="contained_in H-ID")
     first_image: int
-    last_image: int
+    last_image: Optional[int] = Field(default=None)
     corresponding_page_range: str
+
+    @computed_field
+    @property
+    def sequence(self) -> list[int]:
+        """Create list of image file numbers
+
+        Examples:
+        >>> data = {"contained_in H-ID": 1, "first_image": 1, "last_image": 10}
+        >>> data.update({"corresponding_page_range": "1-5"})
+        >>> i = Images(**data)
+        >>> i.sequence
+        [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+        Returns:
+            list[int]: _description_
+        """
+        if self.last_image:
+            seq = list(range(self.first_image, self.last_image)) + [self.last_image]
+        else:
+            seq = [self.first_image]
+        return seq
 
 
 @dataclass

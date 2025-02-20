@@ -2,6 +2,7 @@ from app.models.witness import WitnessModel
 import xml.etree.ElementTree as ET
 from app.xml_transformers.witness.fileDesc.tree import WitnessFileDesc
 from app.xml_transformers.witness.profileDesc.tree import ProfileDesc
+from app.xml_transformers.witness.sourceDoc.tree import SourceDoc
 
 
 class WitnessTree:
@@ -12,8 +13,7 @@ class WitnessTree:
         # Build the tree's main branches
         self.root = ET.Element("TEI", attrib={"xmlns": "http://www.tei-c.org/ns/1.0"})
         self.root.append(self.teiHeader)
-
-        self.root.append(self.text)
+        self.root.append(self.sourceDoc)
 
         # Write the tree to file
         self.write()
@@ -22,6 +22,11 @@ class WitnessTree:
         tree = ET.ElementTree(self.root)
         ET.indent(tree, space="\t", level=0)
         tree.write("witness-tei-new.xml", encoding="utf-8")
+
+    @property
+    def sourceDoc(self) -> ET.Element:
+        witness_parts = self.data.observed_on_pages
+        return SourceDoc(parts=witness_parts).root
 
     @property
     def text(self) -> ET.Element:
