@@ -69,13 +69,14 @@ class SourceDesc:
             idno.text = dig.ark
 
             # If digitization has IIIF manifest, add another bibl
-            iiif_xml_id = f"{dig_xml_id}-iiif"
-            bibl = ET.SubElement(
-                surrogates,
-                "bibl",
-                attrib={XML_ID: iiif_xml_id, "corresp": f"#{dig_xml_id}"},
-            )
-            _ = ET.SubElement(bibl, "ptr", attrib={"target": dig.iiif})
+            if dig.iiif:
+                iiif_xml_id = f"{dig_xml_id}-iiif"
+                bibl = ET.SubElement(
+                    surrogates,
+                    "bibl",
+                    attrib={XML_ID: iiif_xml_id, "corresp": f"#{dig_xml_id}"},
+                )
+                _ = ET.SubElement(bibl, "ptr", attrib={"target": dig.iiif})
 
         # Add bibliographic info
         if len(doc.described_at_URL):
