@@ -125,7 +125,7 @@ Install an editable version of this application with the development dependencie
 
 ```console
 $ pip install -e .["dev"]
-Obtaining file:///home/kchrist/Dev/pivot-format
+Obtaining file:///home/user/Dev/pivot-format
   Installing build dependencies ... done
   Checking if build backend supports build_editable ... done
   Getting requirements to build editable ... done
