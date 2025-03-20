@@ -46,8 +46,8 @@ class TextModel(BaseDataModel):
     alternative_names: List[Optional[str]] = Field(
         default=[],
     )
-    is_expression_of: Optional[StoryModel] = Field(
-        default=None,
+    is_expression_of: List[Optional[StoryModel]] = Field(
+        default=[],
         alias="is_expression_of H-ID",
         json_schema_extra={
             "model": StoryModel,

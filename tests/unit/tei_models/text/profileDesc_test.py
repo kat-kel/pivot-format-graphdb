@@ -7,12 +7,12 @@ from app.data_models import TermModel
 from app.tei_models.text.base_tree import TextTree
 
 # Set up mock data for Text data model
-from tests.mock_data import DATA_MODEL_TEXT
+from tests.mock_data.text import DATA_MODEL
 
 
 class ProfileDescTest(unittest.TestCase):
     def setUp(self):
-        self.data_model = DATA_MODEL_TEXT
+        self.data_model = DATA_MODEL
         self.tree = TextTree()
         # Update the tree's 'profileDesc' with the language and creation date.
         ProfileDesc.insert_data(text=self.data_model, tree=self.tree)

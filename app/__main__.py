@@ -6,7 +6,13 @@ from app.database import DBConn
 from app import OUTDIR_PATH
 from app.data_models.text import TextModel
 from app.tei_models.text.builder import TextTreeBuilder
-from rich.progress import Progress, BarColumn, TimeElapsedColumn, MofNCompleteColumn
+from rich.progress import (
+    Progress,
+    BarColumn,
+    TextColumn,
+    TimeElapsedColumn,
+    MofNCompleteColumn,
+)
 
 __identifier__ = importlib.metadata.version("pivot")
 
@@ -51,8 +57,13 @@ def pivot_all_texts(database: str | None, outdir: str | None):
     rows = db.select_all('SELECT * FROM TextTable ORDER BY "H-ID"')
 
     # Iteratively build and write texts' TEI documents to the output directory.
-    with Progress(BarColumn(), MofNCompleteColumn(), TimeElapsedColumn()) as p:
-        t = p.add_task("", total=len(rows))
+    with Progress(
+        TextColumn("{task.description}"),
+        BarColumn(),
+        MofNCompleteColumn(),
+        TimeElapsedColumn(),
+    ) as p:
+        t = p.add_task("Transforming text metadata...", total=len(rows))
         for row in rows:
             data = TextModel.build_nested_dict(row_dict=row, db=db)
             model = TextModel.model_validate(data)

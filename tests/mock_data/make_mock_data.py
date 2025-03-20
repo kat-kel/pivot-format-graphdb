@@ -2,7 +2,7 @@ import json
 from datetime import datetime
 
 from app.database import DBConn
-from tests.mock_data import TEXT_RECORD_JSON, TEXT_DATA_MODEL_JSON
+from tests.mock_data.constants import TEXT_RECORD_JSON, TEXT_DATA_MODEL_JSON
 
 
 # Mock text data

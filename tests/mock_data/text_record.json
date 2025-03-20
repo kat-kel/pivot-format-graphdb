@@ -10,7 +10,9 @@
     "is_hypothetical TRM-ID": 9483,
     "claim_freetext": null,
     "alternative_names": [],
-    "is_expression_of H-ID": null,
+    "is_expression_of H-ID": [
+        91
+    ],
     "peripheral": "No",
     "peripheral TRM-ID": 9498.0,
     "specific_genre H-ID": 46304.0,
@@ -24,6 +26,8 @@
     "rhyme_type TRM-ID": [
         9779
     ],
+    "Stanza_type": null,
+    "Stanza_type TRM-ID": null,
     "is_derived_from H-ID": [
         744
     ],

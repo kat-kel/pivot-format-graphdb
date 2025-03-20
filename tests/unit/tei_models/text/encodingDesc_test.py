@@ -3,7 +3,7 @@ import unittest
 from app.data_models.genre import GenreModel
 from app.tei_models.text.encodingDesc import EncodingDesc, GenreTaxonomy
 from app.tei_models.text.base_tree import TextTree
-from tests.mock_data import DATA_MODEL_TEXT
+from tests.mock_data.text import DATA_MODEL
 
 NESTED_GENRE = GenreModel(
     **{
@@ -71,7 +71,7 @@ class Test(unittest.TestCase):
 
     def test_insert_data(self):
         # Try to insert the genre taxonomy nodes
-        EncodingDesc.insert_data(text=DATA_MODEL_TEXT, tree=self.tree)
+        EncodingDesc.insert_data(text=DATA_MODEL, tree=self.tree)
 
         # Assert that there is 1 category node nested in the mock text's genre category
         category_node = self.tree.encodingDesc.genre_taxonomy

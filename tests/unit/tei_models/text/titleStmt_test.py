@@ -5,13 +5,13 @@ from app.tei_models.text.base_tree import TextTree
 from app.tei_models.text.titleStmt import RespPerson, TitleStmt
 
 # Set up mock data for Text data model
-from tests.mock_data import DATA_MODEL_TEXT
+from tests.mock_data.text import DATA_MODEL
 
 
 class TitleStmtTest(unittest.TestCase):
     def setUp(self):
         self.tree = TextTree()
-        self.data_model = DATA_MODEL_TEXT
+        self.data_model = DATA_MODEL
 
         # Confirm that the mock data we're using is a Middle Ductch text
         lang_code = TitleStmt.get_language_code(text=self.data_model)

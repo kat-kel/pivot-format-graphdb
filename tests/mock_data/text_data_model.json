@@ -26,7 +26,52 @@
         "xml_id": "term_9483"
     },
     "alternative_names": [],
-    "is_expression_of H-ID": null,
+    "is_expression_of H-ID": [
+        {
+            "H-ID": 91,
+            "preferred_name": "Moniage Guillaume",
+            "is_part_of_storyverse H-ID": [
+                {
+                    "H-ID": 40,
+                    "preferred_name": "Vie de Guillaume",
+                    "member_of_cycle H-ID": [
+                        {
+                            "H-ID": 954,
+                            "preferred_name": "Monglane",
+                            "member_of_cycle H-ID": [
+                                {
+                                    "H-ID": 47703,
+                                    "preferred_name": "Matter of France",
+                                    "member_of_cycle H-ID": [],
+                                    "alternative_names": "Matière de France",
+                                    "described_at_URL": [],
+                                    "xml_id": "storyverse_47703"
+                                }
+                            ],
+                            "alternative_names": null,
+                            "described_at_URL": [],
+                            "xml_id": "storyverse_954"
+                        }
+                    ],
+                    "alternative_names": null,
+                    "described_at_URL": [],
+                    "xml_id": "storyverse_40"
+                }
+            ],
+            "alternative_names": [],
+            "matter TRM-ID": {
+                "trm_ID": 9724,
+                "trm_Label": "France",
+                "trm_Description": "Tales about Charlemagne and other legendary stories related to the history of France.",
+                "trm_Code": null,
+                "trm_SemanticReferenceURL": "https://www.wikidata.org/wiki/Q2487521",
+                "xml_id": "term_9724"
+            },
+            "is_modeled_on H-ID": [],
+            "described_at_URL": [],
+            "xml_id": "story_91"
+        }
+    ],
     "peripheral TRM-ID": {
         "trm_ID": 9498,
         "trm_Label": "No",
@@ -73,50 +118,52 @@
                 "xml_id": "term_9770"
             },
             "alternative_names": [],
-            "is_expression_of H-ID": {
-                "H-ID": 91,
-                "preferred_name": "Moniage Guillaume",
-                "is_part_of_storyverse H-ID": [
-                    {
-                        "H-ID": 40,
-                        "preferred_name": "Vie de Guillaume",
-                        "member_of_cycle H-ID": [
-                            {
-                                "H-ID": 954,
-                                "preferred_name": "Monglane",
-                                "member_of_cycle H-ID": [
-                                    {
-                                        "H-ID": 47703,
-                                        "preferred_name": "Matter of France",
-                                        "member_of_cycle H-ID": [],
-                                        "alternative_names": "Matière de France",
-                                        "described_at_URL": [],
-                                        "xml_id": "storyverse_47703"
-                                    }
-                                ],
-                                "alternative_names": null,
-                                "described_at_URL": [],
-                                "xml_id": "storyverse_954"
-                            }
-                        ],
-                        "alternative_names": null,
-                        "described_at_URL": [],
-                        "xml_id": "storyverse_40"
-                    }
-                ],
-                "alternative_names": [],
-                "matter TRM-ID": {
-                    "trm_ID": 9724,
-                    "trm_Label": "France",
-                    "trm_Description": "Tales about Charlemagne and other legendary stories related to the history of France.",
-                    "trm_Code": null,
-                    "trm_SemanticReferenceURL": "https://www.wikidata.org/wiki/Q2487521",
-                    "xml_id": "term_9724"
-                },
-                "is_modeled_on H-ID": [],
-                "described_at_URL": [],
-                "xml_id": "story_91"
-            },
+            "is_expression_of H-ID": [
+                {
+                    "H-ID": 91,
+                    "preferred_name": "Moniage Guillaume",
+                    "is_part_of_storyverse H-ID": [
+                        {
+                            "H-ID": 40,
+                            "preferred_name": "Vie de Guillaume",
+                            "member_of_cycle H-ID": [
+                                {
+                                    "H-ID": 954,
+                                    "preferred_name": "Monglane",
+                                    "member_of_cycle H-ID": [
+                                        {
+                                            "H-ID": 47703,
+                                            "preferred_name": "Matter of France",
+                                            "member_of_cycle H-ID": [],
+                                            "alternative_names": "Matière de France",
+                                            "described_at_URL": [],
+                                            "xml_id": "storyverse_47703"
+                                        }
+                                    ],
+                                    "alternative_names": null,
+                                    "described_at_URL": [],
+                                    "xml_id": "storyverse_954"
+                                }
+                            ],
+                            "alternative_names": null,
+                            "described_at_URL": [],
+                            "xml_id": "storyverse_40"
+                        }
+                    ],
+                    "alternative_names": [],
+                    "matter TRM-ID": {
+                        "trm_ID": 9724,
+                        "trm_Label": "France",
+                        "trm_Description": "Tales about Charlemagne and other legendary stories related to the history of France.",
+                        "trm_Code": null,
+                        "trm_SemanticReferenceURL": "https://www.wikidata.org/wiki/Q2487521",
+                        "xml_id": "term_9724"
+                    },
+                    "is_modeled_on H-ID": [],
+                    "described_at_URL": [],
+                    "xml_id": "story_91"
+                }
+            ],
             "peripheral TRM-ID": null,
             "specific_genre H-ID": null,
             "length": null,
