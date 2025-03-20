@@ -1,7 +1,7 @@
 # Pivot Heurist database to TEI documents
 [![License: CC BY-SA 4.0](https://img.shields.io/badge/License-CC_BY--SA_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by-sa/4.0/)
 
-This Python package is used to convert metadata from the relational entities created in LostMa's Heurist database into TEI documents. The TEI documents are based at the level of a Text and feature a `<listWit>` entity, in which are listed the related Witness entities' metadata.
+From the relational entities in LostMa's Heurist database, this package generates TEI documents, based at the level of a Text.
 
 ## Table of contents
 
