@@ -2,7 +2,7 @@
 
 from lxml import etree
 from app.constants import NSMAP
-from config import TEXT_BASE_FILE
+from app import TEXT_TEI_MODEL
 from datetime import datetime
 
 
@@ -31,7 +31,7 @@ class BaseTEIParser(object):
 
 
 class TextTree:
-    def __init__(self, base_file: str = TEXT_BASE_FILE):
+    def __init__(self, base_file: str = TEXT_TEI_MODEL):
         self.tree = etree.parse(base_file)
         self.titleStmt = self.TitleStmt(tree=self.tree)
         self.publicationStmt = self.PublicationStmt(tree=self.tree)

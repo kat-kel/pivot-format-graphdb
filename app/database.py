@@ -2,7 +2,7 @@ from pathlib import Path
 
 import duckdb
 
-from config import DB_PATH
+from app import DB_PATH
 
 
 class DBConn:

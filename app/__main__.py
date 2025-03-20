@@ -1,14 +1,18 @@
 import click
+import importlib.metadata
 from click import ClickException
 from pathlib import Path
 from app.database import DBConn
-from config import OUTDIR_PATH
+from app import OUTDIR_PATH
 from app.data_models.text import TextModel
 from app.tei_models.text.builder import TextTreeBuilder
 from rich.progress import Progress, BarColumn, TimeElapsedColumn, MofNCompleteColumn
 
+__identifier__ = importlib.metadata.version("pivot")
+
 
 @click.group()
+@click.version_option(__identifier__)
 def cli():
     pass
 

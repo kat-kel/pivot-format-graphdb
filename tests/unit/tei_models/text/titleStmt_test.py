@@ -57,11 +57,11 @@ class TitleStmtTest(unittest.TestCase):
         # Try to insert the parsed mock data
         TitleStmt.insert_data(text=self.data_model, tree=self.tree)
 
-        # Assert that the 'title' node has the text's name
+        # Assert the text's title is in the TEI document title
         expected = self.data_model.preferred_name
         title_node = self.tree.titleStmt.title
-        actual = title_node.text
-        self.assertEqual(actual, expected)
+        actual = title_node.text  # 'Encoded metadata of "{title}"'
+        self.assertRegex(actual, expected)
 
 
 if __name__ == "__main__":

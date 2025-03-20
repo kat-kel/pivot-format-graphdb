@@ -1,7 +1,7 @@
 from lxml import etree
 from dataclasses import dataclass
 from app.data_models.text import TextModel
-from config import CONTRIBUTOR_CONFIG
+from app import CONTRIBUTORS
 from app.tei_models.text.base_tree import TextTree
 
 
@@ -86,7 +86,7 @@ class TitleStmt:
         """
 
         # Start list of people with data entry and proof correction contributors
-        languages = CONTRIBUTOR_CONFIG["data entry"]
+        languages = CONTRIBUTORS["data entry"]
         if language_code and languages.get(language_code):
             names = languages[language_code]
         else:
@@ -99,7 +99,7 @@ class TitleStmt:
         people.extend(
             [
                 RespPerson(name=n, role="conversion of metadata to TEI markup")
-                for n in CONTRIBUTOR_CONFIG["encoding"]["metadata"]
+                for n in CONTRIBUTORS["encoding"]["metadata"]
             ]
         )
 
@@ -107,7 +107,7 @@ class TitleStmt:
         people.extend(
             [
                 RespPerson(name=n, role="conversion of text to TEI markup")
-                for n in CONTRIBUTOR_CONFIG["encoding"]["text"]
+                for n in CONTRIBUTORS["encoding"]["text"]
             ]
         )
 
