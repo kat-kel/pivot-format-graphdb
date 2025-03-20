@@ -1,0 +1,240 @@
+{
+    "H-ID": 47788,
+    "preferred_name": "Willem van Oringen I",
+    "language_COLUMN TRM-ID": {
+        "trm_ID": 9728,
+        "trm_Label": "dum (Middle Dutch)",
+        "trm_Description": "Middle Dutch",
+        "trm_Code": "dum",
+        "trm_SemanticReferenceURL": "https://iso639-3.sil.org/code/dum",
+        "xml_id": "term_9728"
+    },
+    "literary_form TRM-ID": {
+        "trm_ID": 9549,
+        "trm_Label": "verse",
+        "trm_Description": null,
+        "trm_Code": null,
+        "trm_SemanticReferenceURL": null,
+        "xml_id": "term_9549"
+    },
+    "is_hypothetical TRM-ID": {
+        "trm_ID": 9483,
+        "trm_Label": "No",
+        "trm_Description": null,
+        "trm_Code": null,
+        "trm_SemanticReferenceURL": null,
+        "xml_id": "term_9483"
+    },
+    "alternative_names": [],
+    "is_expression_of H-ID": null,
+    "peripheral TRM-ID": {
+        "trm_ID": 9498,
+        "trm_Label": "No",
+        "trm_Description": null,
+        "trm_Code": null,
+        "trm_SemanticReferenceURL": null,
+        "xml_id": "term_9498"
+    },
+    "specific_genre H-ID": {
+        "H-ID": 46304,
+        "preferred_name": "Karelepiek",
+        "parent_genre H-ID": null,
+        "alternative_names": [],
+        "description": "Story about Charlemagne and his family.",
+        "archetype": [],
+        "described_at_URL": [],
+        "xml_id": "genre_46304"
+    },
+    "length": 50000,
+    "length_freetext": null,
+    "verse_type TRM-ID": [],
+    "rhyme_type TRM-ID": [
+        {
+            "trm_ID": 9779,
+            "trm_Label": "full rhyme",
+            "trm_Description": null,
+            "trm_Code": null,
+            "trm_SemanticReferenceURL": null,
+            "xml_id": "term_9779"
+        }
+    ],
+    "is_derived_from H-ID": [
+        {
+            "H-ID": 744,
+            "preferred_name": "Moniage Guillaume. Seconde rédaction",
+            "language_COLUMN TRM-ID": null,
+            "literary_form TRM-ID": null,
+            "is_hypothetical TRM-ID": {
+                "trm_ID": 9770,
+                "trm_Label": "unknown",
+                "trm_Description": "The information is not ready to be input.",
+                "trm_Code": null,
+                "trm_SemanticReferenceURL": null,
+                "xml_id": "term_9770"
+            },
+            "alternative_names": [],
+            "is_expression_of H-ID": {
+                "H-ID": 91,
+                "preferred_name": "Moniage Guillaume",
+                "is_part_of_storyverse H-ID": [
+                    {
+                        "H-ID": 40,
+                        "preferred_name": "Vie de Guillaume",
+                        "member_of_cycle H-ID": [
+                            {
+                                "H-ID": 954,
+                                "preferred_name": "Monglane",
+                                "member_of_cycle H-ID": [
+                                    {
+                                        "H-ID": 47703,
+                                        "preferred_name": "Matter of France",
+                                        "member_of_cycle H-ID": [],
+                                        "alternative_names": "Matière de France",
+                                        "described_at_URL": [],
+                                        "xml_id": "storyverse_47703"
+                                    }
+                                ],
+                                "alternative_names": null,
+                                "described_at_URL": [],
+                                "xml_id": "storyverse_954"
+                            }
+                        ],
+                        "alternative_names": null,
+                        "described_at_URL": [],
+                        "xml_id": "storyverse_40"
+                    }
+                ],
+                "alternative_names": [],
+                "matter TRM-ID": {
+                    "trm_ID": 9724,
+                    "trm_Label": "France",
+                    "trm_Description": "Tales about Charlemagne and other legendary stories related to the history of France.",
+                    "trm_Code": null,
+                    "trm_SemanticReferenceURL": "https://www.wikidata.org/wiki/Q2487521",
+                    "xml_id": "term_9724"
+                },
+                "is_modeled_on H-ID": [],
+                "described_at_URL": [],
+                "xml_id": "story_91"
+            },
+            "peripheral TRM-ID": null,
+            "specific_genre H-ID": null,
+            "length": null,
+            "length_freetext": null,
+            "verse_type TRM-ID": [],
+            "rhyme_type TRM-ID": [],
+            "is_derived_from H-ID": [],
+            "nature_of_derivations": null,
+            "tradition_status TRM-ID": {
+                "trm_ID": 9480,
+                "trm_Label": "surviving",
+                "trm_Description": "Surviving in at least one (more or less) complete manuscript",
+                "trm_Code": null,
+                "trm_SemanticReferenceURL": null,
+                "xml_id": "term_9480"
+            },
+            "status_notes": null,
+            "has_lost_older_version TRM-ID": {
+                "trm_ID": 9484,
+                "trm_Label": "Maybe",
+                "trm_Description": null,
+                "trm_Code": null,
+                "trm_SemanticReferenceURL": null,
+                "xml_id": "term_9484"
+            },
+            "regional_writing_style H-ID": null,
+            "date_of_creation_TEMPORAL": {
+                "start": {
+                    "earliest": 1180.0,
+                    "latest": null
+                },
+                "end": {
+                    "earliest": null,
+                    "latest": 1190.0
+                },
+                "timestamp": null,
+                "estMinDate": 1180,
+                "estMaxDate": 1190.1231,
+                "profile": null,
+                "determination": null
+            },
+            "date_of_creation_certainty TRM-ID": null,
+            "date_freetext": "XII?, c. 1180-1190",
+            "is_written_by H-ID": [],
+            "is_adapted_by H-ID": [],
+            "described_at_URL": [
+                "https://arlima.net/no/1704"
+            ],
+            "xml_id": "text_744"
+        }
+    ],
+    "nature_of_derivations": null,
+    "tradition_status TRM-ID": {
+        "trm_ID": 9477,
+        "trm_Label": "fragmentary",
+        "trm_Description": "Surviving in only fragments. No complete witnesses survive.",
+        "trm_Code": null,
+        "trm_SemanticReferenceURL": null,
+        "xml_id": "term_9477"
+    },
+    "status_notes": null,
+    "has_lost_older_version TRM-ID": {
+        "trm_ID": 9483,
+        "trm_Label": "No",
+        "trm_Description": null,
+        "trm_Code": null,
+        "trm_SemanticReferenceURL": null,
+        "xml_id": "term_9483"
+    },
+    "regional_writing_style H-ID": {
+        "H-ID": 47357,
+        "preferred_name": "Hollands",
+        "description": "Dialect from the north-western Dutch region.",
+        "language_COLUMN TRM-ID": {
+            "trm_ID": 9728,
+            "trm_Label": "dum (Middle Dutch)",
+            "trm_Description": "Middle Dutch",
+            "trm_Code": "dum",
+            "trm_SemanticReferenceURL": "https://iso639-3.sil.org/code/dum",
+            "xml_id": "term_9728"
+        },
+        "region H-ID": null,
+        "region_note": null,
+        "described_at_URL": [],
+        "xml_id": "scripta_47357"
+    },
+    "date_of_creation_TEMPORAL": {
+        "start": {
+            "earliest": 1201.0,
+            "latest": null
+        },
+        "end": {
+            "earliest": null,
+            "latest": 1325.0
+        },
+        "timestamp": null,
+        "estMinDate": 1201,
+        "estMaxDate": 1325.1231,
+        "profile": "3",
+        "determination": "2"
+    },
+    "date_of_creation_certainty TRM-ID": {
+        "trm_ID": 9763,
+        "trm_Label": "2. Probable (33%-66%)",
+        "trm_Description": null,
+        "trm_Code": null,
+        "trm_SemanticReferenceURL": null,
+        "xml_id": "term_9763"
+    },
+    "date_freetext": "'Medio en tweede helft dertiende eeuw'",
+    "is_written_by H-ID": [
+        {
+            "H-ID": 47789
+        }
+    ],
+    "is_adapted_by H-ID": [],
+    "described_at_URL": [
+        "https://lib.ugent.be/catalog/rug01:000990047"
+    ],
+    "xml_id": "text_47788"
+}

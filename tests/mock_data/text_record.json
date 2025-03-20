@@ -1,0 +1,71 @@
+{
+    "H-ID": 47788,
+    "type_id": 101,
+    "preferred_name": "Willem van Oringen I",
+    "language_COLUMN": "dum (Middle Dutch)",
+    "language_COLUMN TRM-ID": 9728.0,
+    "literary_form": "verse",
+    "literary_form TRM-ID": 9549.0,
+    "is_hypothetical": "No",
+    "is_hypothetical TRM-ID": 9483,
+    "claim_freetext": null,
+    "alternative_names": [],
+    "is_expression_of H-ID": null,
+    "peripheral": "No",
+    "peripheral TRM-ID": 9498.0,
+    "specific_genre H-ID": 46304.0,
+    "length": 50000.0,
+    "length_freetext": null,
+    "verse_type": [],
+    "verse_type TRM-ID": [],
+    "rhyme_type": [
+        "full rhyme"
+    ],
+    "rhyme_type TRM-ID": [
+        9779
+    ],
+    "is_derived_from H-ID": [
+        744
+    ],
+    "nature_of_derivations": null,
+    "tradition_status": "fragmentary",
+    "tradition_status TRM-ID": 9477.0,
+    "status_notes": null,
+    "in_stemma H-ID": [],
+    "has_lost_older_version": "No",
+    "has_lost_older_version TRM-ID": 9483,
+    "ancient_translations_freetext": [],
+    "rewritings_freetext": [],
+    "note": null,
+    "regional_writing_style H-ID": 47357.0,
+    "scripta_freetext": "'Holland/Zeeland'",
+    "date_of_creation": [
+        "1201-01-01 00:00:00",
+        "1325-12-31 00:00:00"
+    ],
+    "date_of_creation_TEMPORAL": "{'start': {'earliest': '1201'}, 'end': {'latest': '1325'}, 'profile': '3', 'determination': '2', 'estMinDate': 1201, 'estMaxDate': 1325.1231}",
+    "date_of_creation_certainty": "2. Probable (33%-66%)",
+    "date_of_creation_certainty TRM-ID": 9763.0,
+    "date_of_creation_source": "Caers & Kestemont (2011), p.",
+    "date_freetext": "'Medio en tweede helft dertiende eeuw'",
+    "is_written_by H-ID": [
+        47789
+    ],
+    "is_adapted_by H-ID": [],
+    "author_freetext": null,
+    "place_of_creation H-ID": null,
+    "place_of_creation_source": null,
+    "described_by_source H-ID": [
+        47485,
+        47482,
+        47484,
+        47483
+    ],
+    "described_at_URL": [
+        "https://lib.ugent.be/catalog/rug01:000990047"
+    ],
+    "reference_notes": [],
+    "review_status": "Action required",
+    "review_status TRM-ID": 9697.0,
+    "review_note": "Check."
+}

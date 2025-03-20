@@ -1,0 +1,18 @@
+data entry:
+  dum:
+    - Elisabeth de Bruijn
+    - Cecile Vermaas
+    - Mike Kestemont
+    - Remco Sleiderink
+  gmh:
+    - Mike Kestemont
+  non:
+    - Katarzyna Kapitan
+  default:
+    - Jean-Baptiste Camps
+
+encoding:
+  metadata:
+    - Kelly Christensen
+  text:
+    - Théo Moins
