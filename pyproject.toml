@@ -3,7 +3,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "pivot"
+name = "lostma-tei"
 dependencies = [
     "lxml>=5.3.1",
     "heurist @ git+ssh://git@github.com/LostMa-ERC/heurist-etl-pipeline",
@@ -17,7 +17,7 @@ description = ""
 dev = ["black>=24.1.0", "isort>=5.13.0", "pytest"]
 
 [project.scripts]
-pivot = "app.__main__:cli"
+lostma-tei = "app.cli.main:cli"
 
 [tool.hatch]
 

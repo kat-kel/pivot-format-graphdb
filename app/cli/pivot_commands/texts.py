@@ -1,5 +1,4 @@
 import click
-import importlib.metadata
 from click import ClickException
 from pathlib import Path
 from app.database import DBConn
@@ -14,16 +13,8 @@ from rich.progress import (
     MofNCompleteColumn,
 )
 
-__identifier__ = importlib.metadata.version("pivot")
 
-
-@click.group()
-@click.version_option(__identifier__)
-def cli():
-    pass
-
-
-@cli.command("all")
+@click.command("texts")
 @click.option(
     "--database",
     required=False,
@@ -71,7 +62,3 @@ def pivot_all_texts(database: str | None, outdir: str | None):
             tree = TextTreeBuilder(text_data_model=model)
             tree.write(outfile=fp)
             p.advance(task_id=t)
-
-
-if __name__ == "__main__":
-    cli()

@@ -7,6 +7,9 @@ From the relational entities in LostMa's Heurist database, this package generate
 
 - [Installation](#installation)
 - [Usage](#usage)
+  - [Configure project](#configure-project)
+  - [Download new Heurist data](#download-heurist-data)
+  - [Pivot data to TEI](#pivot-data-to-tei)
 - [Development](#development)
 - [License](#license)
 
@@ -27,96 +30,67 @@ Successfully built pivot heurist
 
 ## Usage
 
-### Update the Heurist data
+1. [Configure project](#configure-project)
+2. [Download new Heurist data](#download-heurist-data)
+3. [Pivot data to TEI](#pivot-data-to-tei)
 
-This project's command `pivot` requires access to the Heurist database's data. More specifically, it expects to find a DuckDB database file that a partner Python package [`heurist`](https://lostma-erc.github.io/heurist-etl-pipeline/) generates with its `download` command. The `heurist` Python package is automatically installed with this package.
-
-Refresh the downloaded database, using the record-type option `-r` to collect entities relevant to the TEI pivot format.
+Short cut (for when you've already configured the project):
 
 ```shell
--r "My record types" -r "Place, features" -r "People and organisations"
+# First step
+lostma-tei heurist download
+```
+
+```shell
+# Second step
+lostma-tei pivot texts
 ```
 
 
+### Configure project
 
-If you haven't or are having trouble setting up the `heurist` CLI (see [setup](https://lostma-erc.github.io/heurist-etl-pipeline/usage/#installation)), don't worry. The program will prompt you to manually enter any missing information that's necessary for its API to connect to the Heurist database.
+Write your Heurist login credentials in a `.env` file. See [setup](https://lostma-erc.github.io/heurist-etl-pipeline/usage/#installation) for more information.
 
-```console
-$ heurist download -f heurist.db -r "My record types" -r "Place, features" -r "People and organisations"
-
-A connection to your Heurist database could not be established.
-Please provide the information when prompted. To quit, press Ctrl+C then Enter.
-Heurist database name: jbcamps_gestes
-Heurist user login: ############
-Heurist login password: ############
-Retrying the connection...
-Success!
-Get DB Structure ⠼ 0:00:00
-Get Records ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 25/25 0:00:12
-
-Created the following tables
-┌───────────────┐
-│     name      │
-│    varchar    │
-├───────────────┤
-│ CreativeWork  │
-│ Digitization  │
-│ DocumentTable │
-│ Footnote      │
-
+```env
+DB_NAME=database_name
+DB_LOGIN="user.name"
+DB_PASSWORD=password
 ```
 
-### Pivot all texts to TEI documents
-
-If necessary, make edits to the configuration file, located at [config.yml](./config.yml). Most importantly, make sure that the path to the Heurist database you transformed and downloaded as a DuckDB file is correct.
+In the [`config.yml`](./config.yml) file for this project, confirm the path to the DuckDB database file that will be generated when the Heurist data is downloaded from the remote server.
 
 ```yaml
 file paths:
   database: heurist.db
-  output directory: output
-  text TEI model: tei_base_text.xml
-
+  output directory: texts
 ```
 
-Run the `pivot all` command. The package will look for the configuration file at `./config.yml` and proceed to process all the text metadata in the downloaded Heurist database file.
+### Download Heurist data
+
+Run the `heurist download` command of this package, which automatically reads all the necessary parameters from this project's config file and the `.env` file you set up.
 
 ```console
-$ pivot all
-Transforming text metadata... ━━━━━━━━━━━━━━━━━━━━━━━╺━━━━━━━━━━━━━━━━ 283/487 0:00:06
+$ lostma-tei heurist download
+Get DB Structure ⠙ 0:00:01
+Get Records ━━━━━━━━━━━━━━━━━━━━ 25/25 0:00:11
 ```
 
-As detailed in the configuration file (see `output directory: output`), the generated TEI documents will be written to the directory `./output`. The beginning of the files will ressemble that shown below:
+If you don't want to set up a `.env` file, pass the relevant parameters to the command as options.
 
-```xml
-<?xml version='1.0' encoding='utf-8'?>
-<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
-<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml"
-	schematypens="http://purl.oclc.org/dsdl/schematron"?>
-<TEI xmlns="http://www.tei-c.org/ns/1.0">
-  <!-- Add Heurist ID of text as xml:id -->
-  <teiHeader>
-    <fileDesc>
-      <titleStmt>
-        <title>Encoded metadata of "Iwein"</title>
-        <funder>European Research Council</funder>
-        <principal>Jean-Baptiste Camps</principal>
-        <respStmt>
-          <name>Mike Kestemont</name>
-          <resp>data entry and proof correction</resp>
-          <name>Kelly Christensen</name>
-          <resp>conversion of metadata to TEI markup</resp>
-          <name>Théo Moins</name>
-          <resp>conversion of text to TEI markup</resp>
-        </respStmt>
-      </titleStmt>
-      <publicationStmt>
-        <publisher>LostMa ERC Project</publisher>
-        <pubPlace>Paris</pubPlace>
-        <date>2025-03-20</date>
-        <availability status="restricted">
-          <licence target="https://creativecommons.org/licenses/by/4.0/">Distributed under a Creative Commons Attribution 4.0 International License</licence>
-        </availability>
-      </publicationStmt>
+```shell
+lostma-tei heurist download \
+--database heurist_database \
+--login "user.name" \
+--password "password"
+```
+
+### Pivot data to TEI
+
+Run the `pivot texts` command of this package to select all the texts loaded into the DuckDB database and transform them into TEI-XML documents. The documents will be written in the `output directory` folder you specified in the [`config.yml`](./config.yml) file.
+
+```console
+$ lostma-tei pivot texts
+Transforming text metadata... ━━━━━━━━━━━━━━━━━━━━ 487/487 0:00:13
 ```
 
 ## Development

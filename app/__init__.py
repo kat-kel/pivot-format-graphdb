@@ -1,5 +1,4 @@
 from pathlib import Path
-
 import yaml
 
 cwd = Path(__file__).parent.parent
@@ -10,4 +9,11 @@ with open(config_file, mode="r") as f:
 CONTRIBUTORS = config["contributors"]
 DB_PATH = config["file paths"]["database"]
 OUTDIR_PATH = config["file paths"]["output directory"]
-TEXT_TEI_MODEL = config["file paths"]["text TEI model"]
+
+# text_tree_model_filepath
+text_tree_model_filepath = config["file paths"]["text TEI model"]
+
+TEXT_TEI_MODEL = cwd.joinpath(text_tree_model_filepath)
+
+if not TEXT_TEI_MODEL.is_file():
+    raise FileNotFoundError(TEXT_TEI_MODEL)
