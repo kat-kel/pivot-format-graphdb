@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml"
+	schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0"> <!-- Add Heurist ID of text as xml:id -->
+  <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title></title>
+            <funder>European Research Council</funder>
+            <principal>Jean-Baptiste Camps</principal>
+            <respStmt/>
+         </titleStmt>
+         <publicationStmt>
+            <publisher>LostMa ERC Project</publisher>
+            <pubPlace>Paris</pubPlace>
+            <date></date>
+            <availability status="restricted">
+                <licence target="https://creativecommons.org/licenses/by/4.0/">Distributed under a Creative Commons Attribution 4.0 International License</licence>
+            </availability>
+         </publicationStmt>
+         <sourceDesc>
+            <listWit>
+            <!-- witnesses of text -->
+            </listWit>
+         </sourceDesc>
+      </fileDesc>
+      <encodingDesc>
+        <classDecl>
+            <taxonomy>
+                <category xml:id="genre">
+                    <catDesc>Genre</catDesc>
+                </category>
+            </taxonomy>
+        </classDecl>
+      </encodingDesc>
+      <profileDesc>
+        <creation/>
+        <langUsage/>
+    </profileDesc>
+  </teiHeader>
+   <text>
+      <body><p><!-- Allignment of a text as a prep for an edition. --></p></body>
+   </text>
+</TEI>
