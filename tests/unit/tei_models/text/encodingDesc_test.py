@@ -2,7 +2,7 @@ from lxml import etree
 import unittest
 from app.data_models.genre import GenreModel
 from app.tei_models.text.encodingDesc import EncodingDesc, GenreTaxonomy
-from app.tei_models.text.base_tree import TextTree
+from app.tei_models.text import TextTree
 from tests.mock_data.text import DATA_MODEL
 
 NESTED_GENRE = GenreModel(

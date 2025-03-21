@@ -4,7 +4,7 @@ from lxml import etree
 from app.tei_models.text.profileDesc import Date, ProfileDesc, Language
 from app.data_models.date import DateObject
 from app.data_models import TermModel
-from app.tei_models.text.base_tree import TextTree
+from app.tei_models.text import TextTree
 
 # Set up mock data for Text data model
 from tests.mock_data.text import DATA_MODEL

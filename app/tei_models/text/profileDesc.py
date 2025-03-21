@@ -1,7 +1,7 @@
 from lxml import etree
 
 from app.data_models.text import TextModel
-from app.tei_models.text.base_tree import TextTree
+from app.tei_models.text import TextTree
 from app.data_models.term import TermModel
 from app.data_models.date import DateObject, DeterminationConverter
 from heurist.converters.date_handler import HeuristDateHandler

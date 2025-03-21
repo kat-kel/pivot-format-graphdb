@@ -2,7 +2,7 @@ from lxml import etree
 from app.data_models.genre import GenreModel
 from app.data_models.text import TextModel
 from app.constants import XML_ID
-from app.tei_models.text.base_tree import TextTree
+from app.tei_models.text import TextTree
 
 
 class GenreTaxonomy:

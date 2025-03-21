@@ -1,6 +1,6 @@
 import unittest
 
-from app.tei_models.text.base_tree import TextTree
+from app.tei_models.text import TextTree
 
 
 class Test(unittest.TestCase):

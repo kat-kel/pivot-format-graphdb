@@ -1,7 +1,7 @@
 import unittest
 
 from lxml import etree
-from app.tei_models.text.base_tree import TextTree
+from app.tei_models.text import TextTree
 from app.tei_models.text.titleStmt import RespPerson, TitleStmt
 
 # Set up mock data for Text data model

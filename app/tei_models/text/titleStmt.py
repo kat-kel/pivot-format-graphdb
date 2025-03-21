@@ -2,7 +2,7 @@ from lxml import etree
 from dataclasses import dataclass
 from app.data_models.text import TextModel
 from app import CONTRIBUTORS
-from app.tei_models.text.base_tree import TextTree
+from app.tei_models.text import TextTree
 
 
 @dataclass
