@@ -1,4 +1,4 @@
-from . import Edge
+from app.models.edges import Edge
 
 
 StoryIsPartOfStoryverse = Edge(

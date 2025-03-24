@@ -1,4 +1,4 @@
-from . import Node
+from app.models.nodes import Node
 
 Storyverse = Node(
     name="Storyverse",
