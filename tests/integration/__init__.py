@@ -2,7 +2,7 @@ import unittest
 import kuzu
 import shutil
 from pathlib import Path
-from app import DB_PATH
+from app import HEURIST_DB
 import duckdb
 
 
@@ -14,7 +14,7 @@ class IntegrationTest(unittest.TestCase):
         db = kuzu.Database(TEST_KUZU_DB)
         self.kconn = kuzu.Connection(db)
 
-        self.dconn = duckdb.connect(DB_PATH)
+        self.dconn = duckdb.connect(HEURIST_DB)
 
         return super().setUp()
 

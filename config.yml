@@ -17,6 +17,7 @@ contributors:
     text:
       - Théo Moins
 file paths:
-  database: heurist.db
+  heurist database: heurist.db
+  graph database: kuzu
   output directory: output
   text TEI model: tei_base_text.xml

@@ -3,7 +3,7 @@ import duckdb
 from dotenv import find_dotenv, load_dotenv
 import os
 
-from app import DB_PATH
+from app import HEURIST_DB
 from heurist.api.client import HeuristAPIClient
 from heurist.workflows.etl import extract_transform_load
 
@@ -30,7 +30,7 @@ RECORD_GROUP_NAMES = ["My record types", "Place, features", "People and organisa
 def download(database, login, password):
     kwargs = get_vars(database, login, password)
     client = HeuristAPIClient(**kwargs)
-    conn = duckdb.connect(DB_PATH)
+    conn = duckdb.connect(HEURIST_DB)
     extract_transform_load(
         client=client,
         duckdb_connection=conn,

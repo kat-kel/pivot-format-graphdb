@@ -2,6 +2,9 @@ import unittest
 
 from tests.integration import IntegrationTest
 
+from app.builder.edges import build_all_edges
+from app.builder.nodes import build_all_nodes, ALL_NODES
+
 from app.models.nodes import Builder as NodeBuilder
 from app.models.nodes.story import Story
 from app.models.nodes.storyverse import Storyverse
@@ -13,9 +16,26 @@ from app.models.edges.is_part_of_storyverse import (
 )
 
 
-class Test(IntegrationTest):
+class BuildTest(IntegrationTest):
+    """Test the builder functions and methods for the Kuzu nodes and edges."""
+
+    def test_edge_integration_builder(self):
+        """Test that the integrated build-all methods work."""
+        build_all_nodes(kconn=self.kconn, dconn=self.dconn)
+        build_all_edges(kconn=self.kconn, dconn=self.dconn)
+
+        for node in ALL_NODES:
+            # Count the number of rows selected from the DuckDB database.
+            expected = self.dconn.sql(node.duckdb_query).count("*").fetchone()[0]
+            # Count the number of nodes created in the Kuzu database.
+            query = f"MATCH (n:{node.name}) RETURN n"
+            actual = self.kconn.execute(query).get_as_df().shape[0]
+            # Assert that all the rows from the DuckDB database were inserted as
+            # nodes in the Kuzu database.
+            self.assertEqual(expected, actual)
+
     def test_edges(self):
-        """Test that the edge builder works"""
+        """Test that the edge builder works."""
 
         # Build the nodes for the testd edge
         node_builder = NodeBuilder(kconn=self.kconn, dconn=self.dconn)
