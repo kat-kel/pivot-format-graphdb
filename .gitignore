@@ -173,5 +173,6 @@ cython_debug/
 *.db
 */**.xml
 */**.log*
-*.xml
 *.sh
+*.ipynb
+uninstall.txt
