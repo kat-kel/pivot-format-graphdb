@@ -2,7 +2,10 @@ from app.models.edges import Edge
 
 
 IsModeledOn = Edge(
-    name="IS_MODELED_ON",
+    name="Sotry_isModeledOn",
+    from_node="Story",
+    to_node="Story",
+    metadata=["name STRING"],
     duckdb_query="""
     SELECT
         "H-ID" as "from",
@@ -11,7 +14,4 @@ IsModeledOn = Edge(
     FROM Story
     WHERE "is_modeled_on H-ID" != []
     """,
-    from_node="Story",
-    to_node="Story",
-    metadata=["name STRING"],
 )

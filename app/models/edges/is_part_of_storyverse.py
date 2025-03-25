@@ -3,6 +3,9 @@ from app.models.edges import Edge
 
 StoryIsPartOfStoryverse = Edge(
     name="Story_isPartOf",
+    from_node="Story",
+    to_node="Storyverse",
+    metadata=["name STRING"],
     duckdb_query="""
     SELECT
         "H-ID" as "from",
@@ -11,9 +14,6 @@ StoryIsPartOfStoryverse = Edge(
     FROM Story
     WHERE "is_part_of_storyverse H-ID" != []
     """,
-    from_node="Story",
-    to_node="Storyverse",
-    metadata=["name STRING"],
 )
 
 

@@ -1,8 +1,17 @@
-from app.models.nodes import Node
+from app.models.nodes import Node, Property
 
 
 Story = Node(
     name="Story",
+    pk="id",
+    metadata=[
+        Property(name="id", type="INT"),
+        Property(name="name", type="STRING"),
+        Property(name="alternative_names", type="STRING[]"),
+        Property(name="matter", type="STRING"),
+        Property(name="peripheral", type="STRING"),
+        Property(name="described_at_URL", type="STRING[]"),
+    ],
     duckdb_query="""
         SELECT
             "H-ID" as id,
@@ -13,13 +22,4 @@ Story = Node(
             described_at_URL
         FROM Story
     """,
-    pk="id",
-    metadata=[
-        "id INT",
-        "name STRING",
-        "alternative_names STRING[]",
-        "matter STRING",
-        "peripheral STRING",
-        "described_at_URL STRING[]",
-    ],
 )

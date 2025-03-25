@@ -7,13 +7,13 @@ from polars import DataFrame
 @dataclass
 class Edge:
     name: str
-    duckdb_query: str
     from_node: str
     to_node: str
     metadata: list[str]
+    duckdb_query: str
 
 
-class Builder:
+class EdgeBuilder:
     def __init__(self, kconn: Connection, dconn: DuckDBPyConnection):
         self.kconn = kconn
         self.dconn = dconn
