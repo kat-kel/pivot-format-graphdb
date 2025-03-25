@@ -2,14 +2,14 @@ import unittest
 
 from tests.integration import IntegrationTest
 
-from app.builder.edges import build_all_edges
-from app.builder.nodes import build_all_nodes, ALL_NODES
-
-from app.models.nodes import Builder as NodeBuilder
+from app.models import NodeBuilder, EdgeBuilder
+from app.models.builders import (
+    create_all_edges,
+    create_all_nodes,
+    ALL_NODES,
+)
 from app.models.nodes.story import Story
 from app.models.nodes.storyverse import Storyverse
-
-from app.models.edges import Builder as EdgeBuilder
 from app.models.edges.is_part_of_storyverse import (
     StoryIsPartOfStoryverse,
     StoryverseIsPartOfStoryverse,
@@ -21,8 +21,8 @@ class BuildTest(IntegrationTest):
 
     def test_edge_integration_builder(self):
         """Test that the integrated build-all methods work."""
-        build_all_nodes(kconn=self.kconn, dconn=self.dconn)
-        build_all_edges(kconn=self.kconn, dconn=self.dconn)
+        create_all_nodes(kconn=self.kconn, dconn=self.dconn)
+        create_all_edges(kconn=self.kconn, dconn=self.dconn)
 
         for node in ALL_NODES:
             # Count the number of rows selected from the DuckDB database.
