@@ -1,0 +1,153 @@
+from dataclasses import dataclass
+from kuzu import Connection, QueryResult
+from duckdb import DuckDBPyConnection
+from typing import Literal
+
+
+CypherTypes = Literal[
+    "BOOLEAN",
+    "DATE",
+    "DATE[]",
+    "DURATION",
+    "FLOAT",
+    "FLOAT[]",
+    "INT",
+    "INT[]",
+    "MAP",
+    "POINT",
+    "STRING",
+    "STRING[]",
+    "STRUCT",
+]
+
+
+class Metadata:
+    def __init__(
+        self,
+        label: str,
+        col: str | None = None,
+        type: CypherTypes | None = None,
+        temporal: bool = False,
+    ):
+        self.label = label
+        if not col:
+            self.duckdb_col = label
+        else:
+            self.duckdb_col = col
+        self.temporal = temporal
+        # If the metadata is a Heurist temporal object,
+        # create a flat structured data type
+        if temporal:
+            self.type = """STRUCT(
+start_earliest TIMESTAMP,
+start_latest TIMESTAMP,
+start_prob STRING,
+start_cert STRING,
+end_earliest TIMESTAMP,
+end_latest TIMESTAMP,
+end_prob STRING,
+end_cert STRING,
+timestamp_year TIMESTAMP,
+timestamp_type STRING,
+timestamp_circa BOOL,
+est_min TIMESTAMP,
+est_max TIMESTAMP,
+est_prob STRING,
+est_cert STRING
+)"""
+        else:
+            self.type = type
+
+    @property
+    def cypher_alias(self) -> str:
+        return f"{self.label} {self.type}"
+
+    @property
+    def sql_alias(self) -> str:
+        if self.temporal:
+            s = f"""
+'start_earliest': {self.duckdb_col}.start.earliest,
+'start_latest': {self.duckdb_col}.start.latest,
+'start_prob': {self.duckdb_col}.start.estProfile,
+'start_cert': {self.duckdb_col}.start.estDetermination,
+'end_earliest': {self.duckdb_col}.end.earliest,
+'end_latest': {self.duckdb_col}.end.latest,
+'end_prob': {self.duckdb_col}.end.estProfile,
+'end_cert': {self.duckdb_col}.end.estDetermination,
+'timestamp_year': {self.duckdb_col}.timestamp.in,
+'timestamp_type': {self.duckdb_col}.timestamp.type,
+'timestamp_circa': {self.duckdb_col}.timestamp.circa,
+'est_min': {self.duckdb_col}.estMinDate,
+'est_max': {self.duckdb_col}.estMaxDate,
+'est_prob': {self.duckdb_col}.estProfile,
+'est_cert': {self.duckdb_col}.estDetermination
+"""
+            return f"""
+            CASE WHEN "{self.duckdb_col}" IS NULL THEN NULL ELSE {{{s}}}
+            END AS {self.label}"""
+        elif self.type == "BOOLEAN":
+            return f"""
+CASE WHEN "{self.duckdb_col}" LIKE 'Yes' THEN True ELSE False END AS {self.label}
+"""
+        else:
+            return f'"{self.duckdb_col}" AS {self.label}'
+
+
+@dataclass
+class Node:
+    label: str
+    pk: str
+    metadata: list[Metadata]
+    table: str
+
+    def list_cypher_props(self) -> list[str]:
+        return [m.cypher_alias for m in self.metadata]
+
+    @property
+    def create_statement(self) -> str:
+        params = self.list_cypher_props() + [f"PRIMARY KEY ({self.pk})"]
+        return f"""
+    CREATE NODE TABLE {self.label}
+    (
+        {', '.join(params)}
+    )"""
+
+    @property
+    def duckdb_query(self) -> str:
+        aliases = ", ".join([m.sql_alias for m in self.metadata])
+        return f"SELECT {aliases} FROM {self.table}"
+
+
+class NodeBuilder:
+    def __init__(self, kconn: Connection, dconn: DuckDBPyConnection) -> None:
+        self.kconn = kconn
+        self.dconn = dconn
+
+    def __call__(
+        self, node: Node, drop: bool = True, fill_null: bool = True
+    ) -> QueryResult:
+        # Build the node table in the connected Kuzu database
+        if drop:
+            self.kconn.execute(f"DROP TABLE IF EXISTS {node.label}")
+        self.kconn.execute(node.create_statement)
+
+        # Select data from the connected DuckDB database
+        try:
+            df = self.dconn.sql(node.duckdb_query).pl()
+        except Exception as e:
+            print(node.duckdb_query)
+            raise e
+        if fill_null:
+            df = df.fill_null("")
+
+        # Insert the DuckDB data into the Kuzu database
+        query = f"COPY {node.label} FROM df"
+        try:
+            self.kconn.execute(query)
+        except Exception as e:
+            print(query)
+            raise e
+
+        # Fetch the nodes createdin in the Kuzu database
+        query = f"MATCH (n:{node.label}) return n"
+        return self.kconn.execute(query)
