@@ -20,7 +20,11 @@ def get_vars(*args) -> dict:
     return {"database_name": db, "login": login, "password": password}
 
 
-RECORD_GROUP_NAMES = ["My record types", "Place, features", "People and organisations"]
+RECORD_GROUP_NAMES = [
+    "My record types",
+    "Place, features",
+    "People and organisations",
+]
 
 
 @click.command("download")
