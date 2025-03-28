@@ -1,6 +1,5 @@
-from app.models.edges import EdgeBuilder
-from app.models.nodes import NodeBuilder
+from .terms import LanguageDataModel
+from .text import TextDataModel
 
-
-EdgeBuilder
-NodeBuilder
+LanguageDataModel
+TextDataModel

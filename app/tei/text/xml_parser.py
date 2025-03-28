@@ -1,44 +1,20 @@
 """Class for parsing elements of the tree of the text's TEI-XML document."""
 
 from lxml import etree
-from app.constants import NSMAP
 from app import TEXT_TEI_MODEL
 from datetime import datetime
+from app.tei.text.base_tree import BaseTEIParser
 
 
-class BaseTEIParser(object):
-    def __init__(self, tree: etree.ElementTree):
-        self.tree = tree
-
-    def __find_node__(self, xpath: str) -> etree.Element:
-        """Find a specific node in the XML tree.
-
-        Args:
-            xpath (str): Xpath with 'tei:' namespace before each tag name.
-
-        Raises:
-            IndexError: Error indicating the xpath didn't find 1 specific node.
-
-        Returns:
-            etree.Element: The targeted node in the tree.
-        """
-
-        matches = self.tree.xpath(xpath, namespaces=NSMAP)
-        if len(matches) != 1:
-            raise IndexError()
-        else:
-            return matches[0]
-
-
-class TextTree:
+class TextXMLParser:
     def __init__(self, base_file: str = TEXT_TEI_MODEL):
         self.tree = etree.parse(base_file)
-        self.titleStmt = self.TitleStmt(tree=self.tree)
-        self.publicationStmt = self.PublicationStmt(tree=self.tree)
-        self.encodingDesc = self.EncodingDesc(tree=self.tree)
-        self.profileDesc = self.ProfileDesc(tree=self.tree)
+        self.titleStmt = self.TitleStmtParser(tree=self.tree)
+        self.publicationStmt = self.PublicationStmtParser(tree=self.tree)
+        self.encodingDesc = self.EncodingDescParser(tree=self.tree)
+        self.profileDesc = self.ProfileDescParser(tree=self.tree)
 
-    class TitleStmt(BaseTEIParser):
+    class TitleStmtParser(BaseTEIParser):
         """Branch of XML tree at teiHeader/fileDesc/titleStmt."""
 
         def __init__(self, tree: etree.ElementTree):
@@ -55,7 +31,7 @@ class TextTree:
             xpath = "//tei:titleStmt/tei:respStmt"
             return self.__find_node__(xpath=xpath)
 
-    class PublicationStmt(BaseTEIParser):
+    class PublicationStmtParser(BaseTEIParser):
         """Branch of XML tree at teiHeader/fileDesc/publicationStmt."""
 
         def __init__(self, tree: etree.ElementTree):
@@ -68,7 +44,7 @@ class TextTree:
             xpath = "//tei:publicationStmt/tei:date"
             return self.__find_node__(xpath=xpath)
 
-    class EncodingDesc(BaseTEIParser):
+    class EncodingDescParser(BaseTEIParser):
         """Branch of XML tree at teiHeader/encodingDesc."""
 
         def __init__(self, tree: etree.ElementTree):
@@ -80,7 +56,7 @@ class TextTree:
             xpath = "//tei:encodingDesc//tei:category[@xml:id='genre']"
             return self.__find_node__(xpath=xpath)
 
-    class ProfileDesc(BaseTEIParser):
+    class ProfileDescParser(BaseTEIParser):
         """Branch of XML tree at teiHeader/profileDesc."""
 
         def __init__(self, tree):

@@ -1,8 +1,8 @@
 from lxml import etree
-from app.data_models.genre import GenreModel
-from app.data_models.text import TextModel
+from app.models.data import GenreModel
+from app.models.data import TextDataModel
 from app.constants import XML_ID
-from app.tei_models.text import TextTree
+from app.tei.text import TextTree
 
 
 class GenreTaxonomy:
@@ -112,12 +112,12 @@ class EncodingDesc:
     """Class to manage construction of nodes in 'teiHeader/encodingDesc' branch."""
 
     @classmethod
-    def insert_data(cls, text: TextModel | None, tree: TextTree) -> None:
+    def insert_data(cls, text: TextDataModel | None, tree: TextTree) -> None:
         """Transform the text data model's metadata into the elements in the \
             'teiHeader/encodingDesc' branch and insert them into the tree.
 
         Args:
-            text (TextModel): Text data model.
+            text (TextDataModel): Text data model.
             tree (TextTree): Tree parser for the text's TEI document.
         """
 

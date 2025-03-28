@@ -1,7 +1,7 @@
 import click
 import importlib.metadata
 
-from app.cli.pivot import pivot
+# from app.cli.pivot import pivot
 from app.cli.heurist import refresh_db
 from app.cli.graph import graph
 
@@ -19,5 +19,5 @@ if __name__ == "__main__":
 
 
 cli.add_command(refresh_db)
-cli.add_command(pivot)
+# cli.add_command(pivot)
 cli.add_command(graph)

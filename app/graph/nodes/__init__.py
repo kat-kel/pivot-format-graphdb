@@ -1,4 +1,3 @@
-from dataclasses import dataclass
 from kuzu import Connection, QueryResult
 from duckdb import DuckDBPyConnection
 from typing import Literal
@@ -66,21 +65,21 @@ est_cert STRING
     def sql_alias(self) -> str:
         if self.temporal:
             s = f"""
-'start_earliest': {self.duckdb_col}.start.earliest,
-'start_latest': {self.duckdb_col}.start.latest,
-'start_prob': {self.duckdb_col}.start.estProfile,
-'start_cert': {self.duckdb_col}.start.estDetermination,
-'end_earliest': {self.duckdb_col}.end.earliest,
-'end_latest': {self.duckdb_col}.end.latest,
-'end_prob': {self.duckdb_col}.end.estProfile,
-'end_cert': {self.duckdb_col}.end.estDetermination,
-'timestamp_year': {self.duckdb_col}.timestamp.in,
-'timestamp_type': {self.duckdb_col}.timestamp.type,
-'timestamp_circa': {self.duckdb_col}.timestamp.circa,
-'est_min': {self.duckdb_col}.estMinDate,
-'est_max': {self.duckdb_col}.estMaxDate,
-'est_prob': {self.duckdb_col}.estProfile,
-'est_cert': {self.duckdb_col}.estDetermination
+'start_earliest': CAST({self.duckdb_col}.start.earliest AS TIMESTAMP),
+'start_latest': CAST({self.duckdb_col}.start.latest AS TIMESTAMP),
+'start_prob': CAST({self.duckdb_col}.start.estProfile AS VARCHAR),
+'start_cert': CAST({self.duckdb_col}.start.estDetermination AS VARCHAR),
+'end_earliest': CAST({self.duckdb_col}.end.earliest AS TIMESTAMP),
+'end_latest': CAST({self.duckdb_col}.end.latest AS TIMESTAMP),
+'end_prob': CAST({self.duckdb_col}.end.estProfile AS VARCHAR),
+'end_cert': CAST({self.duckdb_col}.end.estDetermination AS VARCHAR),
+'timestamp_year': CAST({self.duckdb_col}.timestamp.in AS TIMESTAMP),
+'timestamp_type': CAST({self.duckdb_col}.timestamp.type AS VARCHAR),
+'timestamp_circa': CAST({self.duckdb_col}.timestamp.circa AS BOOL),
+'est_min': CAST({self.duckdb_col}.estMinDate AS TIMESTAMP),
+'est_max': CAST({self.duckdb_col}.estMaxDate AS TIMESTAMP),
+'est_prob': CAST({self.duckdb_col}.estProfile AS VARCHAR),
+'est_cert': CAST({self.duckdb_col}.estDetermination AS VARCHAR)
 """
             return f"""
             CASE WHEN "{self.duckdb_col}" IS NULL THEN NULL ELSE {{{s}}}
@@ -93,12 +92,22 @@ CASE WHEN "{self.duckdb_col}" LIKE 'Yes' THEN True ELSE False END AS {self.label
             return f'"{self.duckdb_col}" AS {self.label}'
 
 
-@dataclass
 class Node:
-    label: str
-    pk: str
-    metadata: list[Metadata]
-    table: str
+    def __init__(
+        self,
+        label: str,
+        pk: str,
+        metadata: list[Metadata],
+        duckdb_query: str | None = None,
+        table: str | None = None,
+    ):
+        self.label = label
+        self.pk = pk
+        self.metadata = metadata
+        self.table = table
+        self.duckdb_query = duckdb_query
+        if not duckdb_query:
+            self.duckdb_query = self.make_duckdb_query()
 
     def list_cypher_props(self) -> list[str]:
         return [m.cypher_alias for m in self.metadata]
@@ -112,8 +121,7 @@ class Node:
         {', '.join(params)}
     )"""
 
-    @property
-    def duckdb_query(self) -> str:
+    def make_duckdb_query(self) -> str:
         aliases = ", ".join([m.sql_alias for m in self.metadata])
         return f"SELECT {aliases} FROM {self.table}"
 
@@ -133,7 +141,8 @@ class NodeBuilder:
 
         # Select data from the connected DuckDB database
         try:
-            df = self.dconn.sql(node.duckdb_query).pl()
+            rel = self.dconn.sql(node.duckdb_query)
+            df = rel.pl()
         except Exception as e:
             print(node.duckdb_query)
             raise e
@@ -145,7 +154,9 @@ class NodeBuilder:
         try:
             self.kconn.execute(query)
         except Exception as e:
-            print(query)
+            print(node.label)
+            print(df)
+            print(rel.select("creation_date"))
             raise e
 
         # Fetch the nodes createdin in the Kuzu database

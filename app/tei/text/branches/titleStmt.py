@@ -1,8 +1,8 @@
 from lxml import etree
 from dataclasses import dataclass
-from app.data_models.text import TextModel
 from app import CONTRIBUTORS
-from app.tei_models.text import TextTree
+from app.tei.text import TextTree
+from app.models.data import TextDataModel
 
 
 @dataclass
@@ -34,31 +34,35 @@ class TitleStmt:
     title: str | None = None
 
     @classmethod
-    def load_data_model(cls, text: TextModel) -> "TitleStmt":
+    def load_data_model(cls, text: TextDataModel) -> "TitleStmt":
         """Parse metadata from the text data model that are relevant to elements \
             in the 'teiHeader/fileDesc/titleStmt' branch.
 
         Args:
-            text (TextModel): Text data model.
+            text (TextDataModel): Text data model.
 
         Returns:
             TitleStmt: Parsed metadata from the text data model.
         """
 
-        lang_code = cls.get_language_code(text=text)
+        if text.language:
+            lang_code = text.language.code
+        else:
+            lang_code = None
+
         resp_people = cls.load_responsibility_config(language_code=lang_code)
         return TitleStmt(
-            title=text.preferred_name,
+            title=text.name,
             respStmt=resp_people,
         )
 
     @classmethod
-    def insert_data(cls, text: TextModel, tree: TextTree) -> None:
+    def insert_data(cls, text: TextDataModel, tree: TextTree) -> None:
         """Transform the text data model's metadata into the elements in the \
             'teiHeader/fileDesc/titleStmt' branch and insert them into the tree.
 
         Args:
-            text (TextModel): Text data model.
+            text (TextDataModel): Text data model.
             tei_tree (etree.ElementTree): Tree of the text's TEI document.
         """
         # Parse metadata from the text data model
@@ -112,17 +116,3 @@ class TitleStmt:
         )
 
         return people
-
-    @staticmethod
-    def get_language_code(text: TextModel) -> str | None:
-        """Parse the code from a text data model's language term.
-
-        Args:
-            text (TextModel): Text data model.
-
-        Returns:
-            str | None: If the text has a language, its code.
-        """
-
-        if text.language:
-            return text.language.code

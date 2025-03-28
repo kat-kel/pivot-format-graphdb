@@ -1,23 +1,32 @@
-from app.graph.nodes import Node, Property
+from app.graph.nodes import Node, Metadata
 
 
 Genre = Node(
-    name="Genre",
+    label="Genre",
     pk="id",
     metadata=[
-        Property(name="id", type="INT"),
-        Property(name="name", type="STRING"),
-        Property(name="alternative_names", type="STRING[]"),
-        Property(name="description", type="STRING"),
-        Property(name="described_at_URL", type="STRING[]"),
+        Metadata(
+            label="id",
+            col="H-ID",
+            type="INT",
+        ),
+        Metadata(
+            label="name",
+            col="preferred_name",
+            type="STRING",
+        ),
+        Metadata(
+            label="alternative_names",
+            type="STRING[]",
+        ),
+        Metadata(
+            label="description",
+            type="STRING",
+        ),
+        Metadata(
+            label="described_at_URL",
+            type="STRING[]",
+        ),
     ],
-    duckdb_query="""
-SELECT
-    "H-ID" as id,
-    preferred_name as name,
-    alternative_names,
-    description,
-    described_at_URL
-FROM Genre
-""",
+    table="Genre",
 )

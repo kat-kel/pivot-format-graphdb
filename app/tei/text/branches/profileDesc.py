@@ -1,8 +1,8 @@
 from lxml import etree
 
-from app.data_models.text import TextModel
-from app.tei_models.text import TextTree
-from app.data_models.term import TermModel
+from app.models.data.text import TextModel
+from app.tei.text import TextTree
+from app.models.data.term import TermModel
 from app.data_models.date import DateObject, DeterminationConverter
 from heurist.converters.date_handler import HeuristDateHandler
 from dataclasses import dataclass

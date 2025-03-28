@@ -1,15 +1,15 @@
 from lxml import etree
-from app.tei_models.text import TextTree
-from app.data_models.text import TextModel
+from app.tei.text import TextXMLParser
 
-from app.tei_models.text.encodingDesc import EncodingDesc
-from app.tei_models.text.titleStmt import TitleStmt
-from app.tei_models.text.profileDesc import ProfileDesc
+# from app.tei.text.encodingDesc import EncodingDesc
+from app.tei.text.branches.titleStmt import TitleStmt
+
+# from app.tei.text.profileDesc import ProfileDesc
 
 
 class TextTreeBuilder:
-    def __init__(self, text_data_model: TextModel) -> None:
-        self.tree = TextTree()
+    def __init__(self, text_data_model) -> None:
+        self.tree = TextXMLParser()
 
         # build the titleStmt
         TitleStmt.insert_data(text=text_data_model, tree=self.tree)
@@ -18,10 +18,10 @@ class TextTreeBuilder:
         # -- built automatically with TextTree() instantiation --
 
         # build the encodingDesc
-        EncodingDesc.insert_data(text=text_data_model, tree=self.tree)
+        # EncodingDesc.insert_data(text=text_data_model, tree=self.tree)
 
         # build the profileDesc
-        ProfileDesc.insert_data(text=text_data_model, tree=self.tree)
+        # ProfileDesc.insert_data(text=text_data_model, tree=self.tree)
 
     def write(self, outfile: str) -> None:
         etree.indent(self.tree.tree)

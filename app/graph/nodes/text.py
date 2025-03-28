@@ -27,7 +27,6 @@ Text = Node(
         ),
         Metadata(
             label="is_hypothetical",
-            col="is_hypothetical",
             type="BOOLEAN",
         ),
         Metadata(
@@ -37,7 +36,6 @@ Text = Node(
         ),
         Metadata(
             label="alternative_names",
-            col="alternative_names",
             type="STRING[]",
         ),
         Metadata(
@@ -47,22 +45,18 @@ Text = Node(
         ),
         Metadata(
             label="length",
-            col="length",
             type="FLOAT",
         ),
         Metadata(
             label="length_freetext",
-            col="length_freetext",
             type="STRING",
         ),
         Metadata(
             label="verse_type",
-            col="verse_type",
             type="STRING",
         ),
         Metadata(
             label="rhyme_type",
-            col="rhyme_type",
             type="STRING",
         ),
         Metadata(
@@ -72,12 +66,10 @@ Text = Node(
         ),
         Metadata(
             label="tradition_status",
-            col="tradition_status",
             type="STRING",
         ),
         Metadata(
             label="has_lost_older_version",
-            col="has_lost_older_version",
             type="BOOLEAN",
         ),
         Metadata(
@@ -87,17 +79,15 @@ Text = Node(
         ),
         Metadata(
             label="rewritings_freetext",
-            col="rewritings_freetext",
             type="STRING",
         ),
         Metadata(
             label="note",
-            col="note",
             type="STRING",
         ),
         Metadata(
             label="creation_date",
-            col="date_of_creation_TEMPORAL",
+            col="date_of_creation",
             temporal=True,
         ),
         Metadata(
@@ -112,7 +102,6 @@ Text = Node(
         ),
         Metadata(
             label="described_at_URL",
-            col="described_at_URL",
             type="STRING[]",
         ),
     ],

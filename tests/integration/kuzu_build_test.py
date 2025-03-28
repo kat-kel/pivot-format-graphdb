@@ -2,15 +2,15 @@ import unittest
 
 from tests.integration import IntegrationTest
 
-from app.models import NodeBuilder, EdgeBuilder
-from app.models.builders import (
+from app.graph import NodeBuilder, EdgeBuilder
+from app.graph.builders import (
     create_all_edges,
     create_all_nodes,
     ALL_NODES,
 )
-from app.models.nodes.story import Story
-from app.models.nodes.storyverse import Storyverse
-from app.models.edges.is_part_of_storyverse import (
+from app.graph.nodes.story import Story
+from app.graph.nodes.storyverse import Storyverse
+from app.graph.edges.is_part_of_storyverse import (
     StoryIsPartOfStoryverse,
     StoryverseIsPartOfStoryverse,
 )
@@ -28,7 +28,7 @@ class BuildTest(IntegrationTest):
             # Count the number of rows selected from the DuckDB database.
             expected = self.dconn.sql(node.duckdb_query).count("*").fetchone()[0]
             # Count the number of nodes created in the Kuzu database.
-            query = f"MATCH (n:{node.name}) RETURN n"
+            query = f"MATCH (n:{node.label}) RETURN n"
             actual = self.kconn.execute(query).get_as_df().shape[0]
             # Assert that all the rows from the DuckDB database were inserted as
             # nodes in the Kuzu database.

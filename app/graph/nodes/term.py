@@ -1,16 +1,31 @@
-from app.graph.nodes import Node, Property
+from app.graph.nodes import Node, Metadata
 
 TERM_METADATA = [
-    Property(name="id", type="INT"),
-    Property(name="name", type="STRING"),
-    Property(name="code", type="STRING"),
-    Property(name="description", type="STRING"),
-    Property(name="url", type="STRING"),
+    Metadata(
+        label="id",
+        type="INT",
+    ),
+    Metadata(
+        label="name",
+        type="STRING",
+    ),
+    Metadata(
+        label="code",
+        type="STRING",
+    ),
+    Metadata(
+        label="description",
+        type="STRING",
+    ),
+    Metadata(
+        label="url",
+        type="STRING",
+    ),
 ]
 
 
 Language = Node(
-    name="Language",
+    label="Language",
     pk="id",
     metadata=TERM_METADATA,
     duckdb_query="""
