@@ -7,12 +7,10 @@ from app.graph.builders import create_all_edges, create_all_nodes
 
 
 class TextParserTest(IntegrationTest):
-    def setUp(self):
-        create_all_nodes(self.kconn, self.dconn)
-        create_all_edges(self.kconn, self.dconn)
 
     def test(self):
-        pass
+        create_all_nodes(self.kconn, self.dconn)
+        create_all_edges(self.kconn, self.dconn)
 
 
 if __name__ == "__main__":

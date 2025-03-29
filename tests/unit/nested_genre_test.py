@@ -1,11 +1,11 @@
 import unittest
-import kuzu
+
 import duckdb
 
-from app.graph.nodes import NodeBuilder
+import kuzu
 from app.graph.edges import EdgeBuilder
-from app.graph.nodes.genre import Genre
 from app.graph.edges.has_parent_genre import GenreHasParent
+from app.graph.nodes.genre import Genre
 
 
 class Test(unittest.TestCase):
@@ -16,14 +16,15 @@ class Test(unittest.TestCase):
         self.conn = kuzu.Connection(db)
 
         # Create and insert a node for Text
-        create_stmt = "CREATE NODE TABLE Text (id INT, name STRING, PRIMARY KEY (id))"
+        create_stmt = """
+        CREATE NODE TABLE Text (id INT, name STRING, PRIMARY KEY (id))
+        """
         self.conn.execute(create_stmt)
         df = duckdb.sql("VALUES (1, 'text')").pl()
         self.conn.execute("COPY Text FROM df")
 
         # Create a node table for Genre
-        create_stmt = NodeBuilder.create_statement(node=Genre)
-        self.conn.execute(create_stmt)
+        self.conn.execute(Genre.create_statement)
 
         # Insert genre nodes
         query = """
@@ -35,7 +36,7 @@ VALUES
     (1, 'aunt', [], Null, [])
 """
         df = duckdb.sql(query).pl()
-        self.conn.execute(f"COPY {Genre.name} FROM df")
+        self.conn.execute(f"COPY {Genre.table_name} FROM df")
 
         # Create edge table
         create_stmt = EdgeBuilder.create_statement(edge=GenreHasParent)
@@ -49,13 +50,14 @@ VALUES
     (2, 1, 'hasParent')
 """
         df = duckdb.sql(query).pl()
-        self.conn.execute(f"COPY {GenreHasParent.name} FROM df")
+        self.conn.execute(f"COPY {GenreHasParent.table_name} FROM df")
 
         # Create and insert a genre-text edge
         create_stmt = "CREATE REL TABLE Text_hasGenre (FROM Text TO Genre)"
         self.conn.execute(create_stmt)
         df = duckdb.sql("VALUES (1, 5)").pl()
         self.conn.execute("COPY Text_hasGenre FROM df")
+        del df
 
         return super().setUp()
 
