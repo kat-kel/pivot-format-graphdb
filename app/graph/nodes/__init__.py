@@ -86,7 +86,8 @@ est_cert STRING
             END AS {self.label}"""
         elif self.type == "BOOLEAN":
             return f"""
-CASE WHEN "{self.duckdb_col}" LIKE 'Yes' THEN True ELSE False END AS {self.label}
+CASE WHEN "{self.duckdb_col}" LIKE 'Yes' THEN True ELSE False
+END AS {self.label}
 """
         else:
             return f'"{self.duckdb_col}" AS {self.label}'
@@ -95,13 +96,13 @@ CASE WHEN "{self.duckdb_col}" LIKE 'Yes' THEN True ELSE False END AS {self.label
 class Node:
     def __init__(
         self,
-        label: str,
+        table_name: str,
         pk: str,
         metadata: list[Metadata],
         duckdb_query: str | None = None,
         table: str | None = None,
     ):
-        self.label = label
+        self.table_name = table_name
         self.pk = pk
         self.metadata = metadata
         self.table = table
@@ -116,7 +117,7 @@ class Node:
     def create_statement(self) -> str:
         params = self.list_cypher_props() + [f"PRIMARY KEY ({self.pk})"]
         return f"""
-    CREATE NODE TABLE {self.label}
+    CREATE NODE TABLE {self.table_name}
     (
         {', '.join(params)}
     )"""
@@ -136,7 +137,7 @@ class NodeBuilder:
     ) -> QueryResult:
         # Build the node table in the connected Kuzu database
         if drop:
-            self.kconn.execute(f"DROP TABLE IF EXISTS {node.label}")
+            self.kconn.execute(f"DROP TABLE IF EXISTS {node.table_name}")
         self.kconn.execute(node.create_statement)
 
         # Select data from the connected DuckDB database
@@ -150,15 +151,15 @@ class NodeBuilder:
             df = df.fill_null("")
 
         # Insert the DuckDB data into the Kuzu database
-        query = f"COPY {node.label} FROM df"
+        query = f"COPY {node.table_name} FROM df"
         try:
             self.kconn.execute(query)
         except Exception as e:
-            print(node.label)
+            print(node.table_name)
             print(df)
             print(rel.select("creation_date"))
             raise e
 
         # Fetch the nodes createdin in the Kuzu database
-        query = f"MATCH (n:{node.label}) return n"
+        query = f"MATCH (n:{node.table_name}) return n"
         return self.kconn.execute(query)

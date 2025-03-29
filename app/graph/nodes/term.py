@@ -1,4 +1,4 @@
-from app.graph.nodes import Node, Metadata
+from app.graph.nodes import Metadata, Node
 
 TERM_METADATA = [
     Metadata(
@@ -25,7 +25,7 @@ TERM_METADATA = [
 
 
 Language = Node(
-    label="Language",
+    table_name="Language",
     pk="id",
     metadata=TERM_METADATA,
     duckdb_query="""

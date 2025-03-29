@@ -1,8 +1,7 @@
 from app.graph.edges import Edge
 
-
 TextHasLanguage = Edge(
-    name="Text_hasLanguage",
+    table_name="Text_hasLanguage",
     from_node="Text",
     to_node="Language",
     metadata=["name STRING"],

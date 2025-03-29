@@ -1,8 +1,7 @@
 from app.graph.edges import Edge
 
-
 GenreHasParent = Edge(
-    name="Genre_hasParent",
+    table_name="Genre_hasParent",
     from_node="Genre",
     to_node="Genre",
     metadata=["name STRING"],

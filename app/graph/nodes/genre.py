@@ -1,8 +1,7 @@
-from app.graph.nodes import Node, Metadata
-
+from app.graph.nodes import Metadata, Node
 
 Genre = Node(
-    label="Genre",
+    table_name="Genre",
     pk="id",
     metadata=[
         Metadata(

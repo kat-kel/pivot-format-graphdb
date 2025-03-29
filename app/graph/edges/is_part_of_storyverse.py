@@ -1,8 +1,7 @@
 from app.graph.edges import Edge
 
-
 StoryIsPartOfStoryverse = Edge(
-    name="Story_isPartOf",
+    table_name="STORY_IS_PART_OF",
     from_node="Story",
     to_node="Storyverse",
     metadata=["name STRING"],
@@ -18,7 +17,7 @@ StoryIsPartOfStoryverse = Edge(
 
 
 StoryverseIsPartOfStoryverse = Edge(
-    name="Storyverse_isPartOf",
+    table_name="STORYVERSE_IS_PART_OF",
     duckdb_query="""
     SELECT
         "H-ID" as "from",

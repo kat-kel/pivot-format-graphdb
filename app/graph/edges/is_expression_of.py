@@ -1,8 +1,7 @@
 from app.graph.edges import Edge
 
-
 TextIsExpressionOf = Edge(
-    name="Text_isExpressionOf",
+    table_name="Text_isExpressionOf",
     from_node="Text",
     to_node="Story",
     metadata=["name STRING"],

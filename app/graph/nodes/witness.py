@@ -1,8 +1,7 @@
-from app.graph.nodes import Node, Metadata
-
+from app.graph.nodes import Metadata, Node
 
 Witness = Node(
-    label="Witness",
+    table_name="Witness",
     pk="id",
     metadata=[
         Metadata(

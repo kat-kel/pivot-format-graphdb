@@ -1,8 +1,7 @@
 from app.graph.edges import Edge
 
-
 WitnessIsManifestationOf = Edge(
-    name="Witness_isManifestationOf",
+    table_name="Witness_isManifestationOf",
     from_node="Witness",
     to_node="Text",
     metadata=["name STRING"],

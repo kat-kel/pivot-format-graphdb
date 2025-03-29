@@ -1,8 +1,7 @@
 from app.graph.edges import Edge
 
-
 TextHasGenre = Edge(
-    name="Text_hasGenre",
+    table_name="Text_hasGenre",
     from_node="Text",
     to_node="Genre",
     metadata=["name STRING"],

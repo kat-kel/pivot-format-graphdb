@@ -6,7 +6,7 @@ from polars import DataFrame
 
 @dataclass
 class Edge:
-    name: str
+    table_name: str
     from_node: str
     to_node: str
     metadata: list[str]
@@ -21,7 +21,7 @@ class EdgeBuilder:
     @classmethod
     def create_statement(cls, edge: Edge) -> str:
         return f"""
-CREATE REL TABLE IF NOT EXISTS {edge.name} (
+CREATE REL TABLE IF NOT EXISTS {edge.table_name} (
     FROM {edge.from_node}
     TO {edge.to_node},
     {', '.join(edge.metadata)}
@@ -30,7 +30,7 @@ CREATE REL TABLE IF NOT EXISTS {edge.name} (
 
     @classmethod
     def insert_statement(cls, edge: Edge) -> str:
-        return f"COPY {edge.name} FROM df"
+        return f"COPY {edge.table_name} FROM df"
 
     def __call__(
         self, edge: Edge, drop: bool = False, fill_null: bool = True
@@ -46,13 +46,13 @@ CREATE REL TABLE IF NOT EXISTS {edge.name} (
         # Insert the node's data into the connected Kuzu database
         self.insert_data(edge=edge)
 
-        query = f"MATCH ()-[r:{edge.name}]->() RETURN r"
+        query = f"MATCH ()-[r:{edge.table_name}]->() RETURN r"
         return self.kconn.execute(query)
 
     def build_edge_table(self, edge: Edge, drop: bool) -> QueryResult:
         creation_stmt = self.create_statement(edge=edge)
         if drop:
-            self.kconn.execute(f"DROP TABLE IF EXISTS {edge.name}")
+            self.kconn.execute(f"DROP TABLE IF EXISTS {edge.table_name}")
         r = self.kconn.execute(creation_stmt)
         return r
 
