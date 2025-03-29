@@ -1,13 +1,15 @@
 from lxml import etree
 from dataclasses import dataclass
 from app import CONTRIBUTORS
-from app.tei.text import TextTree
-from app.models.data import TextDataModel
+
+# from app.tei.text import TextTree
+# from app.models.data import TextDataModel
 
 
 @dataclass
 class RespPerson:
-    """Class to manage metadata for individuals listed in the 'respStmt' node."""
+    """Class to manage metadata for individuals listed in the 'respStmt'
+    node."""
 
     name: str
     role: str
@@ -27,16 +29,16 @@ class RespPerson:
 
 @dataclass
 class TitleStmt:
-    """Class to manage construction of nodes in 'teiHeader/fileDesc/titleStmt' branch.\
-        """
+    """Class to manage construction of nodes in 'teiHeader/fileDesc/titleStmt'
+    branch."""
 
     respStmt: list[RespPerson]
     title: str | None = None
 
     @classmethod
-    def load_data_model(cls, text: TextDataModel) -> "TitleStmt":
-        """Parse metadata from the text data model that are relevant to elements \
-            in the 'teiHeader/fileDesc/titleStmt' branch.
+    def load_data_model(cls, text) -> "TitleStmt":
+        """Parse metadata from the text data model that are relevant to
+        elements in the 'teiHeader/fileDesc/titleStmt' branch.
 
         Args:
             text (TextDataModel): Text data model.
@@ -57,9 +59,10 @@ class TitleStmt:
         )
 
     @classmethod
-    def insert_data(cls, text: TextDataModel, tree: TextTree) -> None:
+    def insert_data(cls, text, tree) -> None:
         """Transform the text data model's metadata into the elements in the \
-            'teiHeader/fileDesc/titleStmt' branch and insert them into the tree.
+            'teiHeader/fileDesc/titleStmt' branch and insert them into the
+            tree.
 
         Args:
             text (TextDataModel): Text data model.
@@ -78,7 +81,7 @@ class TitleStmt:
             person.insert_nodes(parent=resp_node)
 
     @staticmethod
-    def load_responsibility_config(language_code: str | None) -> list[RespPerson]:
+    def load_responsibility_config(language_code: str | None) -> list:
         """From the project's config yaml, load details about individuals'
         responsibility for various components of the data and encoding.
 
@@ -86,17 +89,23 @@ class TitleStmt:
             language_code (str | None): ISO code of the text's language.
 
         Returns:
-            list[RespPerson]: Modelled metadata of people responsible for TEI document.
+            list[RespPerson]: Modelled metadata of people responsible for TEI
+            document.
         """
 
-        # Start list of people with data entry and proof correction contributors
+        # Start list of people with data entry and proof correction
+        # contributors
         languages = CONTRIBUTORS["data entry"]
         if language_code and languages.get(language_code):
             names = languages[language_code]
         else:
             names = languages["default"]
         people = [
-            RespPerson(name=n, role="data entry and proof correction") for n in names
+            RespPerson(
+                name=n,
+                role="data entry and proof correction",
+            )
+            for n in names
         ]
 
         # Extend list with people responsible for metadata's TEI markup
@@ -107,7 +116,8 @@ class TitleStmt:
             ]
         )
 
-        # Extend list with people responsible for text transcription's TEI markup
+        # Extend list with people responsible for text transcription's TEI
+        # markup
         people.extend(
             [
                 RespPerson(name=n, role="conversion of text to TEI markup")

@@ -1,8 +1,8 @@
 from lxml import etree
-from app.models.data import GenreModel
-from app.models.data import TextDataModel
+
 from app.constants import XML_ID
-from app.tei.text import TextTree
+
+# from app.tei.text import TextTree
 
 
 class GenreTaxonomy:
@@ -10,20 +10,22 @@ class GenreTaxonomy:
         in 'teiHeader/encodingDesc/classDecl/taxonomy' branch."""
 
     @staticmethod
-    def sort_genres(genre: GenreModel) -> list[GenreModel]:
-        """Unnest the potentially nested genealogy of the text's genre and return a \
-            flat list of genres ordered by seniority, with the eldest parent first.
+    def sort_genres(genre) -> list:
+        """Unnest the potentially nested genealogy of the text's genre and
+        return a flat list of genres ordered by seniority, with the eldest
+        parent first.
 
         Args:
             genre (GenreModel): Genre data model.
 
         Returns:
-            list[GenreModel]: List of genre data models; first is the eldest parent.
+            list[GenreModel]: List of genre data models; first is the eldest
+            parent.
         """
 
         reverse_genre_genealogy = [genre]
 
-        def has_parent(genre: GenreModel) -> bool:
+        def has_parent(genre) -> bool:
             if genre.parent_genre:
                 return True
             else:
@@ -38,7 +40,7 @@ class GenreTaxonomy:
         return list(reversed(reverse_genre_genealogy))
 
     @staticmethod
-    def make_genre_category(genre: GenreModel) -> etree.Element:
+    def make_genre_category(genre) -> etree.Element:
         """Build a new 'category' branch for a genre entity.
 
         <category xml:id="genre_ID">
@@ -59,7 +61,7 @@ class GenreTaxonomy:
         return category_node
 
     @classmethod
-    def build_category_tree(cls, genre: GenreModel) -> etree.Element:
+    def build_category_tree(cls, genre) -> etree.Element:
         """Build a potentially nested tree of genre 'category' branches.
 
         <category xml:id="genre_1">
@@ -93,9 +95,9 @@ class GenreTaxonomy:
         return base_node
 
     @classmethod
-    def insert_nodes(cls, genre: GenreModel | None, tree: TextTree) -> None:
-        """If the text has a genre, insert the genre's 'category' tree into the branch \
-            of the encodingDesc.
+    def insert_nodes(cls, genre, tree) -> None:
+        """If the text has a genre, insert the genre's 'category' tree into
+        the branch of the encodingDesc.
 
         Args:
             genre (GenreModel | None): Text's genre, which might have parents.
@@ -109,10 +111,11 @@ class GenreTaxonomy:
 
 
 class EncodingDesc:
-    """Class to manage construction of nodes in 'teiHeader/encodingDesc' branch."""
+    """Class to manage construction of nodes in 'teiHeader/encodingDesc'
+    branch."""
 
     @classmethod
-    def insert_data(cls, text: TextDataModel | None, tree: TextTree) -> None:
+    def insert_data(cls, text, tree) -> None:
         """Transform the text data model's metadata into the elements in the \
             'teiHeader/encodingDesc' branch and insert them into the tree.
 

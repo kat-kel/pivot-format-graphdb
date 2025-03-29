@@ -1,8 +1,10 @@
 """Class for parsing elements of the tree of the text's TEI-XML document."""
 
-from lxml import etree
-from app import TEXT_TEI_MODEL
 from datetime import datetime
+
+from lxml import etree
+
+from app import TEXT_TEI_MODEL
 from app.tei.text.base_tree import BaseTEIParser
 
 

@@ -1,9 +1,9 @@
 from lxml import etree
-from app.tei.text import TextXMLParser
 
-# from app.tei.text.encodingDesc import EncodingDesc
+from app.tei.text import TextXMLParser
 from app.tei.text.branches.titleStmt import TitleStmt
 
+# from app.tei.text.encodingDesc import EncodingDesc
 # from app.tei.text.profileDesc import ProfileDesc
 
 
