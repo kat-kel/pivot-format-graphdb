@@ -4,6 +4,7 @@ import duckdb
 
 import kuzu
 from app.graph.edges import EdgeBuilder
+from app.graph.edges.has_genre import TextHasGenre
 from app.graph.edges.has_parent_genre import GenreHasParent
 from app.graph.nodes.genre import Genre
 
@@ -39,31 +40,31 @@ VALUES
         self.conn.execute(f"COPY {Genre.table_name} FROM df")
 
         # Create edge table
-        create_stmt = EdgeBuilder.create_statement(edge=GenreHasParent)
+        create_stmt = EdgeBuilder.compose_create_statement(edge=GenreHasParent)
         self.conn.execute(create_stmt)
 
         # Insert edge data
         query = """
 VALUES
-    (5, 4, 'hasParent'),
-    (4, 3, 'hasParent'),
-    (2, 1, 'hasParent')
+    (5, 4),
+    (4, 3),
+    (2, 1)
 """
         df = duckdb.sql(query).pl()
         self.conn.execute(f"COPY {GenreHasParent.table_name} FROM df")
 
         # Create and insert a genre-text edge
-        create_stmt = "CREATE REL TABLE Text_hasGenre (FROM Text TO Genre)"
+        create_stmt = EdgeBuilder.compose_create_statement(edge=TextHasGenre)
         self.conn.execute(create_stmt)
         df = duckdb.sql("VALUES (1, 5)").pl()
-        self.conn.execute("COPY Text_hasGenre FROM df")
+        self.conn.execute(f"COPY {TextHasGenre.table_name} FROM df")
         del df
 
         return super().setUp()
 
     def test_result_ordering(self):
-        query = """
-        MATCH (child:Genre)-[r:Genre_hasParent]->(parent:Genre)
+        query = f"""
+        MATCH (child:Genre)-[r:{GenreHasParent.table_name}]->(parent:Genre)
         RETURN child, parent
         """
         rows = []
@@ -80,7 +81,9 @@ VALUES
         ordered_genres = []
 
         query = f"""
-MATCH (g:Genre)<-[r:Text_hasGenre|Genre_hasParent *1..]-(t:Text)
+MATCH (g:Genre)
+    <-[r:{TextHasGenre.table_name}|{GenreHasParent.table_name} *1..]
+    -(t:Text)
 WHERE t.id = {id}
 RETURN g """
         result = self.conn.execute(query)

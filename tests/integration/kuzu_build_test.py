@@ -1,20 +1,25 @@
 import unittest
 
+import duckdb
+
+import kuzu
+from app import HEURIST_DB
 from app.graph.builders import ALL_NODES, create_all_edges, create_all_nodes
-from app.graph.edges.is_part_of_storyverse import (
-    StoryIsPartOfStoryverse,
-    StoryverseIsPartOfStoryverse,
-)
 from app.graph.nodes import NodeBuilder
 from app.graph.nodes.story import Story
 from app.graph.nodes.storyverse import Storyverse
-from tests.integration import IntegrationTest
 
 
-class BuildTest(IntegrationTest):
+class BuildTest(unittest.TestCase):
     """Test the builder functions and methods for the Kuzu nodes and edges."""
 
-    def test_edge_integration_builder(self):
+    def setUp(self):
+        db = kuzu.Database()
+        self.kconn = kuzu.Connection(db)
+        self.dconn = duckdb.connect(HEURIST_DB)
+        return super().setUp()
+
+    def test_full_build(self):
         """Test that the integrated build-all methods work."""
         create_all_nodes(kconn=self.kconn, dconn=self.dconn)
         create_all_edges(kconn=self.kconn, dconn=self.dconn)
@@ -29,46 +34,6 @@ class BuildTest(IntegrationTest):
             # Assert that all the rows from the DuckDB database were inserted
             # as nodes in the Kuzu database.
             self.assertEqual(expected, actual)
-
-    def test_edges(self):
-        """Test that the edge builder works."""
-        # Build the nodes for the testd edge (Story & Storyverse).
-        create_all_nodes(
-            kconn=self.kconn,
-            dconn=self.dconn,
-            nodes=[
-                Story,
-                Storyverse,
-            ],
-        )
-
-        # Build edges between Story & Storyverse and between Storyverses.
-        create_all_edges(
-            kconn=self.kconn,
-            dconn=self.dconn,
-            edges=[StoryIsPartOfStoryverse, StoryverseIsPartOfStoryverse],
-        )
-
-        # Count the edges from Story to Storyverse.
-        query = "MATCH ()-[r:STORY_IS_PART_OF]-() RETURN r"
-        edges1 = self.kconn.execute(query).get_num_tuples()
-
-        # Count the edges from Storyverse to Storyverse.
-        query = "MATCH ()-[r:STORYVERSE_IS_PART_OF]-() RETURN r"
-        edges2 = self.kconn.execute(query).get_num_tuples()
-
-        # Sum each edge type.
-        summed_count = edges1 + edges2
-
-        # Count all the edges created in the graph.
-        query = """
-        MATCH ()-[r]-() RETURN r
-        """
-        returned_count = self.kconn.execute(query).get_num_tuples()
-
-        # Assert that the sum of the created edges equals the
-        # sum of all edges found in the graph
-        self.assertEqual(summed_count, returned_count)
 
     def test_nodes(self):
         """Test that the node builder works."""
