@@ -5,11 +5,11 @@ from lxml import etree
 
 import kuzu
 from app import HEURIST_DB
-from app.tei.text_builder import TextTEIBuilder
 from app.graph.builders import create_all_edges, create_all_nodes
+from app.tei.text_builder import TextTEIBuilder
 
 
-class TextParserTest(unittest.TestCase):
+class TitleStmtBuilderGMHTest(unittest.TestCase):
     maxDiff = None
 
     def setUp(self):
@@ -18,9 +18,33 @@ class TextParserTest(unittest.TestCase):
         self.dconn = duckdb.connect(HEURIST_DB)
         create_all_nodes(kconn=self.kconn, dconn=self.dconn)
         create_all_edges(kconn=self.kconn, dconn=self.dconn)
+
+        self.builder = TextTEIBuilder(conn=self.kconn)
         return super().setUp()
 
+    def test_alternative_title(self):
+        # Build a TEI document for a text with an alternative title
+        # Current working example in real data is ID 48337
+        iterate_texts = """
+        MATCH (t:Text) WHERE t.alternative_names <> []
+        RETURN t.id
+        """
+        response = self.kconn.execute(iterate_texts)
+        while response.has_next():
+            text_id = response.get_next()[0]
+            break
+        self.builder(text_id=text_id)
+        # Read the created title nodes
+        nodes = self.builder.parser.titleStmt.tree.xpath("//title")
+        actual = len(nodes)
+        # Affirm that there are 3 title nodes
+        # (after the one with the namespace)
+        # 2 nodes nested in @type='full' + 1 node as @type='alt' = 3
+        expected = 3
+        self.assertEqual(actual, expected)
+
     def test_gmh_respStmt(self):
+        # Build a TEI document for a Middle High German text
         iterate_texts = """
         MATCH (t:Text)-[r:HAS_LANGAUGE]-(l:Language)
         WHERE l.code = 'gmh'
@@ -28,16 +52,12 @@ class TextParserTest(unittest.TestCase):
         """
         response = self.kconn.execute(iterate_texts)
         while response.has_next():
-            # Get the text ID
             text_id = response.get_next()[0]
             break
-
-        # Build a TEI document for a text
-        builder = TextTEIBuilder(conn=self.kconn)
-        builder(text_id=text_id)
+        self.builder(text_id=text_id)
 
         # Read the created respStmt branch
-        node = builder.parser.titleStmt.respStmt
+        node = self.builder.parser.titleStmt.respStmt
         etree.indent(node)
         actual = etree.tostring(node, encoding="utf-8").decode().strip()
 

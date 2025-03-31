@@ -22,3 +22,7 @@ def find_node(tree: etree.ElementTree, xpath: str) -> etree.Element:
         raise IndexError()
     else:
         return matches[0]
+
+
+def iterate_nodes(tree: etree.ElementTree, xpath: str):
+    yield from tree.xpath(xpath, namespaces=NSMAP)

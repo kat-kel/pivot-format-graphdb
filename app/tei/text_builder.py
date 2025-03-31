@@ -1,14 +1,15 @@
-from lxml import etree
 from datetime import datetime
 
+from lxml import etree
+
 from app.tei.branches import build_titleStmt
-from app.tei.text_xml_parser import TextXMLParser
+from app.tei.text_xml_parser import ParserTextTEI_XML
 from kuzu import Connection
 
 
 class TextTEIBuilder:
     def __init__(self, conn: Connection):
-        self.parser = TextXMLParser()
+        self.parser = ParserTextTEI_XML()
         self.conn = conn
 
     def __call__(self, text_id: int):

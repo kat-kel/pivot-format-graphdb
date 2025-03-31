@@ -1,4 +1,4 @@
-"""Class for parsing elements of the tree of the text's TEI-XML document."""
+"""Class for navigating the base (empty) tree of the text's TEI document."""
 
 from datetime import datetime
 
@@ -8,7 +8,7 @@ from app import TEXT_TEI_MODEL
 from app.tei.find_node import find_node
 
 
-class TitleStmtParser:
+class ParserTitleStmt:
     """Branch of XML tree at teiHeader/fileDesc/titleStmt."""
 
     def __init__(self, tree: etree.ElementTree):
@@ -16,16 +16,16 @@ class TitleStmtParser:
 
     @property
     def title(self) -> etree.Element:
-        xpath = "//tei:titleStmt/tei:title"
+        xpath = ".//tei:titleStmt/tei:title[@type='full']"
         return find_node(tree=self.tree, xpath=xpath)
 
     @property
     def respStmt(self) -> etree.Element:
-        xpath = "//tei:titleStmt/tei:respStmt"
+        xpath = ".//tei:titleStmt/tei:respStmt"
         return find_node(tree=self.tree, xpath=xpath)
 
 
-class PublicationStmtParser:
+class ParserPublicationStmt:
     """Branch of XML tree at teiHeader/fileDesc/publicationStmt."""
 
     def __init__(self, tree: etree.ElementTree):
@@ -34,11 +34,11 @@ class PublicationStmtParser:
 
     @property
     def date(self) -> etree.Element:
-        xpath = "//tei:publicationStmt/tei:date"
+        xpath = ".//tei:publicationStmt/tei:date"
         return find_node(tree=self.tree, xpath=xpath)
 
 
-class EncodingDescParser:
+class ParserEncodingDesc:
     """Branch of XML tree at teiHeader/encodingDesc."""
 
     def __init__(self, tree: etree.ElementTree):
@@ -46,11 +46,11 @@ class EncodingDescParser:
 
     @property
     def genre_taxonomy(self) -> etree.Element:
-        xpath = "//tei:encodingDesc//tei:category[@xml:id='genre']"
+        xpath = ".//tei:encodingDesc//tei:category[@xml:id='genre']"
         return find_node(tree=self.tree, xpath=xpath)
 
 
-class ProfileDescParser:
+class ParserProfileDesc:
     """Branch of XML tree at teiHeader/profileDesc."""
 
     def __init__(self, tree):
@@ -58,19 +58,19 @@ class ProfileDescParser:
 
     @property
     def creation(self) -> etree.Element:
-        xpath = "//tei:profileDesc/tei:creation"
+        xpath = ".//tei:profileDesc/tei:creation"
         return find_node(tree=self.tree, xpath=xpath)
 
     @property
     def languUsage(self) -> etree.Element:
-        xpath = "//tei:profileDesc/tei:langUsage"
+        xpath = ".//tei:profileDesc/tei:langUsage"
         return find_node(tree=self.tree, xpath=xpath)
 
 
-class TextXMLParser:
+class ParserTextTEI_XML:
     def __init__(self, base_file: str = TEXT_TEI_MODEL):
         self.tree = etree.parse(base_file)
-        self.titleStmt = TitleStmtParser(tree=self.tree)
-        self.publicationStmt = PublicationStmtParser(tree=self.tree)
-        self.encodingDesc = EncodingDescParser(tree=self.tree)
-        self.profileDesc = ProfileDescParser(tree=self.tree)
+        self.titleStmt = ParserTitleStmt(tree=self.tree)
+        self.publicationStmt = ParserPublicationStmt(tree=self.tree)
+        self.encodingDesc = ParserEncodingDesc(tree=self.tree)
+        self.profileDesc = ParserProfileDesc(tree=self.tree)

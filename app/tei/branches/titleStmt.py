@@ -1,25 +1,28 @@
 from lxml import etree
 
-from app.tei.branches.respStmt import list_resp_persons
+from app.tei.builders.respStmt import list_resp_persons
 from app.tei.fetchers.language import fetch_language
 from app.tei.fetchers.text_alternative_titles import fetch_alternative_title
 from app.tei.fetchers.text_title import fetch_title
-from app.tei.text_xml_parser import TitleStmtParser
+from app.tei.text_xml_parser import ParserTitleStmt
 from kuzu import Connection
 
 
-def build_titleStmt(conn: Connection, text_id: int, root: TitleStmtParser):
-    # Set the titleStmt's <title>
+def build_titleStmt(conn: Connection, text_id: int, root: ParserTitleStmt):
+    # Set the main title
     data = fetch_title(conn=conn, id=text_id)
-    full_title = f'Metadata encoding of "{data}"'
-    root.title.text = full_title
+    main = etree.SubElement(root.title, "title", type="main")
+    main.text = data
+    sub = etree.SubElement(root.title, "title", type="sub")
+    sub.text = "Encoding of Metadata"
 
     # Set alternative titles
     parent = root.title
-    for alt_title in fetch_alternative_title(conn=conn, id=text_id):
+    alt_titles = fetch_alternative_title(conn=conn, id=text_id)
+    for alt_title in alt_titles:
         node = etree.Element("title", type="alt")
         node.text = alt_title
-        parent.append(node)
+        parent.addnext(node)
 
     # Set the titleStmt's <respStmt>
     language = fetch_language(conn=conn, id=text_id)
